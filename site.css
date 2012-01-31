@@ -168,9 +168,9 @@ p img {
 
 /* Component containers
 ----------------------------------*/
-.ui-widget-content { border: 1px solid #aaaaaa; background: #ffffff url(/++resource++jquery-icons/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x; color: #222222; }
+.ui-widget-content { border: 1px solid #999999; background: #ffffff url(/++resource++jquery-icons/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x; color: #222222; }
 .ui-widget-content a { color: #222222; }
-.ui-widget-header { border: 1px solid #003366; background: #dddddd url(/++resource++jquery-icons/ui-bg_highlight-soft_75_dddddd_1x100.png) 50% 50% repeat-x; color: #003366; font-weight: bold; }
+.ui-widget-header { border: 0px solid #999999; border-bottom-width: 1px; background: #dddddd url(/++resource++jquery-icons/ui-bg_highlight-soft_75_dddddd_1x100.png) 50% 50% repeat-x; color: #003366; font-weight: bold; }
 .ui-widget-header a { color: #003366; }
 
 /* Interaction states
@@ -218,6 +218,14 @@ p img {
 .ui-corner-all {
    -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px ;
 }
+
+/* tabs */
+.ui-tabs { padding: 0; }
+.ui-tabs .ui-tabs-nav { padding-left: 9px; background: transparent; border-radius: 5px 5px 0 0; }
+
+.ui-tabs .ui-tabs-nav li { border-color: #999999; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { border-color: #777777; }
+.ui-tabs .ui-tabs-nav li a { padding: 0.5em 1.385em; }
 
 @media screen and (max-width: 960px) {
   /* All pages*/
