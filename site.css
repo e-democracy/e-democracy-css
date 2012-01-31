@@ -145,6 +145,14 @@ p img {
   background-image: url("/++resource++icons-colour.png");
 }
 
+/**********/
+/* Footer */
+/**********/
+
+#footer-links {
+  border-top: 5px solid #999999;
+}
+
 /*
  * jQuery UI CSS Framework 1.8.6
  *
