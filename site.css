@@ -70,6 +70,12 @@ div#titlebar .division {
   background: #dddddd;
 }
   
+#contextnav {
+  border: 1px solid #999999;
+  border-top-color: #003366;
+  border-radius: 5px;
+}
+
 /****************/
 /* Context Menu */
 /****************/
@@ -94,7 +100,7 @@ div#titlebar .division {
   border-color: #003366;
 }
 #contextnav .label {
-  border-top: 1px solid #003366;
+  border-top: none;
 }
 
 .message-result {
