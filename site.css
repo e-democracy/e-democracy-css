@@ -248,6 +248,17 @@ p img {
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected { border-color: #777777; }
 .ui-tabs .ui-tabs-nav li a { padding: 0.5em 1.385em; }
 
+/* photos */
+.photo img { border: 1px solid #aaaaaa; border-radius: 3px; }
+#us-photos a { border-radius: 3px; }
+.figure img { border: 1px solid #aaaaaa; border-radius: 5px; }
+.imagegallery img { border: 1px solid #aaaaaa; border-radius: 5px; }
+.thumbs img { border: none; border-radius: 3px; }
+.images, .thumbs { margin-left: 0; padding-left: 0; }
+.thumbs { margin-right: -0.69em; }
+img.scaledImage { border: 1px solid #aaaaaa; border-radius: 2%; }
+.nextlink img, .prevlink image { border: 1px solid #aaaaaa; border-radius: 3px; }
+
 @media screen and (max-width: 960px) {
   /* All pages*/
   #toparea, #titlebar a {
