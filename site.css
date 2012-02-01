@@ -159,6 +159,17 @@ p img {
 
 #greeting, #latestPhotos, #latestTopics { border: 1px solid #999999; border-radius: 5px; padding: 1.385em 1.6em; }
 
+/****************/
+/* Static Pages */
+/****************/
+
+#content {
+  border: 1px solid #999999;
+  border-radius: 5px;
+  padding: 1.385em 1.4em;
+  margin-top: 1.385em;
+}
+
 /**************/
 /* Group Home */
 /**************/
