@@ -157,7 +157,14 @@ p img {
 /* Home Page */
 /*************/
 
-#greeting, #latestPhotos, #latestTopics { border: 1px solid #999999; border-radius: 5px; padding: 1.385em 1.6em; }
+#greeting, #latestPhotos, #latestTopics,
+#divisionHomeContent .introduction {
+  border: 1px solid #999999; border-radius: 5px; padding: 1.385em 1.6em;
+}
+
+#task-tabs #latestPhotos, #task-tabs #latestTopics {
+  border: none; padding: 0;
+}
 
 /****************/
 /* Static Pages */
