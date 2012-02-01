@@ -153,6 +153,21 @@ p img {
   border-top: 5px solid #999999;
 }
 
+/**************/
+/* Group Home */
+/**************/
+
+#group-intro {
+  margin-top: -1.385em;
+}
+#group-intro h1 {
+  line-height: 1;
+  margin-bottom: 0;
+}
+#group-intro p {
+  margin-top: 0;
+}
+
 /*
  * jQuery UI CSS Framework 1.8.6
  *
@@ -240,6 +255,9 @@ p img {
     background: none;
   }
   /* Group page */
+  #group-intro {
+    padding-top: 1.385em;
+  }
   #us-tasks {
     margin: 0 0.692em 0 0;
     padding: 0 0 0.692em 0;
