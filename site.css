@@ -99,6 +99,9 @@ div#titlebar .division {
 #utilitylinks li, #sitenavigation li {
   border-color: #003366;
 }
+#sitenavigation a, #utilitylinks a {
+  padding: 0.5em 0.692em;
+}
 #contextnav .label {
   border-top: none;
 }
