@@ -145,7 +145,7 @@ p img {
 }
 
 .navlinks a, .navlinks span, code.url, .alternateATOM, .email, .fileIcon, .share-widgets a, .share-widgets span {
-  background-image: url("http://forums.e-democracy.org/++resource++icons-colour.png");
+  background-image: url(http://forums.e-democracy.org/++resource++icons-colour.png);
 }
 
 /**********/
@@ -210,26 +210,26 @@ p img {
 
 /* Component containers
 ----------------------------------*/
-.ui-widget-content { border: 1px solid #999999; background: #ffffff url(/++resource++jquery-icons/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x; color: #222222; }
+.ui-widget-content { border: 1px solid #999999; background: #ffffff url(http://forums.e-democracy.org/++resource++jquery-icons/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x; color: #222222; }
 .ui-widget-content a { color: #222222; }
-.ui-widget-header { border: 0px solid #999999; border-bottom-width: 1px; background: #dddddd url(/++resource++jquery-icons/ui-bg_highlight-soft_75_dddddd_1x100.png) 50% 50% repeat-x; color: #003366; font-weight: bold; }
+.ui-widget-header { border: 0px solid #999999; border-bottom-width: 1px; background: #dddddd url(http://forums.e-democracy.org/++resource++jquery-icons/ui-bg_highlight-soft_75_dddddd_1x100.png) 50% 50% repeat-x; color: #003366; font-weight: bold; }
 .ui-widget-header a { color: #003366; }
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #003366; background: #e6e6e6 url(/++resource++jquery-icons/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #003366; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #003366; background: #e6e6e6 url(http://forums.e-democracy.org/++resource++jquery-icons/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #003366; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #003366; text-decoration: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #003366; background: #cccccc url(/++resource++jquery-icons/ui-bg_glass_75_cccccc_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #003366; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #003366; background: #cccccc url(http://forums.e-democracy.org/++resource++jquery-icons/ui-bg_glass_75_cccccc_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #003366; }
 .ui-state-hover a, .ui-state-hover a:hover { color: #003366; text-decoration: none; }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa; background: #cccccc url(/++resource++jquery-icons/ui-bg_glass_65_cccccc_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #003366; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa; background: #cccccc url(http://forums.e-democracy.org/++resource++jquery-icons/ui-bg_glass_65_cccccc_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #003366; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #003366; text-decoration: none; }
 .ui-widget :active { outline: none; }
 
 /* Interaction Cues
 ----------------------------------*/
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #003366; background: #ffe45c url(/++resource++jquery-icons/ui-bg_highlight-soft_55_ffe45c_1x100.png) 50% top repeat-x; color: #363636; }
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #003366; background: #ffe45c url(http://forums.e-democracy.org/++resource++jquery-icons/ui-bg_highlight-soft_55_ffe45c_1x100.png) 50% top repeat-x; color: #363636; }
 .ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
-.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #b81900 url(/++resource++jquery-icons/ui-bg_diagonals-thick_18_b81900_40x40.png) 50% 50% repeat; color: #ffffff; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #b81900 url(http://forums.e-democracy.org/++resource++jquery-icons/ui-bg_diagonals-thick_18_b81900_40x40.png) 50% 50% repeat; color: #ffffff; }
 .ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #ffffff; }
 .ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #ffffff; }
 .ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
@@ -240,21 +240,21 @@ p img {
 ----------------------------------*/
 
 /* states and images */
-.ui-icon { width: 16px; height: 16px; background-image: url(/++resource++jquery-icons/ui-icons_222222_256x240.png); }
-.ui-widget-content .ui-icon {background-image: url(/++resource++jquery-icons/ui-icons_222222_256x240.png); }
-.ui-widget-header .ui-icon {background-image: url(/++resource++jquery-icons/ui-icons_003366_256x240.png); }
-.ui-state-default .ui-icon { background-image: url(/++resource++jquery-icons/ui-icons_003366_256x240.png); }
-.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(/++resource++jquery-icons/ui-icons_003366_256x240.png); }
-.ui-state-active .ui-icon {background-image: url(/++resource++jquery-icons/ui-icons_003366_256x240.png); }
-.ui-state-highlight .ui-icon {background-image: url(/++resource++jquery-icons/ui-icons_2e83ff_256x240.png); }
-.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(/++resource++jquery-icons/ui-icons_ffd27a_256x240.png); }
+.ui-icon { width: 16px; height: 16px; background-image: url(http://forums.e-democracy.org/++resource++jquery-icons/ui-icons_222222_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(http://forums.e-democracy.org/++resource++jquery-icons/ui-icons_222222_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(http://forums.e-democracy.org/++resource++jquery-icons/ui-icons_003366_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(http://forums.e-democracy.org/++resource++jquery-icons/ui-icons_003366_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(http://forums.e-democracy.org/++resource++jquery-icons/ui-icons_003366_256x240.png); }
+.ui-state-active .ui-icon {background-image: url(http://forums.e-democracy.org/++resource++jquery-icons/ui-icons_003366_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(http://forums.e-democracy.org/++resource++jquery-icons/ui-icons_2e83ff_256x240.png); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(http://forums.e-democracy.org/++resource++jquery-icons/ui-icons_ffd27a_256x240.png); }
 
 /* Misc visuals
 ----------------------------------*/
 
 /* Overlays */
-.ui-widget-overlay { background: #aaaaaa url(/++resource++jquery-icons/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
-.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa url(/++resource++jquery-icons/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+.ui-widget-overlay { background: #aaaaaa url(http://forums.e-democracy.org/++resource++jquery-icons/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
+.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa url(http://forums.e-democracy.org/++resource++jquery-icons/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
 
 /* rounded corners */
 .ui-corner-all {
