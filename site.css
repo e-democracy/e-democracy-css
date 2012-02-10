@@ -309,3 +309,7 @@ img.scaledImage { border: 1px solid #aaaaaa; border-radius: 2%; }
   margin-bottom: 2.769em;
  }
 }
+
+/*#content div { overflow: hidden; }*/
+#content ul { overflow: hidden; padding-left: 40px; margin-left: 0; }
+
