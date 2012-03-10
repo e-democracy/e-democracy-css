@@ -45,6 +45,24 @@ h4, h5, h6 {
   font-size: 100%; /*13px*/
 }
 
+html {
+  background: #efffff;
+}
+
+#titlebanner {
+  margin-top: 0;
+}
+
+#toparea {
+  padding-top: 1.385em;
+}
+
+#content, #contextnav, #greeting, #latestPhotos, #latestTopics, .introduction,
+.ui-widget-content, #divisionHomeContent .image {
+  box-shadow: 3px 3px 9px rgba(136, 136, 136, 0.43);
+  background: white;
+}
+
 /********/
 /* Logo */
 /********/
@@ -81,6 +99,7 @@ div#titlebar .division {
 /****************/
 #toparea, #contextnav li, #tabmenu {
   border-bottom-color: #003366;
+  background: white;
 }
 #contextnav .label, .message-result, #contextnav li a:hover, .emaildetails-self-even {
   background: #cccccc;
@@ -161,8 +180,13 @@ p img {
 /*************/
 
 #greeting, #latestPhotos, #latestTopics,
-#divisionHomeContent .introduction {
+#divisionHomeContent .introduction, #divisionHomeContent .image {
   border: 1px solid #999999; border-radius: 5px; padding: 1.385em 1.6em;
+}
+
+.image .metadata {
+  width: 21em;
+  right: 1.6em;
 }
 
 #task-tabs #latestPhotos, #task-tabs #latestTopics {
