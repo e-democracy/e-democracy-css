@@ -313,3 +313,18 @@ img.scaledImage { border: 1px solid #aaaaaa; border-radius: 2%; }
 /*#content div { overflow: hidden; }*/
 #content ul { overflow: hidden; padding-left: 40px; margin-left: 0; }
 
+/* WIKI */
+.mediawiki #searchform {
+  padding: 0 1.39em;
+  text-align: center;
+}
+
+.mediawiki #searchInput {
+  margin: 1.39em 0;
+  width: 9.385em;
+}
+
+.mediawiki #ca-talk {
+  display: none;
+}
+
