@@ -11,24 +11,45 @@ Author URI: http://onlinegroups.net
   padding:0.69em 0 0.69em 0.69em;
   margin-bottom:0.69em;
   padding-left:1.39em;
-  /*width:12.6em;*/
   font-size:small;
   font-weight:bold;
-  border-top:1px solid #003366;
   background:#CCCCCC none repeat scroll 0 0;
+}
+#contextnav p {
+  color: inherit;
 }
 #contextnav ul li {
   margin-top:1.39em;
 }
+#contextnav li ul li {
+  padding: 0.69em 1.385em;
+}
 #contextnav li ul li a {
   font-weight:bold;
-  padding:0.69em 0 0.69em 1.39em;
+}
+#contextnav a, #contextnav li li a {
+  padding: 0;
 }
 #contextnav a {
   display:inline;
 }
 #contextnav li a:hover {
   background:none;
+}
+#contextnav input {
+  margin: 0;
+  width: 9.4em;
+}
+#contextnav input[type=submit] {
+  width: 9.75em;
+}
+#contextnav select {
+  margin: 0 1.385em;
+  width: 9.75em;
+}
+#e-newsletter, #contextnav .textwidget, #contextnav #searchform,
+#contextnav .postInfo {
+  padding: 0 1.385em;
 }
 .credit {
   text-align:center;
