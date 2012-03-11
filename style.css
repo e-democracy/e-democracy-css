@@ -1,0 +1,38 @@
+/*
+Theme Name: eDem
+Description: Based on Basic2Col (http://wangenweb.com/themes/basic2col/) by Kristin K. Wangen (http://wangenweb.com/)
+Version: 0.9
+Author: Alice Murphy
+Author URI: http://onlinegroups.net
+*/
+
+#contextnav .widgettitle {
+  margin:0;
+  padding:0.69em 0 0.69em 0.69em;
+  margin-bottom:0.69em;
+  padding-left:1.39em;
+  /*width:12.6em;*/
+  font-size:small;
+  font-weight:bold;
+  border-top:1px solid #003366;
+  background:#CCCCCC none repeat scroll 0 0;
+}
+#contextnav ul li {
+  margin-top:1.39em;
+}
+#contextnav li ul li a {
+  font-weight:bold;
+  padding:0.69em 0 0.69em 1.39em;
+}
+#contextnav a {
+  display:inline;
+}
+#contextnav li a:hover {
+  background:none;
+}
+.credit {
+  text-align:center;
+  background-color:#DCDCDF;
+}
+
+
