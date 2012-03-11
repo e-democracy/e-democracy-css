@@ -1,0 +1,422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script type="text/javascript">
+   var _U = "undefined";
+   var g_HttpRelativeWebRoot = "/www/";
+   var SSContributor = false;
+   var SSForceContributor = false;
+   var SSHideContributorUI = false;
+   var ssUrlPrefix = "/";
+   var ssUrlType = "1";
+   var ssDomainNum = "6b3b5790";
+   var g_navNode_Path = new Array();
+       g_navNode_Path[0] = '106';
+       g_navNode_Path[1] = '737';
+   var g_ssSourceNodeId = "737";
+   var g_ssSourceSiteId = "CofM";
+   var g_strLanguageId = "en";
+</script>
+<script id="SSNavigationFunctionsScript" type="text/javascript" src="/www/websites/CofM/sitenavigationfunctions.js"></script>
+<script id="SSNavigationScript" type="text/javascript" src="/www/websites/CofM/sitenavigation.js"></script>
+
+	<script type="text/javascript" src="/www/resources/wcm/sitestudio/wcm.toggle.js"></script>
+	<script type="text/javascript" src="/www/resources/sitestudio/ssajax/ssajax.js"></script>
+
+	
+	<script id="ssInfo" type="text/xml" warning="DO NOT MODIFY!">
+    <ssinfo >
+    <fragmentinstance  id="fragment1" fragmentid="CITY_WWW_HEADER" library="server:SS_CITY_WWW_HEADER_FRAG">
+      
+    </fragmentinstance>
+    <fragmentinstance  id="fragment2" fragmentid="CITY_WWW_TOP_NAV" library="server:SS_CITY_WWW_TOP_NAV_FRAG">
+      
+    </fragmentinstance>
+    <fragmentinstance  id="fragment3" fragmentid="CITY_WWW_FOOTER" library="server:SS_CITY_WWW_FOOTER_FRAG">
+      
+    </fragmentinstance>
+    <fragmentinstance  id="fragment4" fragmentid="CITY_WWW_BREADCRUMB" library="server:SS_CITY_WWW_BREADCRUMB_FRAG">
+    </fragmentinstance>    
+  </ssinfo>
+  </script>
+  
+	
+	<title>Not Found - City of Minneapolis</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<!-- SS_BEGIN_SNIPPET(fragment1,CSS References)-->				<link rel="stylesheet" type="text/css" href="/www/groups/public/documents/webasset/mpls-www.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/www/groups/public/documents/webasset/mpls-print.css" media="print">
+<link rel="shortcut icon" href="http://www.minneapolismn.gov/favicon.ico" />
+			<!-- SS_END_SNIPPET(fragment1,CSS References)-->
+	<!-- SS_BEGIN_SNIPPET(fragment1,JS References)-->				<script src="/www/groups/public/documents/webasset/jquery.min.js" language="javascript" type="text/javascript"></script>
+
+			<!-- SS_END_SNIPPET(fragment1,JS References)-->
+	<!-- SS_BEGIN_SNIPPET(fragment4,1)-->				<script src="/www/fragments/city_www_breadcrumb/CITY_WWW_BREADCRUMB.js"></script>
+			
+			<!-- SS_END_SNIPPET(fragment4,1)-->
+		
+</head>
+<body class="oneColumn">
+
+<!--ST_ACCESSIBILITY_MENU-->
+<!-- Accessibility menu for easy navigation using screen readers -->
+<div id="nav_accessibility" class="hidden">
+  <h2>Accessibility menu</h2>
+    <p><a href="#maincontent" tabindex="3001" accesskey="m">Skip to main content of page</a></p>
+    <p><a href="#search" tabindex="3002" accesskey="s">Skip to search</a></p>
+    <p><a href="#globalnav" tabindex="3003" accesskey="n">Skip to primary navigation</a></p>
+</div>
+<!--/ Accessibility menu -->
+
+		
+	<div id="header-bg">
+		<div id="header">      
+		<!-- SS_BEGIN_SNIPPET(fragment1,Header Info)-->
+				<h1><a href="/index.htm" accesskey="h" title="Link to Minneapolis Home Page">City of Minneapolis</a></h1>
+<p id="citytag">Official Website of the City of Minneapolis</p>
+
+			<!-- SS_END_SNIPPET(fragment1,Header Info)-->
+			<div id="nav2">
+			<!-- SS_BEGIN_SNIPPET(fragment2,TopNav)-->				<div id="globalnav">
+      <ul class="topmenu">
+        <li id="sf-services"><a href="http://apps.ci.minneapolis.mn.us/deptdirapp/">City Services</a>
+          <ul>
+            <li><a href="#">Most Requested</a>
+              <ul>
+                <li><a href="/animals/index.htm">Animal Care and Control</a></li>
+                <li><a href="/police/statistics/index.htm">Crime Maps &amp; Statistics</a></li>
+                <li><a href="/elections/index.htm">Elections &amp; Voter Registration</a></li>
+                <li><a href="/solid-waste/index.htm">Garbage &amp; Recycling</a></li>
+                <li><a href="/inspections/index.htm">Housing Inspections</a></li>
+                <li><a href="/impound/index.htm">Impound Lot</a></li>
+                <li><a href="/jobs/index.htm">Jobs with the City</a></li>
+                <li><a href="/maps/index.htm">Maps of Minneapolis</a></li>
+                <li><a href="/propertyinfo/index.htm">Property Information</a></li>
+                <li><a href="/snow/index.htm">Snow Emergencies</a></li>
+                <li><a href="/utilitybilling/index.htm">Utility Billing</a></li>
+              </ul>
+            </li>
+            <li><a href="/311/index.htm">Issues &amp; Complaints</a>
+              <ul>
+                <li><a href="/utilitybilling/index.htm">Buildings &amp; Construction</a>
+                  <ul>
+                    <li><a href="/inspections/report/code-violation">Housing Code Violations</a></li>
+                    <li><a href="/inspections/inspections-feedback">Inspections Feedback</a></li>
+                    <li><a href="/inspections/report/rental-complaint">Rental Unit Complaints</a></li>
+                    <li><a href="/ccs/ccs_unpermitted">Unpermitted Construction</a></li>
+                  </ul>
+                </li>
+                <li><a href="/tv/cable-complaint">Cable Service Problems</a></li>
+                <li><a href="/environment/environmental-complaint">Environmental Violations</a></li>
+                <li><a href="/graffiti/graffiti_report">Graffiti Report</a></li>
+                <li><a href="/environmentalhealth/health-complaint">Health Violations</a></li>
+                <li><a href="/parking/index.htm">Parking</a>
+                  <ul>
+                    <li><a href="/parking/parking_abandoned">Abandoned Vehicles</a></li>
+                    <li><a href="/impound/impound-lot_search">Impound Lot Lookup</a></li>
+                    <li><a href="/parking/meters/parking_meter-issues">Parking Meter Issues</a></li>
+                    <li><a href="/parking/parking_parking-issues">Parking Ramp/Lot Issues</a></li>
+                    <li><a href="/parking/parking_violation">Parking Violations</a></li>
+                  </ul>
+                </li>
+                <li><a href="/police/index.htm">Police</a>
+                  <ul>
+                    <li><a href="/police/commendation">Compliment a MPD Police Officer</a></li>
+                    <li><a href="/attorney/cis/index.htm">Community Impact Statements</a></li>
+                    <li><a href="/police/statistics/index.htm">Crime Maps &amp; Statistics</a></li>
+                    <li><a href="/police/cra-complaint">File Complaint to Civilian Review Authority</a></li>
+                    <li><a href="/police/iau-complaint">File Complaint to Internal Affairs Unit</a></li>
+                    <li><a href="/police/report/eReport/index.htm">Online police report</a></li>
+                    <li><a href="/police/report/index.htm">Report a crime</a></li>
+                    <li><a href="/police/records/index.htm">Request a police report</a></li>
+                  </ul>
+                </li>
+                <li><a href="">Streets &amp; Sidewalks</a>
+                  <ul>
+                    <li><a href="/publicworks/traffic/traffic_pothole">Potholes</a></li>
+                    <li><a href="/publicworks/sidewalks/sidewalks_sidewalk-issues">Sidewalk Structural Issues</a></li>
+                    <li><a href="/publicworks/sidewalks/sidewalks_snow">Snow or Ice on Sidewalks</a></li>
+                    <li><a href="/publicworks/streetlighting/streetlighting_issues">Streetlight Issues</a></li>
+                    <li><a href="/publicworks/traffic/traffic_traffic-sign">Traffic Sign Issues</a></li>
+                    <li><a href="/publicworks/traffic/traffic_traffic-signal">Traffic Signal Issues</a></li>
+                  </ul>
+                </li>
+                <li><a href="/publicworks/water/water_water-issues">Water Issues</a></li>
+              </ul>
+            </li>
+            <li><a href="/mdr/permits/index.htm">Permits &amp; Fees</a>
+              <ul>
+                <li><a href="/mdr/index.htm">Buildings &amp; Construction</a>
+                  <ul>
+                    <li><a href="/mdr/buildingpermits/index.htm">Building Permits</a></li>                    
+                    <li><a href="/mdr/electricalpermits/index.htm">Electrical Permits</a></li>
+                    <li><a href="/mdr/elevatorpermits/index.htm">Elevator Permits</a></li>
+                    <li><a href="/fire/prevention/permits/index.htm">Fire Code Permits</a></li>
+                    <li><a href="">Fire Safety Systems</a></li>
+                    <li><a href="/mdr/mechanicalpermits/index.htm">Mechanical/Heating Permits</a></li>
+                    <li><a href="/mdr/epermits/index.htm">Online epermits</a></li>
+                    <li><a href="/mdr/plumbingpermits/index.htm">Plumbing Permits</a></li>
+                    <li><a href="/mdr/wreckingpermits/index.htm">Wrecking / Moving Permits</a></li>
+                  </ul>
+                </li>
+                <li><a href="/licensing/index.htm">Business Licenses</a>
+                  <ul>
+                    <li><a href="/licensing/alcohol/index.htm">Alcohol Licensing</a></li>
+                    <li><a href="/licensing/business-licensing_falsealarms">Burglar False Alarm Fees</a></li>
+                    <li><a href="/licensing/business-licensing_entertainment_index">Entertainment Licensing</a></li>
+                    <li><a href="/licensing/business-licensing_food_index">Food Licensing</a></li>
+                    <li><a href="/inspections/rental/index.htm">Rental Licenses</a></li>
+                    <li><a href="/licensing/business-licensing_sales_retail_index">Sales &amp; Services Licensing</a></li>
+                    <li><a href="/licensing/taxi/index.htm">Taxi Licensing </a></li>
+                    <li><a href="/licensing/business-licensing_temp_index">Temporary Licensing</a></li>
+                    <li><a href="/licensing/business-licensing_construction_index">Trades Licensing</a></li>
+                    <li><a href="/licensing/business-licensing_vehicles_index">Vehicle Related Licensing </a></li>
+                  </ul>
+                </li>
+                <li><a href="/environment/permits/index.htm">Environmental Permits</a>
+                  <ul>
+                    <li><a href="/environment/permits/environment_after-hours">After Hours Work</a></li>
+                    <li><a href="/environment/permits/environment_hazardous-waste">Hazardous Waste Facility</a></li>
+                    <li><a href="/environment/permits/environment_oil-water">Oil-Water Separator and Sediment Trap</a></li>
+                    <li><a href="/environment/permits/environment_rock-crushing">Rock Crushing </a></li>
+                    <li><a href="/environment/permits/environment_sand-blasting">Sand Blasting (Abrasive Blasting)</a></li>
+                    <li><a href="/environment/permits/environment_sound-permit">Sound Permit (Outdoor Amplified Sound)</a></li>
+                    <li><a href="/environment/permits/environment_storage-tanks">Tank Permits</a></li>
+                    <li><a href="/environment/permits/environment_water-discharge">Water Discharge</a></li>
+                    <li><a href="/environment/permits/environment_well-construction">Well Permits</a></li>
+                  </ul>
+                </li>
+                <li><a href="/animals/licenses/index.htm">Pet Licenses</a></li>
+                <li><a href="/publicworks/stormwater/fee/index.htm">Stormwater Utility Fees</a></li>
+                <li><a href="/publicworks/index.htm">Streets &amp; Sidewalks</a>
+                  <ul>
+                    <li><a href="/publicworks/permits/events-management_business-blockevents_index">Block Event Permits: Business</a></li>
+                    <li><a href="/publicworks/permits/events-management_residential-blockevents_index">Block Event Permits: Residents</a></li>
+                    <li><a href="/mdr/streetusepermits/index.htm">Street Use Permits</a></li>
+                    <li><a href="/publicworks/permits/public-works_malls-plazas">Mall and Plaza Use Permits</a></li>
+                    <li><a href="/publicworks/permits/public-works_laneuse">Obstruction Permits</a></li>
+                    <li><a href="/publicworks/permits/parade-race_index">Race or Parade Permits</a></li>
+                  </ul>
+                </li>
+                <li><a href="/cped/planning/cped_zoning-handouts-and-applications">Zoning &amp; Land Use</a></li><!--cped-->
+              </ul>
+            </li>
+            <li><a href="http://apps.ci.minneapolis.mn.us/deptdirapp/">Services A-Z</a></li>
+            <li><a href="/311/index.htm">Minneapolis 311</a></li>
+          </ul>
+        </li>
+        <li><a href="/residents/index.htm">Residents</a>
+          <ul>
+            <li><a href="/residents/education/index.htm">Education</a></li>
+            <li><a href="/residents/employment/index.htm">Employment</a></li>
+            <li><a href="/residents/environment/index.htm">Environment</a></li>
+            <li><a href="/residents/health/index.htm">Health &amp; Family</a></li>
+            <li><a href="/residents/property/index.htm">Housing &amp; Property</a></li>
+            <li><a href="/residents/neighborhoods/index.htm">Neighborhoods</a></li>
+            <li><a href="/residents/safety/index.htm">Public Safety</a></li>
+            <li><a href="/residents/trans/index.htm">Transportation &amp; Parking</a></li>
+            <li><a href="/residents/utilities/index.htm">Utilities</a></li>
+            <li><a href="/residents/youth/index.htm">Youth</a></li>
+          </ul>
+        </li>
+        <li><a href="/business/index.htm">Business</a>
+          <ul>
+            <li><a href="/business/business_startup">Start Your Business</a></li>
+            <li><a href="/business/business_expand">Expand Your Business</a></li>
+            <li><a href="/business/business_relocate">Relocate Your Business</a></li>
+            <li><a href="/business/business_green">Green Your Business</a></li>
+            <li><a href="/business/business_process">Permits, Licenses &amp; Zoning</a></li>
+            <li><a href="/business/business_tools_and_assistance">Business Tools &amp; Assistance</a></li>
+            <li><a href="/business/business_doing_business_with_city">Doing Business with<br/>the City</a></li>
+            <li><a href="/business/business_success_stories">Success Stories</a></li>
+            <li><a href="/business/whats_new">What's New</a></li>
+          </ul>
+        </li>
+        <li><a href="/government/index.htm">Government</a>
+          <ul>
+            <li><a href="/mayor/index.htm">Mayor&#39;s Office</a></li>
+            <li><a href="/council/index.htm">City Council</a>
+              <ul>                
+                <li><a href="/ward1/index.htm">Ward 1 - Reich</a></li>
+                <li><a href="/ward2/index.htm">Ward 2 - Gordon</a></li>
+                <li><a href="/ward3/index.htm">Ward 3 - Hofstede</a></li>
+                <li><a href="/ward4/index.htm">Ward 4 - Johnson</a></li>
+                <li><a href="/ward5/index.htm">Ward 5 - Samuels</a></li>
+                <li><a href="/ward6/neighborhoods/index.htm">Ward 6 - Lilligren</a></li>
+                <li><a href="/ward7/index.htm">Ward 7 - Goodman</a></li>
+                <li><a href="/ward8/index.htm">Ward 8 - Glidden</a></li>
+                <li><a href="/ward9/index.htm">Ward 9 - Schiff</a></li>
+                <li><a href="/ward10/index.htm">Ward 10 - Tuthill</a></li>
+                <li><a href="/ward11/index.htm">Ward 11 - Quincy</a></li>
+                <li><a href="/ward12/index.htm">Ward 12 - Colvin Roy</a></li>
+                <li><a href="/ward13/index.htm">Ward 13 - Hodges</a></li>
+              </ul>
+            </li>
+            <li><a href="/boards/index.htm">Boards &amp; Commissions</a></li>
+            <li><a href="/government/calendars/index.htm">Calendars</a></li>
+            <li><a href="http://library.municode.com/index.aspx?clientId=11490&stateId=23&stateName=minnesota">City Charter &amp; Ordinances</a></li>
+            <li><a href="/elections/index.htm">Elections</a></li>
+            <li><a href="/government/goals/index.htm">Goals, Budgets &amp; Reports</a></li>
+            <li><a href="/government/partners/index.htm">Government Partners</a></li>
+            <li><a href="/meetings/index.htm">Meetings &amp; Hearings</a></li>
+          </ul>
+        </li>
+        <li ><a href="/visitors/index.htm">Visitors</a>
+          <ul>
+            <li><a href="/visitors/visitors_annualevents">Annual Events</a></li>
+            <li><a href="/visitors/visitors_artmuseums">Art &amp; Museums</a></li>
+            <li><a href="/visitors/visitors_fooddrink">Food &amp; Drink</a></li>
+            <li><a href="/visitors/visitors_landmarks">Landmarks &amp; Tours</a></li>
+            <li><a href="/visitors/visitors_musictheater">Music &amp; Theater</a></li>
+            <li><a href="/visitors/visitors_recreation">Recreation</a></li>
+            <li><a href="/visitors/visitors_sports">Sports</a></li>
+            <li><a href="/visitors/WCMS1Q-065967">Getting Around</a></li>
+            <li><a href="/visitors/visitors_wheretostay">Where to Stay</a></li>
+          </ul>
+        </li>
+        <li id="sf-311"><a href="/311/index.htm" alt="Call 311 for information about&#10;the City and City services." title="Call 311 for information about the City and City services."><span>Need help? Call 311</span></a></li>
+      </ul>
+    </div>
+    <div id="r-topbar">
+        
+      <div id="search">
+        <form action="/search/index.htm" id="cse-search-box">
+          <label for="q">SEARCH:</label>
+          <input type="text" name="q" id="q" class="searchbox" />
+          <input type="image" src="/www/groups/public/documents/webasset/spacer.gif" title="Search" alt="Search" class="searchbox_submit" value="" />
+          <input type="hidden" name="cx" value="003747230473569067770:un0qa5erjiu" />
+          <input type="hidden" name="cof" value="FORID:10;" />
+          <input type="hidden" name="ie" value="UTF-8" />
+        </form>
+      </div>
+      <div id="depts"> <a class="deptButton" href="#">ALL CITY DEPARTMENTS</a>
+        <ul class="deptList" style="display:none;">
+          <li><a href="/311/index.htm">311</a></li>
+          <li><a href="/911/index.htm">911</a></li>
+          <li><a href="/ncr/services/index.htm">Access and Outreach</a></li>
+          <li><a href="/animals/index.htm">Animal Care and Control</a></li>
+          <li><a href="/assessor/index.htm">Assessor&#39;s Office</a></li>
+          <li><a href="/licensing/index.htm">Business Licensing</a></li>
+          <li><a href="/attorney/index.htm">City Attorney&#39;s Office</a></li>
+          <li><a href="/clerk/index.htm">City Clerk&#39;s Office</a></li>
+          <li><a href="/council/index.htm">City Council</a></li>
+          <li><a href="/coordinator/index.htm">City Coordinator</a></li>
+          <li><a href="/civilrights/index.htm">Civil Rights</a></li>
+          <li><a href="/communications/index.htm">Communications</a></li>
+          <li><a href="/cped/index.htm">Community Planning &amp; Economic Development (CPED)</a></li>
+          <li><a href="/ccs/index.htm">Construction Code Services</a></li>
+          <li><a href="/emergency/index.htm">Emergency Preparedness</a></li>
+          <li><a href="/elections/index.htm">Elections &amp; Voter Registration</a></li>
+          <li><a href="/cped/metp/index.htm">Employment &amp; Training Program</a></li>
+          <li><a href="/environment/index.htm">Environmental Services</a></li>
+          <li><a href="/environmentalhealth/index.htm">Environmental Health and Food Safety</a></li>
+          <li><a href="/finance/index.htm">Finance & Property Services </a></li>
+          <li><a href="/fire/index.htm">Fire Department</a></li>
+          <li><a href="/regservices/fire/regservices_fis">Fire Inspection Services</a></li>
+          <li><a href="/fire/fire_fire-investigation">Fire Investigations</a></li>
+          <li><a href="/fire/prevention/index.htm">Fire Prevention Bureau</a></li>
+          <li><a href="/maps/index.htm">Geographic Information Systems</a></li>
+          <li><a href="/grants/index.htm">Grants &amp; Special Projects</a></li>
+          <li><a href="/health/index.htm">Health &amp; Family Support</a></li>
+          <li><a href="/inspections/index.htm">Housing Inspections</a> </li>
+          <li><a href="/hr/index.htm">Human Resources</a></li>
+          <li><a href="/bis/index.htm">Information Technology</a></li>
+          <li><a href="/impound/index.htm">Impound Lot</a></li>
+          <li><a href="/coordinator/igr/index.htm">Intergovernmental Relations</a></li>
+          <li><a href="/mayor/index.htm">Mayor's Office</a></li>
+          <li><a href="/mdr/index.htm">Minneapolis Development Review (MDR)</a> </li>
+          <li><a href="/ncr/index.htm">Neighborhood &amp; Community Relations</a></li>
+          <li><a href="/parking/index.htm">Parking</a></li>
+          <li><a href="/police/index.htm">Police Department</a></li>
+          <li><a href="/ppu/index.htm">Problem Properties Unit</a></li>
+          <li><a href="/finance/procurement/index.htm">Purchasing Division</a></li>
+          <li><a href="/publicworks/index.htm">Public Works</a></li>
+          <li><a href="/regservices/index.htm">Regulatory Services</a></li>
+          <li><a href="/regservices/traffic/index.htm">Traffic Control</a></li>
+          <li><a href="/publicworks/sewers/index.htm">Sewer and Storm Drains</a></li>
+          <li><a href="/publicworks/sidewalks/index.htm">Sidewalk Inspections</a></li>
+          <li><a href="/solid-waste/index.htm">Solid Waste &amp; Recycling</a></li>
+          <li><a href="/publicworks/stormwater/index.htm">Storm and Surface Water Management</a></li>
+          <li><a href="/sustainability/index.htm">Sustainability</a></li>
+          <li><a href="/publicworks/traffic/index.htm">Traffic</a></li>
+          <li><a href="/publicworks/transportation/index.htm">Transportation Planning &amp; Engineering</a></li>
+          <li><a href="/utilitybilling/index.htm">Utility Billing</a></li>
+          <li><a href="/communications/cablemultimedia/index.htm">Video Services</a></li>
+          <li><a href="/publicworks/water/index.htm">Water Treatment &amp; Distribution Services</a></li>
+          <li><a href="/zoning/index.htm">Zoning Administration</a></li>
+        </ul>
+      </div>      
+      <div id="helpOptions"> <span id="changeFont">Text <a href="#" title="Decrease font size" id="decreaseFont">-A</a> <a href="#" title="Reset font size" id="resetFont">&nbsp;A</a> <a href="#" title="Increase font size" id="increaseFont">+A</a></span> <span id="translate"><a title="Translate this page with Google Translate - A beta service provided by Google Inc. to translate text and websites into different languages." href="#">Translate</a></span> </div>
+    </div>
+  </div>
+  <noscript id="noscript">This site uses JavaScript. Turn on JavaScript in your browser to fully access the features of this site.</noscript>
+
+			<!-- SS_END_SNIPPET(fragment2,TopNav)-->
+			</div><!--End Top Nav-->
+			</div><br class="clear" />
+		</div><!--end #header -->
+		
+		<div id="container">		
+		<div id="maincontent"><a name="TopOfPage"></a>
+		<!--ST_ADD_THIS_CODE-->
+<!-- /AddThis Button -->
+		
+		<!-- SS_BEGIN_SNIPPET(fragment4,2)-->				<script>{
+	 
+	var fragment = new CITY_WWW_BREADCRUMB('', '', ' \u003e ', 'breadcrumb', '0'); 
+	fragment.Display(g_navNode_Root);}
+</script>
+				
+			<!-- SS_END_SNIPPET(fragment4,2)-->  
+
+			
+		
+			<div id="alert"><h3>Sorry, File Not Found</h3><p>The City of Minneapolis has updated its website and web addresses have changed.</p><p>You may have used an outdated link or typed the address incorrectly.</p><p>Try again, use the new menus at the top of the <a target="" href="/index.htm">home page</a>, or visit our <a target="" href="/search/index.htm">search page</a>.</p></div>
+	
+		
+
+			
+		<p id="lastupdate">
+			Last updated Dec. 14, 2011
+		</p>	
+		</div><!--end #maincontent -->
+		
+		<div id="footer">
+		<!-- SS_BEGIN_SNIPPET(fragment3,Footer)-->				<p id="footernav">
+<a href="/index.htm" accesskey="h">Home</a> &nbsp;|&nbsp; 
+<a href="/311/contact" accesskey="c">Contact Us</a> &nbsp;|&nbsp; 
+<a id="govdelivery" href="https://service.govdelivery.com/service/multi_subscribe.html?code=MPLS&origin=">Get Email Updates</a> &nbsp;|&nbsp; 
+<a href="/search/index.htm" accesskey="s">Search Site</a> &nbsp;|&nbsp; 
+<a href="http://apps.ci.minneapolis.mn.us/deptdirapp/">Find a Service</a> &nbsp;|&nbsp; 
+<a href="/about/index.htm">About this Site</a> &nbsp;|&nbsp; 
+<a href="/foremployees/index.htm">For Employees</a>
+</p>
+<p id="copyright"><a href="/311/index.htm">Minneapolis 311</a>
+	&copy;1997-2012&nbsp;City of Minneapolis, MN</p>
+</div>
+<script src="/www/groups/public/documents/webasset/mpls-www-js.js" type="text/javascript"></script>
+<script src="/www/groups/public/documents/webasset/jquery.hoverintent.js" type="text/javascript"></script>
+<script type="text/javascript">
+	// initialise top nav menu plugin
+	jQuery(function(){jQuery('ul.topmenu').superfish();});
+</script>
+<!-- Google analytics -->
+	<script src="/www/groups/public/documents/webasset/taglinks.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	try {
+	var pageTracker = _gat._getTracker("UA-3516920-1");
+	pageTracker._trackPageview();
+	} catch(err) {}</script>
+<!-- /Google analytics -->
+<!-- AddThis GA Integration: must be after GA code -->
+	<script type="text/javascript">var addthis_config = {data_ga_tracker: pageTracker};</script>
+<!-- /AddThis GA Integration -->
+			<!-- SS_END_SNIPPET(fragment3,Footer)-->
+		</div><!--End Footer-->
+	</div><!--end #container -->
+</body>
+</html>
