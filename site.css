@@ -90,14 +90,13 @@ div#titlebar .division {
   
 #contextnav {
   border: 1px solid #999999;
-  border-top-color: #003366;
   border-radius: 5px;
 }
 
 /****************/
 /* Context Menu */
 /****************/
-#toparea, #contextnav li, #tabmenu {
+#toparea, #tabmenu {
   border-bottom-color: #003366;
   background: white;
 }
