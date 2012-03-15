@@ -105,6 +105,8 @@ div#titlebar .division {
   background: #cccccc;
 }
 
+#contextnav li a, #contextnav .label a {text-decoration: none;}
+
 .postList, .emaildetails-odd, .emaildetails-even, .emaildetails-self-even, .emaildetails-self-odd {
   border-bottom: 1px solid #003366;
   border-top: 1px solid #003366;
