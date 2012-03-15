@@ -202,8 +202,9 @@ p img {
 #content {
   border: 1px solid #999999;
   border-radius: 5px;
-  padding: .5em 1.4em;
+  padding: 1em 3.4em;
   margin-top: 1.385em;
+  width: 51.385em;
 }
 
 /**************/
