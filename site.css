@@ -57,7 +57,7 @@ html {
   padding-top: 1.385em;
 }
 
-#content, #contextnav, #greeting, #latestPhotos, #latestTopics, .introduction,
+#content, #contextnav, #greeting, #latestPhotos, .introduction,
 .ui-widget-content, #divisionHomeContent .image {
   box-shadow: 3px 3px 9px rgba(136, 136, 136, 0.43);
   background: white;
