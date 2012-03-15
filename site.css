@@ -104,6 +104,8 @@ div#titlebar .division {
   background: #cccccc;
 }
 
+#contextnav li a, #contextnav .label a {text-decoration: none;}
+
 .postList, .emaildetails-odd, .emaildetails-even, .emaildetails-self-even, .emaildetails-self-odd {
   border-bottom: 1px solid #003366;
   border-top: 1px solid #003366;
@@ -189,7 +191,9 @@ p img {
 }
 
 #task-tabs #latestPhotos, #task-tabs #latestTopics {
-  border: none; padding: 0;
+  border: none; 
+  padding: 0;
+  box-shadow: none;
 }
 
 /****************/
@@ -199,8 +203,9 @@ p img {
 #content {
   border: 1px solid #999999;
   border-radius: 5px;
-  padding: 1.385em 1.4em;
+  padding: 1em 3.4em;
   margin-top: 1.385em;
+  width: 51.385em;
 }
 
 /**************/
