@@ -57,7 +57,7 @@ html {
   padding-top: 1.385em;
 }
 
-#content, #contextnav, #greeting, #latestPhotos, .introduction,
+#content, #contextnav, #greeting, #latestPhotos, #latestTopics, .introduction,
 .ui-widget-content, #divisionHomeContent .image {
   box-shadow: 3px 3px 9px rgba(136, 136, 136, 0.43);
   background: white;
@@ -192,7 +192,9 @@ p img {
 }
 
 #task-tabs #latestPhotos, #task-tabs #latestTopics {
-  border: none; padding: 0;
+  border: none; 
+  padding: 0;
+  box-shadow: none;
 }
 
 /****************/
