@@ -194,6 +194,14 @@ p img {
   box-shadow: none;
 }
 
+/***************/
+/* Pop-up Help */
+/***************/
+
+.popup-help {
+  background: transparent;
+}
+
 /****************/
 /* Static Pages */
 /****************/
