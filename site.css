@@ -219,6 +219,14 @@ p img {
 /* Group Home */
 /**************/
 
+#page-groups #divisionHomeContent {
+  background: white;
+  border: 1px solid gray;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 0 20px;
+}
+
 #group-intro {
   margin-top: -1.385em;
 }
