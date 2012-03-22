@@ -1,0 +1,13 @@
+/*
+ eDem MediaWiki Skin 1.0 CSS for Printing
+ Alice Murphy <alice@onlinegroups.net> at OnlineGroups.Net
+ for E-Democracy.Org (http://e-democracy.org)
+*/
+
+#toparea, #contextnav, #tabmenu, .footerLinks {
+  display:none;
+}
+
+#content{
+  width:100%;
+}
