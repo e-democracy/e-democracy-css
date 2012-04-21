@@ -74,12 +74,27 @@ h3 {
 p, ul, ol, dl, fieldset, table, pre {
   margin: 1.385em 0; /* 1u */
 }
+cite {
+  font-style: italic;
+}
 /* Text: Lists */
 ul, ol {
   margin-left: 2.077em; /*1.5u*/
 }
+ul ol li {
+  list-style:decimal outside;
+}
+
+ol ol li {
+  list-style:lower-alpha outside;
+}
+ol ol ol li {
+  list-style:lower-roman outside;
+}
+/* Remove the top and bottom margins for nested lists. */
 ul ul, ul ol, ol ol, ol ul {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 dt {

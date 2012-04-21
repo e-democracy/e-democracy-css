@@ -145,6 +145,10 @@ input, textarea, .email-body, .email-remainder pre,#add-to-topic textarea {
 
 input[type='text'], input[type='password']{width: 30em;}
 
+#edit-profile #textType {
+  width: 25em;
+}
+
 /*****************/
 /* Related Links */
 /*****************/
@@ -238,6 +242,21 @@ p img {
 }
 #group-intro p {
   margin-top: 0;
+}
+
+#extended-topic-search #searcharea {
+  top: 0;
+  float: right;
+  position: relative;
+}
+
+#extended-topic-search #searcharea #searchTextInput {
+  margin: 0;
+  width: 215px;
+}
+
+#extended-topic-tasks .alternateATOM {
+  display: none;
 }
 
 /*
