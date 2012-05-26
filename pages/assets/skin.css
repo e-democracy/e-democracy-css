@@ -1,0 +1,154 @@
+/* Group Server uses the WYMeditor to provide rich-text editing of */
+/* pages. */
+/*
+ * WYMeditor skin for GroupServer.
+ *
+ * By Michael JasonSmith. Copyright (c) OnlineGroups.Net 2009
+ *
+ * Based on WYMeditor default skin Copyright (c) 2008 Jean-Francois 
+ * Hovinne, http://www.wymeditor.org/
+ * Dual licensed under the MIT (MIT-license.txt)
+ * and GPL (GPL-license.txt) licenses.
+ *
+ * For further information visit:
+ *      http://www.wymeditor.org/
+ *
+*/
+/*TRYING TO RESET STYLES THAT MAY INTERFERE WITH WYMEDITOR*/
+.wym_skin_gs p, .wym_skin_gs h2, .wym_skin_gs h3, .wym_skin_gs ul, .wym_skin_gs li {
+  background: transparent url(); 
+  margin: 0px; 
+  padding: 0px; 
+  border: none;
+  list-style: none;
+}
+.wym_skin_gs, .wym_dialog {
+  font-family: Trebuchet,'Trebuchet MS',arial,helvetica,clean,sans-serif;
+  line-height: 1.385em;
+}
+/* Layout */
+/*HIDDEN BY DEFAULT*/
+.wym_skin_gs .wym_area_left, .wym_box .wym_area_top .wym_tools h2, .wym_box .wym_area_main .wym_status h2, .wym_skin_gs .wym_dropdown ul, .wym_classes {
+  display: none;
+}
+.wym_box {
+  margin: 0.692em 0 1.385em 2.077em;
+}
+.wym_skin_gs, .wym_dialog {
+  padding: 0.692em;
+}
+.wym_skin_gs .wym_area_left, .wym_skin_gs .wym_area_right {
+  width: 9.692em; /* 6u */
+}
+.wym_skin_gs .wym_area_left, .wym_skin_gs .wym_buttons li { 
+  float: left;
+}
+.wym_skin_gs .wym_area_right, a.wym_wymeditor_link {
+  float: right;
+}
+.wym_skin_gs .wym_area_bottom {
+  clear: both;
+}
+.wym_skin_gs .wym_area_bottom, * html .wym_skin_gs .wym_area_main, * html .wym_skin_gs .wym_area_top, *+html .wym_skin_gs .wym_area_top, * html .wym_skin_gs, * html .wym_skin_gs .wym_section ul { 
+  height: 1%; /*--=mpj17=-- Opera hack? */
+}
+.wym_skin_gs .wym_html textarea, .wym_skin_gs .wym_iframe, .wym_skin_gs .wym_iframe iframe  {
+  width: 100%; 
+  height: 33.231em; /* 24u */
+}
+.wym_skin_gs .wym_section a, .wym_dialog div.row label, a.wym_wymeditor_link {
+  display: block; 
+}
+.wym_skin_gs .wym_section h2, .wym_skin_gs .wym_section h3, .wym_skin_gs .wym_section a {
+  font-size: 100%;
+  padding: 0.346em 0.692em; /* 0.25u 0.5u */
+  margin: 0px;
+}
+.wym_dialog div.row label {
+  margin: 0 0 0.692em 1.385em;
+}
+.wym_dialog div.row-indent {
+  padding: 0px;
+  margin: 2.769em 0 0 0;
+}
+.wym_skin_gs .wym_section {
+  margin-bottom: 0.692em;
+}
+.wym_skin_gs .wym_html, .wym_skin_gs .wym_html textarea {
+  margin: 0.692em 0 1.385em 0;
+}
+.wym_dialog {
+  font-size: small;
+}
+.wym_dialog legend {
+  font-size: 153.9%;
+  margin: 0px 0px 0.9em 0px;
+}
+.wym_dialog fieldset {
+  border: none;
+}
+.wym_dialog div.row {
+  margin-bottom: 1.385em;
+}
+.wym_dialog div.row input {
+  margin: 0 0 0 2.769em;
+}
+.wym_dialog .row .wym_submit {
+  margin-left: 0;
+}
+.wym_skin_gs, .wym_skin_gs .wym_html textarea, .wym_skin_gs .wym_iframe, .wym_skin_gs .wym_area_top .wym_buttons ul li a:hover, .wym_skin_gs .wym_section h2 { 
+  border: thin solid black;
+}
+.wym_skin_gs .wym_section h2 {
+  border-width: 0 0 thin 0;
+}
+.wym_skin_gs .wym_iframe iframe, .wym_dialog fieldset { 
+  border: none;
+}
+.wym_section h3, .wym_skin_gs .wym_section a, .wym_dialog label, .wym_dialog legend {
+  text-decoration: none; 
+  background: none;
+}
+a.wym_wymeditor_link, .wym_skin_gs .wym_buttons li a { 
+  overflow: hidden; 
+  text-indent: -9999px;
+}
+.wym_skin_gs .wym_buttons li a { 
+  width: 20px; 
+  height: 20px; 
+  padding: 2px;
+  background: url(icons.png) no-repeat; 
+  border: thin solid white;
+}
+.wym_skin_gs .wym_buttons li.wym_tools_strong a        { background-position: 0 -382px;}
+.wym_skin_gs .wym_buttons li.wym_tools_emphasis a      { background-position: 0 -22px;}
+.wym_skin_gs .wym_buttons li.wym_tools_superscript a   { background-position: 0 -430px;}
+.wym_skin_gs .wym_buttons li.wym_tools_subscript a     { background-position: 0 -454px;}
+.wym_skin_gs .wym_buttons li.wym_tools_ordered_list a  { background-position: 0 -48px;}
+.wym_skin_gs .wym_buttons li.wym_tools_unordered_list a{ background-position: 0 -72px;}
+.wym_skin_gs .wym_buttons li.wym_tools_indent a        { background-position: 0 -574px;}
+.wym_skin_gs .wym_buttons li.wym_tools_outdent a       { background-position: 0 -598px;}
+.wym_skin_gs .wym_buttons li.wym_tools_undo a          { background-position: 0 -502px;}
+.wym_skin_gs .wym_buttons li.wym_tools_redo a          { background-position: 0 -526px;}
+.wym_skin_gs .wym_buttons li.wym_tools_link a          { background-position: 0 -96px;}
+.wym_skin_gs .wym_buttons li.wym_tools_unlink a        { background-position: 0 -168px;}
+.wym_skin_gs .wym_buttons li.wym_tools_image a         { background-position: 0 -121px;}
+.wym_skin_gs .wym_buttons li.wym_tools_table a         { background-position: 0 -144px;}
+.wym_skin_gs .wym_buttons li.wym_tools_paste a         { background-position: 0 -552px;}
+.wym_skin_gs .wym_buttons li.wym_tools_html a          { background-position: 0 -193px;}
+.wym_skin_gs .wym_buttons li.wym_tools_preview a       { background-position: 0 -408px;}
+
+a.wym_wymeditor_link { 
+  width: 50px; 
+  height: 15px; 
+  background: url(/++resource++wymeditor-20090831/skins/wymeditor_icon.png);  
+  text-decoration: none;
+}
+.wym_dialog div.row:after, .wym_skin_gs:after, .wym_skin_gs .wym_section ul:after {
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden; 
+}
+

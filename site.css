@@ -259,6 +259,9 @@ p img {
   display: none;
 }
 
+#gs-group-messages-topics-loading {
+  height: 39.25em; }
+
 /*
  * jQuery UI CSS Framework 1.8.6
  *

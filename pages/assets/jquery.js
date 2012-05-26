@@ -1,5 +1,4707 @@
-/*! jQuery v1.7.1 jquery.com | jquery.org/license */
-(function(a,b){function cy(a){return f.isWindow(a)?a:a.nodeType===9?a.defaultView||a.parentWindow:!1}function cv(a){if(!ck[a]){var b=c.body,d=f("<"+a+">").appendTo(b),e=d.css("display");d.remove();if(e==="none"||e===""){cl||(cl=c.createElement("iframe"),cl.frameBorder=cl.width=cl.height=0),b.appendChild(cl);if(!cm||!cl.createElement)cm=(cl.contentWindow||cl.contentDocument).document,cm.write((c.compatMode==="CSS1Compat"?"<!doctype html>":"")+"<html><body>"),cm.close();d=cm.createElement(a),cm.body.appendChild(d),e=f.css(d,"display"),b.removeChild(cl)}ck[a]=e}return ck[a]}function cu(a,b){var c={};f.each(cq.concat.apply([],cq.slice(0,b)),function(){c[this]=a});return c}function ct(){cr=b}function cs(){setTimeout(ct,0);return cr=f.now()}function cj(){try{return new a.ActiveXObject("Microsoft.XMLHTTP")}catch(b){}}function ci(){try{return new a.XMLHttpRequest}catch(b){}}function cc(a,c){a.dataFilter&&(c=a.dataFilter(c,a.dataType));var d=a.dataTypes,e={},g,h,i=d.length,j,k=d[0],l,m,n,o,p;for(g=1;g<i;g++){if(g===1)for(h in a.converters)typeof h=="string"&&(e[h.toLowerCase()]=a.converters[h]);l=k,k=d[g];if(k==="*")k=l;else if(l!=="*"&&l!==k){m=l+" "+k,n=e[m]||e["* "+k];if(!n){p=b;for(o in e){j=o.split(" ");if(j[0]===l||j[0]==="*"){p=e[j[1]+" "+k];if(p){o=e[o],o===!0?n=p:p===!0&&(n=o);break}}}}!n&&!p&&f.error("No conversion from "+m.replace(" "," to ")),n!==!0&&(c=n?n(c):p(o(c)))}}return c}function cb(a,c,d){var e=a.contents,f=a.dataTypes,g=a.responseFields,h,i,j,k;for(i in g)i in d&&(c[g[i]]=d[i]);while(f[0]==="*")f.shift(),h===b&&(h=a.mimeType||c.getResponseHeader("content-type"));if(h)for(i in e)if(e[i]&&e[i].test(h)){f.unshift(i);break}if(f[0]in d)j=f[0];else{for(i in d){if(!f[0]||a.converters[i+" "+f[0]]){j=i;break}k||(k=i)}j=j||k}if(j){j!==f[0]&&f.unshift(j);return d[j]}}function ca(a,b,c,d){if(f.isArray(b))f.each(b,function(b,e){c||bE.test(a)?d(a,e):ca(a+"["+(typeof e=="object"||f.isArray(e)?b:"")+"]",e,c,d)});else if(!c&&b!=null&&typeof b=="object")for(var e in b)ca(a+"["+e+"]",b[e],c,d);else d(a,b)}function b_(a,c){var d,e,g=f.ajaxSettings.flatOptions||{};for(d in c)c[d]!==b&&((g[d]?a:e||(e={}))[d]=c[d]);e&&f.extend(!0,a,e)}function b$(a,c,d,e,f,g){f=f||c.dataTypes[0],g=g||{},g[f]=!0;var h=a[f],i=0,j=h?h.length:0,k=a===bT,l;for(;i<j&&(k||!l);i++)l=h[i](c,d,e),typeof l=="string"&&(!k||g[l]?l=b:(c.dataTypes.unshift(l),l=b$(a,c,d,e,l,g)));(k||!l)&&!g["*"]&&(l=b$(a,c,d,e,"*",g));return l}function bZ(a){return function(b,c){typeof b!="string"&&(c=b,b="*");if(f.isFunction(c)){var d=b.toLowerCase().split(bP),e=0,g=d.length,h,i,j;for(;e<g;e++)h=d[e],j=/^\+/.test(h),j&&(h=h.substr(1)||"*"),i=a[h]=a[h]||[],i[j?"unshift":"push"](c)}}}function bC(a,b,c){var d=b==="width"?a.offsetWidth:a.offsetHeight,e=b==="width"?bx:by,g=0,h=e.length;if(d>0){if(c!=="border")for(;g<h;g++)c||(d-=parseFloat(f.css(a,"padding"+e[g]))||0),c==="margin"?d+=parseFloat(f.css(a,c+e[g]))||0:d-=parseFloat(f.css(a,"border"+e[g]+"Width"))||0;return d+"px"}d=bz(a,b,b);if(d<0||d==null)d=a.style[b]||0;d=parseFloat(d)||0;if(c)for(;g<h;g++)d+=parseFloat(f.css(a,"padding"+e[g]))||0,c!=="padding"&&(d+=parseFloat(f.css(a,"border"+e[g]+"Width"))||0),c==="margin"&&(d+=parseFloat(f.css(a,c+e[g]))||0);return d+"px"}function bp(a,b){b.src?f.ajax({url:b.src,async:!1,dataType:"script"}):f.globalEval((b.text||b.textContent||b.innerHTML||"").replace(bf,"/*$0*/")),b.parentNode&&b.parentNode.removeChild(b)}function bo(a){var b=c.createElement("div");bh.appendChild(b),b.innerHTML=a.outerHTML;return b.firstChild}function bn(a){var b=(a.nodeName||"").toLowerCase();b==="input"?bm(a):b!=="script"&&typeof a.getElementsByTagName!="undefined"&&f.grep(a.getElementsByTagName("input"),bm)}function bm(a){if(a.type==="checkbox"||a.type==="radio")a.defaultChecked=a.checked}function bl(a){return typeof a.getElementsByTagName!="undefined"?a.getElementsByTagName("*"):typeof a.querySelectorAll!="undefined"?a.querySelectorAll("*"):[]}function bk(a,b){var c;if(b.nodeType===1){b.clearAttributes&&b.clearAttributes(),b.mergeAttributes&&b.mergeAttributes(a),c=b.nodeName.toLowerCase();if(c==="object")b.outerHTML=a.outerHTML;else if(c!=="input"||a.type!=="checkbox"&&a.type!=="radio"){if(c==="option")b.selected=a.defaultSelected;else if(c==="input"||c==="textarea")b.defaultValue=a.defaultValue}else a.checked&&(b.defaultChecked=b.checked=a.checked),b.value!==a.value&&(b.value=a.value);b.removeAttribute(f.expando)}}function bj(a,b){if(b.nodeType===1&&!!f.hasData(a)){var c,d,e,g=f._data(a),h=f._data(b,g),i=g.events;if(i){delete h.handle,h.events={};for(c in i)for(d=0,e=i[c].length;d<e;d++)f.event.add(b,c+(i[c][d].namespace?".":"")+i[c][d].namespace,i[c][d],i[c][d].data)}h.data&&(h.data=f.extend({},h.data))}}function bi(a,b){return f.nodeName(a,"table")?a.getElementsByTagName("tbody")[0]||a.appendChild(a.ownerDocument.createElement("tbody")):a}function U(a){var b=V.split("|"),c=a.createDocumentFragment();if(c.createElement)while(b.length)c.createElement(b.pop());return c}function T(a,b,c){b=b||0;if(f.isFunction(b))return f.grep(a,function(a,d){var e=!!b.call(a,d,a);return e===c});if(b.nodeType)return f.grep(a,function(a,d){return a===b===c});if(typeof b=="string"){var d=f.grep(a,function(a){return a.nodeType===1});if(O.test(b))return f.filter(b,d,!c);b=f.filter(b,d)}return f.grep(a,function(a,d){return f.inArray(a,b)>=0===c})}function S(a){return!a||!a.parentNode||a.parentNode.nodeType===11}function K(){return!0}function J(){return!1}function n(a,b,c){var d=b+"defer",e=b+"queue",g=b+"mark",h=f._data(a,d);h&&(c==="queue"||!f._data(a,e))&&(c==="mark"||!f._data(a,g))&&setTimeout(function(){!f._data(a,e)&&!f._data(a,g)&&(f.removeData(a,d,!0),h.fire())},0)}function m(a){for(var b in a){if(b==="data"&&f.isEmptyObject(a[b]))continue;if(b!=="toJSON")return!1}return!0}function l(a,c,d){if(d===b&&a.nodeType===1){var e="data-"+c.replace(k,"-$1").toLowerCase();d=a.getAttribute(e);if(typeof d=="string"){try{d=d==="true"?!0:d==="false"?!1:d==="null"?null:f.isNumeric(d)?parseFloat(d):j.test(d)?f.parseJSON(d):d}catch(g){}f.data(a,c,d)}else d=b}return d}function h(a){var b=g[a]={},c,d;a=a.split(/\s+/);for(c=0,d=a.length;c<d;c++)b[a[c]]=!0;return b}var c=a.document,d=a.navigator,e=a.location,f=function(){function J(){if(!e.isReady){try{c.documentElement.doScroll("left")}catch(a){setTimeout(J,1);return}e.ready()}}var e=function(a,b){return new e.fn.init(a,b,h)},f=a.jQuery,g=a.$,h,i=/^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/,j=/\S/,k=/^\s+/,l=/\s+$/,m=/^<(\w+)\s*\/?>(?:<\/\1>)?$/,n=/^[\],:{}\s]*$/,o=/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,p=/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,q=/(?:^|:|,)(?:\s*\[)+/g,r=/(webkit)[ \/]([\w.]+)/,s=/(opera)(?:.*version)?[ \/]([\w.]+)/,t=/(msie) ([\w.]+)/,u=/(mozilla)(?:.*? rv:([\w.]+))?/,v=/-([a-z]|[0-9])/ig,w=/^-ms-/,x=function(a,b){return(b+"").toUpperCase()},y=d.userAgent,z,A,B,C=Object.prototype.toString,D=Object.prototype.hasOwnProperty,E=Array.prototype.push,F=Array.prototype.slice,G=String.prototype.trim,H=Array.prototype.indexOf,I={};e.fn=e.prototype={constructor:e,init:function(a,d,f){var g,h,j,k;if(!a)return this;if(a.nodeType){this.context=this[0]=a,this.length=1;return this}if(a==="body"&&!d&&c.body){this.context=c,this[0]=c.body,this.selector=a,this.length=1;return this}if(typeof a=="string"){a.charAt(0)!=="<"||a.charAt(a.length-1)!==">"||a.length<3?g=i.exec(a):g=[null,a,null];if(g&&(g[1]||!d)){if(g[1]){d=d instanceof e?d[0]:d,k=d?d.ownerDocument||d:c,j=m.exec(a),j?e.isPlainObject(d)?(a=[c.createElement(j[1])],e.fn.attr.call(a,d,!0)):a=[k.createElement(j[1])]:(j=e.buildFragment([g[1]],[k]),a=(j.cacheable?e.clone(j.fragment):j.fragment).childNodes);return e.merge(this,a)}h=c.getElementById(g[2]);if(h&&h.parentNode){if(h.id!==g[2])return f.find(a);this.length=1,this[0]=h}this.context=c,this.selector=a;return this}return!d||d.jquery?(d||f).find(a):this.constructor(d).find(a)}if(e.isFunction(a))return f.ready(a);a.selector!==b&&(this.selector=a.selector,this.context=a.context);return e.makeArray(a,this)},selector:"",jquery:"1.7.1",length:0,size:function(){return this.length},toArray:function(){return F.call(this,0)},get:function(a){return a==null?this.toArray():a<0?this[this.length+a]:this[a]},pushStack:function(a,b,c){var d=this.constructor();e.isArray(a)?E.apply(d,a):e.merge(d,a),d.prevObject=this,d.context=this.context,b==="find"?d.selector=this.selector+(this.selector?" ":"")+c:b&&(d.selector=this.selector+"."+b+"("+c+")");return d},each:function(a,b){return e.each(this,a,b)},ready:function(a){e.bindReady(),A.add(a);return this},eq:function(a){a=+a;return a===-1?this.slice(a):this.slice(a,a+1)},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},slice:function(){return this.pushStack(F.apply(this,arguments),"slice",F.call(arguments).join(","))},map:function(a){return this.pushStack(e.map(this,function(b,c){return a.call(b,c,b)}))},end:function(){return this.prevObject||this.constructor(null)},push:E,sort:[].sort,splice:[].splice},e.fn.init.prototype=e.fn,e.extend=e.fn.extend=function(){var a,c,d,f,g,h,i=arguments[0]||{},j=1,k=arguments.length,l=!1;typeof i=="boolean"&&(l=i,i=arguments[1]||{},j=2),typeof i!="object"&&!e.isFunction(i)&&(i={}),k===j&&(i=this,--j);for(;j<k;j++)if((a=arguments[j])!=null)for(c in a){d=i[c],f=a[c];if(i===f)continue;l&&f&&(e.isPlainObject(f)||(g=e.isArray(f)))?(g?(g=!1,h=d&&e.isArray(d)?d:[]):h=d&&e.isPlainObject(d)?d:{},i[c]=e.extend(l,h,f)):f!==b&&(i[c]=f)}return i},e.extend({noConflict:function(b){a.$===e&&(a.$=g),b&&a.jQuery===e&&(a.jQuery=f);return e},isReady:!1,readyWait:1,holdReady:function(a){a?e.readyWait++:e.ready(!0)},ready:function(a){if(a===!0&&!--e.readyWait||a!==!0&&!e.isReady){if(!c.body)return setTimeout(e.ready,1);e.isReady=!0;if(a!==!0&&--e.readyWait>0)return;A.fireWith(c,[e]),e.fn.trigger&&e(c).trigger("ready").off("ready")}},bindReady:function(){if(!A){A=e.Callbacks("once memory");if(c.readyState==="complete")return setTimeout(e.ready,1);if(c.addEventListener)c.addEventListener("DOMContentLoaded",B,!1),a.addEventListener("load",e.ready,!1);else if(c.attachEvent){c.attachEvent("onreadystatechange",B),a.attachEvent("onload",e.ready);var b=!1;try{b=a.frameElement==null}catch(d){}c.documentElement.doScroll&&b&&J()}}},isFunction:function(a){return e.type(a)==="function"},isArray:Array.isArray||function(a){return e.type(a)==="array"},isWindow:function(a){return a&&typeof a=="object"&&"setInterval"in a},isNumeric:function(a){return!isNaN(parseFloat(a))&&isFinite(a)},type:function(a){return a==null?String(a):I[C.call(a)]||"object"},isPlainObject:function(a){if(!a||e.type(a)!=="object"||a.nodeType||e.isWindow(a))return!1;try{if(a.constructor&&!D.call(a,"constructor")&&!D.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}var d;for(d in a);return d===b||D.call(a,d)},isEmptyObject:function(a){for(var b in a)return!1;return!0},error:function(a){throw new Error(a)},parseJSON:function(b){if(typeof b!="string"||!b)return null;b=e.trim(b);if(a.JSON&&a.JSON.parse)return a.JSON.parse(b);if(n.test(b.replace(o,"@").replace(p,"]").replace(q,"")))return(new Function("return "+b))();e.error("Invalid JSON: "+b)},parseXML:function(c){var d,f;try{a.DOMParser?(f=new DOMParser,d=f.parseFromString(c,"text/xml")):(d=new ActiveXObject("Microsoft.XMLDOM"),d.async="false",d.loadXML(c))}catch(g){d=b}(!d||!d.documentElement||d.getElementsByTagName("parsererror").length)&&e.error("Invalid XML: "+c);return d},noop:function(){},globalEval:function(b){b&&j.test(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(w,"ms-").replace(v,x)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toUpperCase()===b.toUpperCase()},each:function(a,c,d){var f,g=0,h=a.length,i=h===b||e.isFunction(a);if(d){if(i){for(f in a)if(c.apply(a[f],d)===!1)break}else for(;g<h;)if(c.apply(a[g++],d)===!1)break}else if(i){for(f in a)if(c.call(a[f],f,a[f])===!1)break}else for(;g<h;)if(c.call(a[g],g,a[g++])===!1)break;return a},trim:G?function(a){return a==null?"":G.call(a)}:function(a){return a==null?"":(a+"").replace(k,"").replace(l,"")},makeArray:function(a,b){var c=b||[];if(a!=null){var d=e.type(a);a.length==null||d==="string"||d==="function"||d==="regexp"||e.isWindow(a)?E.call(c,a):e.merge(c,a)}return c},inArray:function(a,b,c){var d;if(b){if(H)return H.call(b,a,c);d=b.length,c=c?c<0?Math.max(0,d+c):c:0;for(;c<d;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,c){var d=a.length,e=0;if(typeof c.length=="number")for(var f=c.length;e<f;e++)a[d++]=c[e];else while(c[e]!==b)a[d++]=c[e++];a.length=d;return a},grep:function(a,b,c){var d=[],e;c=!!c;for(var f=0,g=a.length;f<g;f++)e=!!b(a[f],f),c!==e&&d.push(a[f]);return d},map:function(a,c,d){var f,g,h=[],i=0,j=a.length,k=a instanceof e||j!==b&&typeof j=="number"&&(j>0&&a[0]&&a[j-1]||j===0||e.isArray(a));if(k)for(;i<j;i++)f=c(a[i],i,d),f!=null&&(h[h.length]=f);else for(g in a)f=c(a[g],g,d),f!=null&&(h[h.length]=f);return h.concat.apply([],h)},guid:1,proxy:function(a,c){if(typeof c=="string"){var d=a[c];c=a,a=d}if(!e.isFunction(a))return b;var f=F.call(arguments,2),g=function(){return a.apply(c,f.concat(F.call(arguments)))};g.guid=a.guid=a.guid||g.guid||e.guid++;return g},access:function(a,c,d,f,g,h){var i=a.length;if(typeof c=="object"){for(var j in c)e.access(a,j,c[j],f,g,d);return a}if(d!==b){f=!h&&f&&e.isFunction(d);for(var k=0;k<i;k++)g(a[k],c,f?d.call(a[k],k,g(a[k],c)):d,h);return a}return i?g(a[0],c):b},now:function(){return(new Date).getTime()},uaMatch:function(a){a=a.toLowerCase();var b=r.exec(a)||s.exec(a)||t.exec(a)||a.indexOf("compatible")<0&&u.exec(a)||[];return{browser:b[1]||"",version:b[2]||"0"}},sub:function(){function a(b,c){return new a.fn.init(b,c)}e.extend(!0,a,this),a.superclass=this,a.fn=a.prototype=this(),a.fn.constructor=a,a.sub=this.sub,a.fn.init=function(d,f){f&&f instanceof e&&!(f instanceof a)&&(f=a(f));return e.fn.init.call(this,d,f,b)},a.fn.init.prototype=a.fn;var b=a(c);return a},browser:{}}),e.each("Boolean Number String Function Array Date RegExp Object".split(" "),function(a,b){I["[object "+b+"]"]=b.toLowerCase()}),z=e.uaMatch(y),z.browser&&(e.browser[z.browser]=!0,e.browser.version=z.version),e.browser.webkit&&(e.browser.safari=!0),j.test(" ")&&(k=/^[\s\xA0]+/,l=/[\s\xA0]+$/),h=e(c),c.addEventListener?B=function(){c.removeEventListener("DOMContentLoaded",B,!1),e.ready()}:c.attachEvent&&(B=function(){c.readyState==="complete"&&(c.detachEvent("onreadystatechange",B),e.ready())});return e}(),g={};f.Callbacks=function(a){a=a?g[a]||h(a):{};var c=[],d=[],e,i,j,k,l,m=function(b){var d,e,g,h,i;for(d=0,e=b.length;d<e;d++)g=b[d],h=f.type(g),h==="array"?m(g):h==="function"&&(!a.unique||!o.has(g))&&c.push(g)},n=function(b,f){f=f||[],e=!a.memory||[b,f],i=!0,l=j||0,j=0,k=c.length;for(;c&&l<k;l++)if(c[l].apply(b,f)===!1&&a.stopOnFalse){e=!0;break}i=!1,c&&(a.once?e===!0?o.disable():c=[]:d&&d.length&&(e=d.shift(),o.fireWith(e[0],e[1])))},o={add:function(){if(c){var a=c.length;m(arguments),i?k=c.length:e&&e!==!0&&(j=a,n(e[0],e[1]))}return this},remove:function(){if(c){var b=arguments,d=0,e=b.length;for(;d<e;d++)for(var f=0;f<c.length;f++)if(b[d]===c[f]){i&&f<=k&&(k--,f<=l&&l--),c.splice(f--,1);if(a.unique)break}}return this},has:function(a){if(c){var b=0,d=c.length;for(;b<d;b++)if(a===c[b])return!0}return!1},empty:function(){c=[];return this},disable:function(){c=d=e=b;return this},disabled:function(){return!c},lock:function(){d=b,(!e||e===!0)&&o.disable();return this},locked:function(){return!d},fireWith:function(b,c){d&&(i?a.once||d.push([b,c]):(!a.once||!e)&&n(b,c));return this},fire:function(){o.fireWith(this,arguments);return this},fired:function(){return!!e}};return o};var i=[].slice;f.extend({Deferred:function(a){var b=f.Callbacks("once memory"),c=f.Callbacks("once memory"),d=f.Callbacks("memory"),e="pending",g={resolve:b,reject:c,notify:d},h={done:b.add,fail:c.add,progress:d.add,state:function(){return e},isResolved:b.fired,isRejected:c.fired,then:function(a,b,c){i.done(a).fail(b).progress(c);return this},always:function(){i.done.apply(i,arguments).fail.apply(i,arguments);return this},pipe:function(a,b,c){return f.Deferred(function(d){f.each({done:[a,"resolve"],fail:[b,"reject"],progress:[c,"notify"]},function(a,b){var c=b[0],e=b[1],g;f.isFunction(c)?i[a](function(){g=c.apply(this,arguments),g&&f.isFunction(g.promise)?g.promise().then(d.resolve,d.reject,d.notify):d[e+"With"](this===i?d:this,[g])}):i[a](d[e])})}).promise()},promise:function(a){if(a==null)a=h;else for(var b in h)a[b]=h[b];return a}},i=h.promise({}),j;for(j in g)i[j]=g[j].fire,i[j+"With"]=g[j].fireWith;i.done(function(){e="resolved"},c.disable,d.lock).fail(function(){e="rejected"},b.disable,d.lock),a&&a.call(i,i);return i},when:function(a){function m(a){return function(b){e[a]=arguments.length>1?i.call(arguments,0):b,j.notifyWith(k,e)}}function l(a){return function(c){b[a]=arguments.length>1?i.call(arguments,0):c,--g||j.resolveWith(j,b)}}var b=i.call(arguments,0),c=0,d=b.length,e=Array(d),g=d,h=d,j=d<=1&&a&&f.isFunction(a.promise)?a:f.Deferred(),k=j.promise();if(d>1){for(;c<d;c++)b[c]&&b[c].promise&&f.isFunction(b[c].promise)?b[c].promise().then(l(c),j.reject,m(c)):--g;g||j.resolveWith(j,b)}else j!==a&&j.resolveWith(j,d?[a]:[]);return k}}),f.support=function(){var b,d,e,g,h,i,j,k,l,m,n,o,p,q=c.createElement("div"),r=c.documentElement;q.setAttribute("className","t"),q.innerHTML="   <link/><table></table><a href='/a' style='top:1px;float:left;opacity:.55;'>a</a><input type='checkbox'/>",d=q.getElementsByTagName("*"),e=q.getElementsByTagName("a")[0];if(!d||!d.length||!e)return{};g=c.createElement("select"),h=g.appendChild(c.createElement("option")),i=q.getElementsByTagName("input")[0],b={leadingWhitespace:q.firstChild.nodeType===3,tbody:!q.getElementsByTagName("tbody").length,htmlSerialize:!!q.getElementsByTagName("link").length,style:/top/.test(e.getAttribute("style")),hrefNormalized:e.getAttribute("href")==="/a",opacity:/^0.55/.test(e.style.opacity),cssFloat:!!e.style.cssFloat,checkOn:i.value==="on",optSelected:h.selected,getSetAttribute:q.className!=="t",enctype:!!c.createElement("form").enctype,html5Clone:c.createElement("nav").cloneNode(!0).outerHTML!=="<:nav></:nav>",submitBubbles:!0,changeBubbles:!0,focusinBubbles:!1,deleteExpando:!0,noCloneEvent:!0,inlineBlockNeedsLayout:!1,shrinkWrapBlocks:!1,reliableMarginRight:!0},i.checked=!0,b.noCloneChecked=i.cloneNode(!0).checked,g.disabled=!0,b.optDisabled=!h.disabled;try{delete q.test}catch(s){b.deleteExpando=!1}!q.addEventListener&&q.attachEvent&&q.fireEvent&&(q.attachEvent("onclick",function(){b.noCloneEvent=!1}),q.cloneNode(!0).fireEvent("onclick")),i=c.createElement("input"),i.value="t",i.setAttribute("type","radio"),b.radioValue=i.value==="t",i.setAttribute("checked","checked"),q.appendChild(i),k=c.createDocumentFragment(),k.appendChild(q.lastChild),b.checkClone=k.cloneNode(!0).cloneNode(!0).lastChild.checked,b.appendChecked=i.checked,k.removeChild(i),k.appendChild(q),q.innerHTML="",a.getComputedStyle&&(j=c.createElement("div"),j.style.width="0",j.style.marginRight="0",q.style.width="2px",q.appendChild(j),b.reliableMarginRight=(parseInt((a.getComputedStyle(j,null)||{marginRight:0}).marginRight,10)||0)===0);if(q.attachEvent)for(o in{submit:1,change:1,focusin:1})n="on"+o,p=n in q,p||(q.setAttribute(n,"return;"),p=typeof q[n]=="function"),b[o+"Bubbles"]=p;k.removeChild(q),k=g=h=j=q=i=null,f(function(){var a,d,e,g,h,i,j,k,m,n,o,r=c.getElementsByTagName("body")[0];!r||(j=1,k="position:absolute;top:0;left:0;width:1px;height:1px;margin:0;",m="visibility:hidden;border:0;",n="style='"+k+"border:5px solid #000;padding:0;'",o="<div "+n+"><div></div></div>"+"<table "+n+" cellpadding='0' cellspacing='0'>"+"<tr><td></td></tr></table>",a=c.createElement("div"),a.style.cssText=m+"width:0;height:0;position:static;top:0;margin-top:"+j+"px",r.insertBefore(a,r.firstChild),q=c.createElement("div"),a.appendChild(q),q.innerHTML="<table><tr><td style='padding:0;border:0;display:none'></td><td>t</td></tr></table>",l=q.getElementsByTagName("td"),p=l[0].offsetHeight===0,l[0].style.display="",l[1].style.display="none",b.reliableHiddenOffsets=p&&l[0].offsetHeight===0,q.innerHTML="",q.style.width=q.style.paddingLeft="1px",f.boxModel=b.boxModel=q.offsetWidth===2,typeof q.style.zoom!="undefined"&&(q.style.display="inline",q.style.zoom=1,b.inlineBlockNeedsLayout=q.offsetWidth===2,q.style.display="",q.innerHTML="<div style='width:4px;'></div>",b.shrinkWrapBlocks=q.offsetWidth!==2),q.style.cssText=k+m,q.innerHTML=o,d=q.firstChild,e=d.firstChild,h=d.nextSibling.firstChild.firstChild,i={doesNotAddBorder:e.offsetTop!==5,doesAddBorderForTableAndCells:h.offsetTop===5},e.style.position="fixed",e.style.top="20px",i.fixedPosition=e.offsetTop===20||e.offsetTop===15,e.style.position=e.style.top="",d.style.overflow="hidden",d.style.position="relative",i.subtractsBorderForOverflowNotVisible=e.offsetTop===-5,i.doesNotIncludeMarginInBodyOffset=r.offsetTop!==j,r.removeChild(a),q=a=null,f.extend(b,i))});return b}();var j=/^(?:\{.*\}|\[.*\])$/,k=/([A-Z])/g;f.extend({cache:{},uuid:0,expando:"jQuery"+(f.fn.jquery+Math.random()).replace(/\D/g,""),noData:{embed:!0,object:"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000",applet:!0},hasData:function(a){a=a.nodeType?f.cache[a[f.expando]]:a[f.expando];return!!a&&!m(a)},data:function(a,c,d,e){if(!!f.acceptData(a)){var g,h,i,j=f.expando,k=typeof c=="string",l=a.nodeType,m=l?f.cache:a,n=l?a[j]:a[j]&&j,o=c==="events";if((!n||!m[n]||!o&&!e&&!m[n].data)&&k&&d===b)return;n||(l?a[j]=n=++f.uuid:n=j),m[n]||(m[n]={},l||(m[n].toJSON=f.noop));if(typeof c=="object"||typeof c=="function")e?m[n]=f.extend(m[n],c):m[n].data=f.extend(m[n].data,c);g=h=m[n],e||(h.data||(h.data={}),h=h.data),d!==b&&(h[f.camelCase(c)]=d);if(o&&!h[c])return g.events;k?(i=h[c],i==null&&(i=h[f.camelCase(c)])):i=h;return i}},removeData:function(a,b,c){if(!!f.acceptData(a)){var d,e,g,h=f.expando,i=a.nodeType,j=i?f.cache:a,k=i?a[h]:h;if(!j[k])return;if(b){d=c?j[k]:j[k].data;if(d){f.isArray(b)||(b in d?b=[b]:(b=f.camelCase(b),b in d?b=[b]:b=b.split(" ")));for(e=0,g=b.length;e<g;e++)delete d[b[e]];if(!(c?m:f.isEmptyObject)(d))return}}if(!c){delete j[k].data;if(!m(j[k]))return}f.support.deleteExpando||!j.setInterval?delete j[k]:j[k]=null,i&&(f.support.deleteExpando?delete a[h]:a.removeAttribute?a.removeAttribute(h):a[h]=null)}},_data:function(a,b,c){return f.data(a,b,c,!0)},acceptData:function(a){if(a.nodeName){var b=f.noData[a.nodeName.toLowerCase()];if(b)return b!==!0&&a.getAttribute("classid")===b}return!0}}),f.fn.extend({data:function(a,c){var d,e,g,h=null;if(typeof a=="undefined"){if(this.length){h=f.data(this[0]);if(this[0].nodeType===1&&!f._data(this[0],"parsedAttrs")){e=this[0].attributes;for(var i=0,j=e.length;i<j;i++)g=e[i].name,g.indexOf("data-")===0&&(g=f.camelCase(g.substring(5)),l(this[0],g,h[g]));f._data(this[0],"parsedAttrs",!0)}}return h}if(typeof a=="object")return this.each(function(){f.data(this,a)});d=a.split("."),d[1]=d[1]?"."+d[1]:"";if(c===b){h=this.triggerHandler("getData"+d[1]+"!",[d[0]]),h===b&&this.length&&(h=f.data(this[0],a),h=l(this[0],a,h));return h===b&&d[1]?this.data(d[0]):h}return this.each(function(){var b=f(this),e=[d[0],c];b.triggerHandler("setData"+d[1]+"!",e),f.data(this,a,c),b.triggerHandler("changeData"+d[1]+"!",e)})},removeData:function(a){return this.each(function(){f.removeData(this,a)})}}),f.extend({_mark:function(a,b){a&&(b=(b||"fx")+"mark",f._data(a,b,(f._data(a,b)||0)+1))},_unmark:function(a,b,c){a!==!0&&(c=b,b=a,a=!1);if(b){c=c||"fx";var d=c+"mark",e=a?0:(f._data(b,d)||1)-1;e?f._data(b,d,e):(f.removeData(b,d,!0),n(b,c,"mark"))}},queue:function(a,b,c){var d;if(a){b=(b||"fx")+"queue",d=f._data(a,b),c&&(!d||f.isArray(c)?d=f._data(a,b,f.makeArray(c)):d.push(c));return d||[]}},dequeue:function(a,b){b=b||"fx";var c=f.queue(a,b),d=c.shift(),e={};d==="inprogress"&&(d=c.shift()),d&&(b==="fx"&&c.unshift("inprogress"),f._data(a,b+".run",e),d.call(a,function(){f.dequeue(a,b)},e)),c.length||(f.removeData(a,b+"queue "+b+".run",!0),n(a,b,"queue"))}}),f.fn.extend({queue:function(a,c){typeof a!="string"&&(c=a,a="fx");if(c===b)return f.queue(this[0],a);return this.each(function(){var b=f.queue(this,a,c);a==="fx"&&b[0]!=="inprogress"&&f.dequeue(this,a)})},dequeue:function(a){return this.each(function(){f.dequeue(this,a)})},delay:function(a,b){a=f.fx?f.fx.speeds[a]||a:a,b=b||"fx";return this.queue(b,function(b,c){var d=setTimeout(b,a);c.stop=function(){clearTimeout(d)}})},clearQueue:function(a){return this.queue(a||"fx",[])},promise:function(a,c){function m(){--h||d.resolveWith(e,[e])}typeof a!="string"&&(c=a,a=b),a=a||"fx";var d=f.Deferred(),e=this,g=e.length,h=1,i=a+"defer",j=a+"queue",k=a+"mark",l;while(g--)if(l=f.data(e[g],i,b,!0)||(f.data(e[g],j,b,!0)||f.data(e[g],k,b,!0))&&f.data(e[g],i,f.Callbacks("once memory"),!0))h++,l.add(m);m();return d.promise()}});var o=/[\n\t\r]/g,p=/\s+/,q=/\r/g,r=/^(?:button|input)$/i,s=/^(?:button|input|object|select|textarea)$/i,t=/^a(?:rea)?$/i,u=/^(?:autofocus|autoplay|async|checked|controls|defer|disabled|hidden|loop|multiple|open|readonly|required|scoped|selected)$/i,v=f.support.getSetAttribute,w,x,y;f.fn.extend({attr:function(a,b){return f.access(this,a,b,!0,f.attr)},removeAttr:function(a){return this.each(function(){f.removeAttr(this,a)})},prop:function(a,b){return f.access(this,a,b,!0,f.prop)},removeProp:function(a){a=f.propFix[a]||a;return this.each(function(){try{this[a]=b,delete this[a]}catch(c){}})},addClass:function(a){var b,c,d,e,g,h,i;if(f.isFunction(a))return this.each(function(b){f(this).addClass(a.call(this,b,this.className))});if(a&&typeof a=="string"){b=a.split(p);for(c=0,d=this.length;c<d;c++){e=this[c];if(e.nodeType===1)if(!e.className&&b.length===1)e.className=a;else{g=" "+e.className+" ";for(h=0,i=b.length;h<i;h++)~g.indexOf(" "+b[h]+" ")||(g+=b[h]+" ");e.className=f.trim(g)}}}return this},removeClass:function(a){var c,d,e,g,h,i,j;if(f.isFunction(a))return this.each(function(b){f(this).removeClass(a.call(this,b,this.className))});if(a&&typeof a=="string"||a===b){c=(a||"").split(p);for(d=0,e=this.length;d<e;d++){g=this[d];if(g.nodeType===1&&g.className)if(a){h=(" "+g.className+" ").replace(o," ");for(i=0,j=c.length;i<j;i++)h=h.replace(" "+c[i]+" "," ");g.className=f.trim(h)}else g.className=""}}return this},toggleClass:function(a,b){var c=typeof a,d=typeof b=="boolean";if(f.isFunction(a))return this.each(function(c){f(this).toggleClass(a.call(this,c,this.className,b),b)});return this.each(function(){if(c==="string"){var e,g=0,h=f(this),i=b,j=a.split(p);while(e=j[g++])i=d?i:!h.hasClass(e),h[i?"addClass":"removeClass"](e)}else if(c==="undefined"||c==="boolean")this.className&&f._data(this,"__className__",this.className),this.className=this.className||a===!1?"":f._data(this,"__className__")||""})},hasClass:function(a){var b=" "+a+" ",c=0,d=this.length;for(;c<d;c++)if(this[c].nodeType===1&&(" "+this[c].className+" ").replace(o," ").indexOf(b)>-1)return!0;return!1},val:function(a){var c,d,e,g=this[0];{if(!!arguments.length){e=f.isFunction(a);return this.each(function(d){var g=f(this),h;if(this.nodeType===1){e?h=a.call(this,d,g.val()):h=a,h==null?h="":typeof h=="number"?h+="":f.isArray(h)&&(h=f.map(h,function(a){return a==null?"":a+""})),c=f.valHooks[this.nodeName.toLowerCase()]||f.valHooks[this.type];if(!c||!("set"in c)||c.set(this,h,"value")===b)this.value=h}})}if(g){c=f.valHooks[g.nodeName.toLowerCase()]||f.valHooks[g.type];if(c&&"get"in c&&(d=c.get(g,"value"))!==b)return d;d=g.value;return typeof d=="string"?d.replace(q,""):d==null?"":d}}}}),f.extend({valHooks:{option:{get:function(a){var b=a.attributes.value;return!b||b.specified?a.value:a.text}},select:{get:function(a){var b,c,d,e,g=a.selectedIndex,h=[],i=a.options,j=a.type==="select-one";if(g<0)return null;c=j?g:0,d=j?g+1:i.length;for(;c<d;c++){e=i[c];if(e.selected&&(f.support.optDisabled?!e.disabled:e.getAttribute("disabled")===null)&&(!e.parentNode.disabled||!f.nodeName(e.parentNode,"optgroup"))){b=f(e).val();if(j)return b;h.push(b)}}if(j&&!h.length&&i.length)return f(i[g]).val();return h},set:function(a,b){var c=f.makeArray(b);f(a).find("option").each(function(){this.selected=f.inArray(f(this).val(),c)>=0}),c.length||(a.selectedIndex=-1);return c}}},attrFn:{val:!0,css:!0,html:!0,text:!0,data:!0,width:!0,height:!0,offset:!0},attr:function(a,c,d,e){var g,h,i,j=a.nodeType;if(!!a&&j!==3&&j!==8&&j!==2){if(e&&c in f.attrFn)return f(a)[c](d);if(typeof a.getAttribute=="undefined")return f.prop(a,c,d);i=j!==1||!f.isXMLDoc(a),i&&(c=c.toLowerCase(),h=f.attrHooks[c]||(u.test(c)?x:w));if(d!==b){if(d===null){f.removeAttr(a,c);return}if(h&&"set"in h&&i&&(g=h.set(a,d,c))!==b)return g;a.setAttribute(c,""+d);return d}if(h&&"get"in h&&i&&(g=h.get(a,c))!==null)return g;g=a.getAttribute(c);return g===null?b:g}},removeAttr:function(a,b){var c,d,e,g,h=0;if(b&&a.nodeType===1){d=b.toLowerCase().split(p),g=d.length;for(;h<g;h++)e=d[h],e&&(c=f.propFix[e]||e,f.attr(a,e,""),a.removeAttribute(v?e:c),u.test(e)&&c in a&&(a[c]=!1))}},attrHooks:{type:{set:function(a,b){if(r.test(a.nodeName)&&a.parentNode)f.error("type property can't be changed");else if(!f.support.radioValue&&b==="radio"&&f.nodeName(a,"input")){var c=a.value;a.setAttribute("type",b),c&&(a.value=c);return b}}},value:{get:function(a,b){if(w&&f.nodeName(a,"button"))return w.get(a,b);return b in a?a.value:null},set:function(a,b,c){if(w&&f.nodeName(a,"button"))return w.set(a,b,c);a.value=b}}},propFix:{tabindex:"tabIndex",readonly:"readOnly","for":"htmlFor","class":"className",maxlength:"maxLength",cellspacing:"cellSpacing",cellpadding:"cellPadding",rowspan:"rowSpan",colspan:"colSpan",usemap:"useMap",frameborder:"frameBorder",contenteditable:"contentEditable"},prop:function(a,c,d){var e,g,h,i=a.nodeType;if(!!a&&i!==3&&i!==8&&i!==2){h=i!==1||!f.isXMLDoc(a),h&&(c=f.propFix[c]||c,g=f.propHooks[c]);return d!==b?g&&"set"in g&&(e=g.set(a,d,c))!==b?e:a[c]=d:g&&"get"in g&&(e=g.get(a,c))!==null?e:a[c]}},propHooks:{tabIndex:{get:function(a){var c=a.getAttributeNode("tabindex");return c&&c.specified?parseInt(c.value,10):s.test(a.nodeName)||t.test(a.nodeName)&&a.href?0:b}}}}),f.attrHooks.tabindex=f.propHooks.tabIndex,x={get:function(a,c){var d,e=f.prop(a,c);return e===!0||typeof e!="boolean"&&(d=a.getAttributeNode(c))&&d.nodeValue!==!1?c.toLowerCase():b},set:function(a,b,c){var d;b===!1?f.removeAttr(a,c):(d=f.propFix[c]||c,d in a&&(a[d]=!0),a.setAttribute(c,c.toLowerCase()));return c}},v||(y={name:!0,id:!0},w=f.valHooks.button={get:function(a,c){var d;d=a.getAttributeNode(c);return d&&(y[c]?d.nodeValue!=="":d.specified)?d.nodeValue:b},set:function(a,b,d){var e=a.getAttributeNode(d);e||(e=c.createAttribute(d),a.setAttributeNode(e));return e.nodeValue=b+""}},f.attrHooks.tabindex.set=w.set,f.each(["width","height"],function(a,b){f.attrHooks[b]=f.extend(f.attrHooks[b],{set:function(a,c){if(c===""){a.setAttribute(b,"auto");return c}}})}),f.attrHooks.contenteditable={get:w.get,set:function(a,b,c){b===""&&(b="false"),w.set(a,b,c)}}),f.support.hrefNormalized||f.each(["href","src","width","height"],function(a,c){f.attrHooks[c]=f.extend(f.attrHooks[c],{get:function(a){var d=a.getAttribute(c,2);return d===null?b:d}})}),f.support.style||(f.attrHooks.style={get:function(a){return a.style.cssText.toLowerCase()||b},set:function(a,b){return a.style.cssText=""+b}}),f.support.optSelected||(f.propHooks.selected=f.extend(f.propHooks.selected,{get:function(a){var b=a.parentNode;b&&(b.selectedIndex,b.parentNode&&b.parentNode.selectedIndex);return null}})),f.support.enctype||(f.propFix.enctype="encoding"),f.support.checkOn||f.each(["radio","checkbox"],function(){f.valHooks[this]={get:function(a){return a.getAttribute("value")===null?"on":a.value}}}),f.each(["radio","checkbox"],function(){f.valHooks[this]=f.extend(f.valHooks[this],{set:function(a,b){if(f.isArray(b))return a.checked=f.inArray(f(a).val(),b)>=0}})});var z=/^(?:textarea|input|select)$/i,A=/^([^\.]*)?(?:\.(.+))?$/,B=/\bhover(\.\S+)?\b/,C=/^key/,D=/^(?:mouse|contextmenu)|click/,E=/^(?:focusinfocus|focusoutblur)$/,F=/^(\w*)(?:#([\w\-]+))?(?:\.([\w\-]+))?$/,G=function(a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^|\\s)"+b[3]+"(?:\\s|$)"));return b},H=function(a,b){var c=a.attributes||{};return(!b[1]||a.nodeName.toLowerCase()===b[1])&&(!b[2]||(c.id||{}).value===b[2])&&(!b[3]||b[3].test((c["class"]||{}).value))},I=function(a){return f.event.special.hover?a:a.replace(B,"mouseenter$1 mouseleave$1")};
-f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3||a.nodeType===8||!c||!d||!(h=f._data(a)))){d.handler&&(p=d,d=p.handler),d.guid||(d.guid=f.guid++),j=h.events,j||(h.events=j={}),i=h.handle,i||(h.handle=i=function(a){return typeof f!="undefined"&&(!a||f.event.triggered!==a.type)?f.event.dispatch.apply(i.elem,arguments):b},i.elem=a),c=f.trim(I(c)).split(" ");for(k=0;k<c.length;k++){l=A.exec(c[k])||[],m=l[1],n=(l[2]||"").split(".").sort(),s=f.event.special[m]||{},m=(g?s.delegateType:s.bindType)||m,s=f.event.special[m]||{},o=f.extend({type:m,origType:l[1],data:e,handler:d,guid:d.guid,selector:g,quick:G(g),namespace:n.join(".")},p),r=j[m];if(!r){r=j[m]=[],r.delegateCount=0;if(!s.setup||s.setup.call(a,e,n,i)===!1)a.addEventListener?a.addEventListener(m,i,!1):a.attachEvent&&a.attachEvent("on"+m,i)}s.add&&(s.add.call(a,o),o.handler.guid||(o.handler.guid=d.guid)),g?r.splice(r.delegateCount++,0,o):r.push(o),f.event.global[m]=!0}a=null}},global:{},remove:function(a,b,c,d,e){var g=f.hasData(a)&&f._data(a),h,i,j,k,l,m,n,o,p,q,r,s;if(!!g&&!!(o=g.events)){b=f.trim(I(b||"")).split(" ");for(h=0;h<b.length;h++){i=A.exec(b[h])||[],j=k=i[1],l=i[2];if(!j){for(j in o)f.event.remove(a,j+b[h],c,d,!0);continue}p=f.event.special[j]||{},j=(d?p.delegateType:p.bindType)||j,r=o[j]||[],m=r.length,l=l?new RegExp("(^|\\.)"+l.split(".").sort().join("\\.(?:.*\\.)?")+"(\\.|$)"):null;for(n=0;n<r.length;n++)s=r[n],(e||k===s.origType)&&(!c||c.guid===s.guid)&&(!l||l.test(s.namespace))&&(!d||d===s.selector||d==="**"&&s.selector)&&(r.splice(n--,1),s.selector&&r.delegateCount--,p.remove&&p.remove.call(a,s));r.length===0&&m!==r.length&&((!p.teardown||p.teardown.call(a,l)===!1)&&f.removeEvent(a,j,g.handle),delete o[j])}f.isEmptyObject(o)&&(q=g.handle,q&&(q.elem=null),f.removeData(a,["events","handle"],!0))}},customEvent:{getData:!0,setData:!0,changeData:!0},trigger:function(c,d,e,g){if(!e||e.nodeType!==3&&e.nodeType!==8){var h=c.type||c,i=[],j,k,l,m,n,o,p,q,r,s;if(E.test(h+f.event.triggered))return;h.indexOf("!")>=0&&(h=h.slice(0,-1),k=!0),h.indexOf(".")>=0&&(i=h.split("."),h=i.shift(),i.sort());if((!e||f.event.customEvent[h])&&!f.event.global[h])return;c=typeof c=="object"?c[f.expando]?c:new f.Event(h,c):new f.Event(h),c.type=h,c.isTrigger=!0,c.exclusive=k,c.namespace=i.join("."),c.namespace_re=c.namespace?new RegExp("(^|\\.)"+i.join("\\.(?:.*\\.)?")+"(\\.|$)"):null,o=h.indexOf(":")<0?"on"+h:"";if(!e){j=f.cache;for(l in j)j[l].events&&j[l].events[h]&&f.event.trigger(c,d,j[l].handle.elem,!0);return}c.result=b,c.target||(c.target=e),d=d!=null?f.makeArray(d):[],d.unshift(c),p=f.event.special[h]||{};if(p.trigger&&p.trigger.apply(e,d)===!1)return;r=[[e,p.bindType||h]];if(!g&&!p.noBubble&&!f.isWindow(e)){s=p.delegateType||h,m=E.test(s+h)?e:e.parentNode,n=null;for(;m;m=m.parentNode)r.push([m,s]),n=m;n&&n===e.ownerDocument&&r.push([n.defaultView||n.parentWindow||a,s])}for(l=0;l<r.length&&!c.isPropagationStopped();l++)m=r[l][0],c.type=r[l][1],q=(f._data(m,"events")||{})[c.type]&&f._data(m,"handle"),q&&q.apply(m,d),q=o&&m[o],q&&f.acceptData(m)&&q.apply(m,d)===!1&&c.preventDefault();c.type=h,!g&&!c.isDefaultPrevented()&&(!p._default||p._default.apply(e.ownerDocument,d)===!1)&&(h!=="click"||!f.nodeName(e,"a"))&&f.acceptData(e)&&o&&e[h]&&(h!=="focus"&&h!=="blur"||c.target.offsetWidth!==0)&&!f.isWindow(e)&&(n=e[o],n&&(e[o]=null),f.event.triggered=h,e[h](),f.event.triggered=b,n&&(e[o]=n));return c.result}},dispatch:function(c){c=f.event.fix(c||a.event);var d=(f._data(this,"events")||{})[c.type]||[],e=d.delegateCount,g=[].slice.call(arguments,0),h=!c.exclusive&&!c.namespace,i=[],j,k,l,m,n,o,p,q,r,s,t;g[0]=c,c.delegateTarget=this;if(e&&!c.target.disabled&&(!c.button||c.type!=="click")){m=f(this),m.context=this.ownerDocument||this;for(l=c.target;l!=this;l=l.parentNode||this){o={},q=[],m[0]=l;for(j=0;j<e;j++)r=d[j],s=r.selector,o[s]===b&&(o[s]=r.quick?H(l,r.quick):m.is(s)),o[s]&&q.push(r);q.length&&i.push({elem:l,matches:q})}}d.length>e&&i.push({elem:this,matches:d.slice(e)});for(j=0;j<i.length&&!c.isPropagationStopped();j++){p=i[j],c.currentTarget=p.elem;for(k=0;k<p.matches.length&&!c.isImmediatePropagationStopped();k++){r=p.matches[k];if(h||!c.namespace&&!r.namespace||c.namespace_re&&c.namespace_re.test(r.namespace))c.data=r.data,c.handleObj=r,n=((f.event.special[r.origType]||{}).handle||r.handler).apply(p.elem,g),n!==b&&(c.result=n,n===!1&&(c.preventDefault(),c.stopPropagation()))}}return c.result},props:"attrChange attrName relatedNode srcElement altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),fixHooks:{},keyHooks:{props:"char charCode key keyCode".split(" "),filter:function(a,b){a.which==null&&(a.which=b.charCode!=null?b.charCode:b.keyCode);return a}},mouseHooks:{props:"button buttons clientX clientY fromElement offsetX offsetY pageX pageY screenX screenY toElement".split(" "),filter:function(a,d){var e,f,g,h=d.button,i=d.fromElement;a.pageX==null&&d.clientX!=null&&(e=a.target.ownerDocument||c,f=e.documentElement,g=e.body,a.pageX=d.clientX+(f&&f.scrollLeft||g&&g.scrollLeft||0)-(f&&f.clientLeft||g&&g.clientLeft||0),a.pageY=d.clientY+(f&&f.scrollTop||g&&g.scrollTop||0)-(f&&f.clientTop||g&&g.clientTop||0)),!a.relatedTarget&&i&&(a.relatedTarget=i===a.target?d.toElement:i),!a.which&&h!==b&&(a.which=h&1?1:h&2?3:h&4?2:0);return a}},fix:function(a){if(a[f.expando])return a;var d,e,g=a,h=f.event.fixHooks[a.type]||{},i=h.props?this.props.concat(h.props):this.props;a=f.Event(g);for(d=i.length;d;)e=i[--d],a[e]=g[e];a.target||(a.target=g.srcElement||c),a.target.nodeType===3&&(a.target=a.target.parentNode),a.metaKey===b&&(a.metaKey=a.ctrlKey);return h.filter?h.filter(a,g):a},special:{ready:{setup:f.bindReady},load:{noBubble:!0},focus:{delegateType:"focusin"},blur:{delegateType:"focusout"},beforeunload:{setup:function(a,b,c){f.isWindow(this)&&(this.onbeforeunload=c)},teardown:function(a,b){this.onbeforeunload===b&&(this.onbeforeunload=null)}}},simulate:function(a,b,c,d){var e=f.extend(new f.Event,c,{type:a,isSimulated:!0,originalEvent:{}});d?f.event.trigger(e,null,b):f.event.dispatch.call(b,e),e.isDefaultPrevented()&&c.preventDefault()}},f.event.handle=f.event.dispatch,f.removeEvent=c.removeEventListener?function(a,b,c){a.removeEventListener&&a.removeEventListener(b,c,!1)}:function(a,b,c){a.detachEvent&&a.detachEvent("on"+b,c)},f.Event=function(a,b){if(!(this instanceof f.Event))return new f.Event(a,b);a&&a.type?(this.originalEvent=a,this.type=a.type,this.isDefaultPrevented=a.defaultPrevented||a.returnValue===!1||a.getPreventDefault&&a.getPreventDefault()?K:J):this.type=a,b&&f.extend(this,b),this.timeStamp=a&&a.timeStamp||f.now(),this[f.expando]=!0},f.Event.prototype={preventDefault:function(){this.isDefaultPrevented=K;var a=this.originalEvent;!a||(a.preventDefault?a.preventDefault():a.returnValue=!1)},stopPropagation:function(){this.isPropagationStopped=K;var a=this.originalEvent;!a||(a.stopPropagation&&a.stopPropagation(),a.cancelBubble=!0)},stopImmediatePropagation:function(){this.isImmediatePropagationStopped=K,this.stopPropagation()},isDefaultPrevented:J,isPropagationStopped:J,isImmediatePropagationStopped:J},f.each({mouseenter:"mouseover",mouseleave:"mouseout"},function(a,b){f.event.special[a]={delegateType:b,bindType:b,handle:function(a){var c=this,d=a.relatedTarget,e=a.handleObj,g=e.selector,h;if(!d||d!==c&&!f.contains(c,d))a.type=e.origType,h=e.handler.apply(this,arguments),a.type=b;return h}}}),f.support.submitBubbles||(f.event.special.submit={setup:function(){if(f.nodeName(this,"form"))return!1;f.event.add(this,"click._submit keypress._submit",function(a){var c=a.target,d=f.nodeName(c,"input")||f.nodeName(c,"button")?c.form:b;d&&!d._submit_attached&&(f.event.add(d,"submit._submit",function(a){this.parentNode&&!a.isTrigger&&f.event.simulate("submit",this.parentNode,a,!0)}),d._submit_attached=!0)})},teardown:function(){if(f.nodeName(this,"form"))return!1;f.event.remove(this,"._submit")}}),f.support.changeBubbles||(f.event.special.change={setup:function(){if(z.test(this.nodeName)){if(this.type==="checkbox"||this.type==="radio")f.event.add(this,"propertychange._change",function(a){a.originalEvent.propertyName==="checked"&&(this._just_changed=!0)}),f.event.add(this,"click._change",function(a){this._just_changed&&!a.isTrigger&&(this._just_changed=!1,f.event.simulate("change",this,a,!0))});return!1}f.event.add(this,"beforeactivate._change",function(a){var b=a.target;z.test(b.nodeName)&&!b._change_attached&&(f.event.add(b,"change._change",function(a){this.parentNode&&!a.isSimulated&&!a.isTrigger&&f.event.simulate("change",this.parentNode,a,!0)}),b._change_attached=!0)})},handle:function(a){var b=a.target;if(this!==b||a.isSimulated||a.isTrigger||b.type!=="radio"&&b.type!=="checkbox")return a.handleObj.handler.apply(this,arguments)},teardown:function(){f.event.remove(this,"._change");return z.test(this.nodeName)}}),f.support.focusinBubbles||f.each({focus:"focusin",blur:"focusout"},function(a,b){var d=0,e=function(a){f.event.simulate(b,a.target,f.event.fix(a),!0)};f.event.special[b]={setup:function(){d++===0&&c.addEventListener(a,e,!0)},teardown:function(){--d===0&&c.removeEventListener(a,e,!0)}}}),f.fn.extend({on:function(a,c,d,e,g){var h,i;if(typeof a=="object"){typeof c!="string"&&(d=c,c=b);for(i in a)this.on(i,c,d,a[i],g);return this}d==null&&e==null?(e=c,d=c=b):e==null&&(typeof c=="string"?(e=d,d=b):(e=d,d=c,c=b));if(e===!1)e=J;else if(!e)return this;g===1&&(h=e,e=function(a){f().off(a);return h.apply(this,arguments)},e.guid=h.guid||(h.guid=f.guid++));return this.each(function(){f.event.add(this,a,e,d,c)})},one:function(a,b,c,d){return this.on.call(this,a,b,c,d,1)},off:function(a,c,d){if(a&&a.preventDefault&&a.handleObj){var e=a.handleObj;f(a.delegateTarget).off(e.namespace?e.type+"."+e.namespace:e.type,e.selector,e.handler);return this}if(typeof a=="object"){for(var g in a)this.off(g,c,a[g]);return this}if(c===!1||typeof c=="function")d=c,c=b;d===!1&&(d=J);return this.each(function(){f.event.remove(this,a,d,c)})},bind:function(a,b,c){return this.on(a,null,b,c)},unbind:function(a,b){return this.off(a,null,b)},live:function(a,b,c){f(this.context).on(a,this.selector,b,c);return this},die:function(a,b){f(this.context).off(a,this.selector||"**",b);return this},delegate:function(a,b,c,d){return this.on(b,a,c,d)},undelegate:function(a,b,c){return arguments.length==1?this.off(a,"**"):this.off(b,a,c)},trigger:function(a,b){return this.each(function(){f.event.trigger(a,b,this)})},triggerHandler:function(a,b){if(this[0])return f.event.trigger(a,b,this[0],!0)},toggle:function(a){var b=arguments,c=a.guid||f.guid++,d=0,e=function(c){var e=(f._data(this,"lastToggle"+a.guid)||0)%d;f._data(this,"lastToggle"+a.guid,e+1),c.preventDefault();return b[e].apply(this,arguments)||!1};e.guid=c;while(d<b.length)b[d++].guid=c;return this.click(e)},hover:function(a,b){return this.mouseenter(a).mouseleave(b||a)}}),f.each("blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu".split(" "),function(a,b){f.fn[b]=function(a,c){c==null&&(c=a,a=null);return arguments.length>0?this.on(b,null,a,c):this.trigger(b)},f.attrFn&&(f.attrFn[b]=!0),C.test(b)&&(f.event.fixHooks[b]=f.event.keyHooks),D.test(b)&&(f.event.fixHooks[b]=f.event.mouseHooks)}),function(){function x(a,b,c,e,f,g){for(var h=0,i=e.length;h<i;h++){var j=e[h];if(j){var k=!1;j=j[a];while(j){if(j[d]===c){k=e[j.sizset];break}if(j.nodeType===1){g||(j[d]=c,j.sizset=h);if(typeof b!="string"){if(j===b){k=!0;break}}else if(m.filter(b,[j]).length>0){k=j;break}}j=j[a]}e[h]=k}}}function w(a,b,c,e,f,g){for(var h=0,i=e.length;h<i;h++){var j=e[h];if(j){var k=!1;j=j[a];while(j){if(j[d]===c){k=e[j.sizset];break}j.nodeType===1&&!g&&(j[d]=c,j.sizset=h);if(j.nodeName.toLowerCase()===b){k=j;break}j=j[a]}e[h]=k}}}var a=/((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]|['"][^'"]*['"]|[^\[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+|[>+~])(\s*,\s*)?((?:.|\r|\n)*)/g,d="sizcache"+(Math.random()+"").replace(".",""),e=0,g=Object.prototype.toString,h=!1,i=!0,j=/\\/g,k=/\r\n/g,l=/\W/;[0,0].sort(function(){i=!1;return 0});var m=function(b,d,e,f){e=e||[],d=d||c;var h=d;if(d.nodeType!==1&&d.nodeType!==9)return[];if(!b||typeof b!="string")return e;var i,j,k,l,n,q,r,t,u=!0,v=m.isXML(d),w=[],x=b;do{a.exec(""),i=a.exec(x);if(i){x=i[3],w.push(i[1]);if(i[2]){l=i[3];break}}}while(i);if(w.length>1&&p.exec(b))if(w.length===2&&o.relative[w[0]])j=y(w[0]+w[1],d,f);else{j=o.relative[w[0]]?[d]:m(w.shift(),d);while(w.length)b=w.shift(),o.relative[b]&&(b+=w.shift()),j=y(b,j,f)}else{!f&&w.length>1&&d.nodeType===9&&!v&&o.match.ID.test(w[0])&&!o.match.ID.test(w[w.length-1])&&(n=m.find(w.shift(),d,v),d=n.expr?m.filter(n.expr,n.set)[0]:n.set[0]);if(d){n=f?{expr:w.pop(),set:s(f)}:m.find(w.pop(),w.length===1&&(w[0]==="~"||w[0]==="+")&&d.parentNode?d.parentNode:d,v),j=n.expr?m.filter(n.expr,n.set):n.set,w.length>0?k=s(j):u=!1;while(w.length)q=w.pop(),r=q,o.relative[q]?r=w.pop():q="",r==null&&(r=d),o.relative[q](k,r,v)}else k=w=[]}k||(k=j),k||m.error(q||b);if(g.call(k)==="[object Array]")if(!u)e.push.apply(e,k);else if(d&&d.nodeType===1)for(t=0;k[t]!=null;t++)k[t]&&(k[t]===!0||k[t].nodeType===1&&m.contains(d,k[t]))&&e.push(j[t]);else for(t=0;k[t]!=null;t++)k[t]&&k[t].nodeType===1&&e.push(j[t]);else s(k,e);l&&(m(l,h,e,f),m.uniqueSort(e));return e};m.uniqueSort=function(a){if(u){h=i,a.sort(u);if(h)for(var b=1;b<a.length;b++)a[b]===a[b-1]&&a.splice(b--,1)}return a},m.matches=function(a,b){return m(a,null,null,b)},m.matchesSelector=function(a,b){return m(b,null,null,[a]).length>0},m.find=function(a,b,c){var d,e,f,g,h,i;if(!a)return[];for(e=0,f=o.order.length;e<f;e++){h=o.order[e];if(g=o.leftMatch[h].exec(a)){i=g[1],g.splice(1,1);if(i.substr(i.length-1)!=="\\"){g[1]=(g[1]||"").replace(j,""),d=o.find[h](g,b,c);if(d!=null){a=a.replace(o.match[h],"");break}}}}d||(d=typeof b.getElementsByTagName!="undefined"?b.getElementsByTagName("*"):[]);return{set:d,expr:a}},m.filter=function(a,c,d,e){var f,g,h,i,j,k,l,n,p,q=a,r=[],s=c,t=c&&c[0]&&m.isXML(c[0]);while(a&&c.length){for(h in o.filter)if((f=o.leftMatch[h].exec(a))!=null&&f[2]){k=o.filter[h],l=f[1],g=!1,f.splice(1,1);if(l.substr(l.length-1)==="\\")continue;s===r&&(r=[]);if(o.preFilter[h]){f=o.preFilter[h](f,s,d,r,e,t);if(!f)g=i=!0;else if(f===!0)continue}if(f)for(n=0;(j=s[n])!=null;n++)j&&(i=k(j,f,n,s),p=e^i,d&&i!=null?p?g=!0:s[n]=!1:p&&(r.push(j),g=!0));if(i!==b){d||(s=r),a=a.replace(o.match[h],"");if(!g)return[];break}}if(a===q)if(g==null)m.error(a);else break;q=a}return s},m.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)};var n=m.getText=function(a){var b,c,d=a.nodeType,e="";if(d){if(d===1||d===9){if(typeof a.textContent=="string")return a.textContent;if(typeof a.innerText=="string")return a.innerText.replace(k,"");for(a=a.firstChild;a;a=a.nextSibling)e+=n(a)}else if(d===3||d===4)return a.nodeValue}else for(b=0;c=a[b];b++)c.nodeType!==8&&(e+=n(c));return e},o=m.selectors={order:["ID","NAME","TAG"],match:{ID:/#((?:[\w\u00c0-\uFFFF\-]|\\.)+)/,CLASS:/\.((?:[\w\u00c0-\uFFFF\-]|\\.)+)/,NAME:/\[name=['"]*((?:[\w\u00c0-\uFFFF\-]|\\.)+)['"]*\]/,ATTR:/\[\s*((?:[\w\u00c0-\uFFFF\-]|\\.)+)\s*(?:(\S?=)\s*(?:(['"])(.*?)\3|(#?(?:[\w\u00c0-\uFFFF\-]|\\.)*)|)|)\s*\]/,TAG:/^((?:[\w\u00c0-\uFFFF\*\-]|\\.)+)/,CHILD:/:(only|nth|last|first)-child(?:\(\s*(even|odd|(?:[+\-]?\d+|(?:[+\-]?\d*)?n\s*(?:[+\-]\s*\d+)?))\s*\))?/,POS:/:(nth|eq|gt|lt|first|last|even|odd)(?:\((\d*)\))?(?=[^\-]|$)/,PSEUDO:/:((?:[\w\u00c0-\uFFFF\-]|\\.)+)(?:\((['"]?)((?:\([^\)]+\)|[^\(\)]*)+)\2\))?/},leftMatch:{},attrMap:{"class":"className","for":"htmlFor"},attrHandle:{href:function(a){return a.getAttribute("href")},type:function(a){return a.getAttribute("type")}},relative:{"+":function(a,b){var c=typeof b=="string",d=c&&!l.test(b),e=c&&!d;d&&(b=b.toLowerCase());for(var f=0,g=a.length,h;f<g;f++)if(h=a[f]){while((h=h.previousSibling)&&h.nodeType!==1);a[f]=e||h&&h.nodeName.toLowerCase()===b?h||!1:h===b}e&&m.filter(b,a,!0)},">":function(a,b){var c,d=typeof b=="string",e=0,f=a.length;if(d&&!l.test(b)){b=b.toLowerCase();for(;e<f;e++){c=a[e];if(c){var g=c.parentNode;a[e]=g.nodeName.toLowerCase()===b?g:!1}}}else{for(;e<f;e++)c=a[e],c&&(a[e]=d?c.parentNode:c.parentNode===b);d&&m.filter(b,a,!0)}},"":function(a,b,c){var d,f=e++,g=x;typeof b=="string"&&!l.test(b)&&(b=b.toLowerCase(),d=b,g=w),g("parentNode",b,f,a,d,c)},"~":function(a,b,c){var d,f=e++,g=x;typeof b=="string"&&!l.test(b)&&(b=b.toLowerCase(),d=b,g=w),g("previousSibling",b,f,a,d,c)}},find:{ID:function(a,b,c){if(typeof b.getElementById!="undefined"&&!c){var d=b.getElementById(a[1]);return d&&d.parentNode?[d]:[]}},NAME:function(a,b){if(typeof b.getElementsByName!="undefined"){var c=[],d=b.getElementsByName(a[1]);for(var e=0,f=d.length;e<f;e++)d[e].getAttribute("name")===a[1]&&c.push(d[e]);return c.length===0?null:c}},TAG:function(a,b){if(typeof b.getElementsByTagName!="undefined")return b.getElementsByTagName(a[1])}},preFilter:{CLASS:function(a,b,c,d,e,f){a=" "+a[1].replace(j,"")+" ";if(f)return a;for(var g=0,h;(h=b[g])!=null;g++)h&&(e^(h.className&&(" "+h.className+" ").replace(/[\t\n\r]/g," ").indexOf(a)>=0)?c||d.push(h):c&&(b[g]=!1));return!1},ID:function(a){return a[1].replace(j,"")},TAG:function(a,b){return a[1].replace(j,"").toLowerCase()},CHILD:function(a){if(a[1]==="nth"){a[2]||m.error(a[0]),a[2]=a[2].replace(/^\+|\s*/g,"");var b=/(-?)(\d*)(?:n([+\-]?\d*))?/.exec(a[2]==="even"&&"2n"||a[2]==="odd"&&"2n+1"||!/\D/.test(a[2])&&"0n+"+a[2]||a[2]);a[2]=b[1]+(b[2]||1)-0,a[3]=b[3]-0}else a[2]&&m.error(a[0]);a[0]=e++;return a},ATTR:function(a,b,c,d,e,f){var g=a[1]=a[1].replace(j,"");!f&&o.attrMap[g]&&(a[1]=o.attrMap[g]),a[4]=(a[4]||a[5]||"").replace(j,""),a[2]==="~="&&(a[4]=" "+a[4]+" ");return a},PSEUDO:function(b,c,d,e,f){if(b[1]==="not")if((a.exec(b[3])||"").length>1||/^\w/.test(b[3]))b[3]=m(b[3],null,null,c);else{var g=m.filter(b[3],c,d,!0^f);d||e.push.apply(e,g);return!1}else if(o.match.POS.test(b[0])||o.match.CHILD.test(b[0]))return!0;return b},POS:function(a){a.unshift(!0);return a}},filters:{enabled:function(a){return a.disabled===!1&&a.type!=="hidden"},disabled:function(a){return a.disabled===!0},checked:function(a){return a.checked===!0},selected:function(a){a.parentNode&&a.parentNode.selectedIndex;return a.selected===!0},parent:function(a){return!!a.firstChild},empty:function(a){return!a.firstChild},has:function(a,b,c){return!!m(c[3],a).length},header:function(a){return/h\d/i.test(a.nodeName)},text:function(a){var b=a.getAttribute("type"),c=a.type;return a.nodeName.toLowerCase()==="input"&&"text"===c&&(b===c||b===null)},radio:function(a){return a.nodeName.toLowerCase()==="input"&&"radio"===a.type},checkbox:function(a){return a.nodeName.toLowerCase()==="input"&&"checkbox"===a.type},file:function(a){return a.nodeName.toLowerCase()==="input"&&"file"===a.type},password:function(a){return a.nodeName.toLowerCase()==="input"&&"password"===a.type},submit:function(a){var b=a.nodeName.toLowerCase();return(b==="input"||b==="button")&&"submit"===a.type},image:function(a){return a.nodeName.toLowerCase()==="input"&&"image"===a.type},reset:function(a){var b=a.nodeName.toLowerCase();return(b==="input"||b==="button")&&"reset"===a.type},button:function(a){var b=a.nodeName.toLowerCase();return b==="input"&&"button"===a.type||b==="button"},input:function(a){return/input|select|textarea|button/i.test(a.nodeName)},focus:function(a){return a===a.ownerDocument.activeElement}},setFilters:{first:function(a,b){return b===0},last:function(a,b,c,d){return b===d.length-1},even:function(a,b){return b%2===0},odd:function(a,b){return b%2===1},lt:function(a,b,c){return b<c[3]-0},gt:function(a,b,c){return b>c[3]-0},nth:function(a,b,c){return c[3]-0===b},eq:function(a,b,c){return c[3]-0===b}},filter:{PSEUDO:function(a,b,c,d){var e=b[1],f=o.filters[e];if(f)return f(a,c,b,d);if(e==="contains")return(a.textContent||a.innerText||n([a])||"").indexOf(b[3])>=0;if(e==="not"){var g=b[3];for(var h=0,i=g.length;h<i;h++)if(g[h]===a)return!1;return!0}m.error(e)},CHILD:function(a,b){var c,e,f,g,h,i,j,k=b[1],l=a;switch(k){case"only":case"first":while(l=l.previousSibling)if(l.nodeType===1)return!1;if(k==="first")return!0;l=a;case"last":while(l=l.nextSibling)if(l.nodeType===1)return!1;return!0;case"nth":c=b[2],e=b[3];if(c===1&&e===0)return!0;f=b[0],g=a.parentNode;if(g&&(g[d]!==f||!a.nodeIndex)){i=0;for(l=g.firstChild;l;l=l.nextSibling)l.nodeType===1&&(l.nodeIndex=++i);g[d]=f}j=a.nodeIndex-e;return c===0?j===0:j%c===0&&j/c>=0}},ID:function(a,b){return a.nodeType===1&&a.getAttribute("id")===b},TAG:function(a,b){return b==="*"&&a.nodeType===1||!!a.nodeName&&a.nodeName.toLowerCase()===b},CLASS:function(a,b){return(" "+(a.className||a.getAttribute("class"))+" ").indexOf(b)>-1},ATTR:function(a,b){var c=b[1],d=m.attr?m.attr(a,c):o.attrHandle[c]?o.attrHandle[c](a):a[c]!=null?a[c]:a.getAttribute(c),e=d+"",f=b[2],g=b[4];return d==null?f==="!=":!f&&m.attr?d!=null:f==="="?e===g:f==="*="?e.indexOf(g)>=0:f==="~="?(" "+e+" ").indexOf(g)>=0:g?f==="!="?e!==g:f==="^="?e.indexOf(g)===0:f==="$="?e.substr(e.length-g.length)===g:f==="|="?e===g||e.substr(0,g.length+1)===g+"-":!1:e&&d!==!1},POS:function(a,b,c,d){var e=b[2],f=o.setFilters[e];if(f)return f(a,c,b,d)}}},p=o.match.POS,q=function(a,b){return"\\"+(b-0+1)};for(var r in o.match)o.match[r]=new RegExp(o.match[r].source+/(?![^\[]*\])(?![^\(]*\))/.source),o.leftMatch[r]=new RegExp(/(^(?:.|\r|\n)*?)/.source+o.match[r].source.replace(/\\(\d+)/g,q));var s=function(a,b){a=Array.prototype.slice.call(a,0);if(b){b.push.apply(b,a);return b}return a};try{Array.prototype.slice.call(c.documentElement.childNodes,0)[0].nodeType}catch(t){s=function(a,b){var c=0,d=b||[];if(g.call(a)==="[object Array]")Array.prototype.push.apply(d,a);else if(typeof a.length=="number")for(var e=a.length;c<e;c++)d.push(a[c]);else for(;a[c];c++)d.push(a[c]);return d}}var u,v;c.documentElement.compareDocumentPosition?u=function(a,b){if(a===b){h=!0;return 0}if(!a.compareDocumentPosition||!b.compareDocumentPosition)return a.compareDocumentPosition?-1:1;return a.compareDocumentPosition(b)&4?-1:1}:(u=function(a,b){if(a===b){h=!0;return 0}if(a.sourceIndex&&b.sourceIndex)return a.sourceIndex-b.sourceIndex;var c,d,e=[],f=[],g=a.parentNode,i=b.parentNode,j=g;if(g===i)return v(a,b);if(!g)return-1;if(!i)return 1;while(j)e.unshift(j),j=j.parentNode;j=i;while(j)f.unshift(j),j=j.parentNode;c=e.length,d=f.length;for(var k=0;k<c&&k<d;k++)if(e[k]!==f[k])return v(e[k],f[k]);return k===c?v(a,f[k],-1):v(e[k],b,1)},v=function(a,b,c){if(a===b)return c;var d=a.nextSibling;while(d){if(d===b)return-1;d=d.nextSibling}return 1}),function(){var a=c.createElement("div"),d="script"+(new Date).getTime(),e=c.documentElement;a.innerHTML="<a name='"+d+"'/>",e.insertBefore(a,e.firstChild),c.getElementById(d)&&(o.find.ID=function(a,c,d){if(typeof c.getElementById!="undefined"&&!d){var e=c.getElementById(a[1]);return e?e.id===a[1]||typeof e.getAttributeNode!="undefined"&&e.getAttributeNode("id").nodeValue===a[1]?[e]:b:[]}},o.filter.ID=function(a,b){var c=typeof a.getAttributeNode!="undefined"&&a.getAttributeNode("id");return a.nodeType===1&&c&&c.nodeValue===b}),e.removeChild(a),e=a=null}(),function(){var a=c.createElement("div");a.appendChild(c.createComment("")),a.getElementsByTagName("*").length>0&&(o.find.TAG=function(a,b){var c=b.getElementsByTagName(a[1]);if(a[1]==="*"){var d=[];for(var e=0;c[e];e++)c[e].nodeType===1&&d.push(c[e]);c=d}return c}),a.innerHTML="<a href='#'></a>",a.firstChild&&typeof a.firstChild.getAttribute!="undefined"&&a.firstChild.getAttribute("href")!=="#"&&(o.attrHandle.href=function(a){return a.getAttribute("href",2)}),a=null}(),c.querySelectorAll&&function(){var a=m,b=c.createElement("div"),d="__sizzle__";b.innerHTML="<p class='TEST'></p>";if(!b.querySelectorAll||b.querySelectorAll(".TEST").length!==0){m=function(b,e,f,g){e=e||c;if(!g&&!m.isXML(e)){var h=/^(\w+$)|^\.([\w\-]+$)|^#([\w\-]+$)/.exec(b);if(h&&(e.nodeType===1||e.nodeType===9)){if(h[1])return s(e.getElementsByTagName(b),f);if(h[2]&&o.find.CLASS&&e.getElementsByClassName)return s(e.getElementsByClassName(h[2]),f)}if(e.nodeType===9){if(b==="body"&&e.body)return s([e.body],f);if(h&&h[3]){var i=e.getElementById(h[3]);if(!i||!i.parentNode)return s([],f);if(i.id===h[3])return s([i],f)}try{return s(e.querySelectorAll(b),f)}catch(j){}}else if(e.nodeType===1&&e.nodeName.toLowerCase()!=="object"){var k=e,l=e.getAttribute("id"),n=l||d,p=e.parentNode,q=/^\s*[+~]/.test(b);l?n=n.replace(/'/g,"\\$&"):e.setAttribute("id",n),q&&p&&(e=e.parentNode);try{if(!q||p)return s(e.querySelectorAll("[id='"+n+"'] "+b),f)}catch(r){}finally{l||k.removeAttribute("id")}}}return a(b,e,f,g)};for(var e in a)m[e]=a[e];b=null}}(),function(){var a=c.documentElement,b=a.matchesSelector||a.mozMatchesSelector||a.webkitMatchesSelector||a.msMatchesSelector;if(b){var d=!b.call(c.createElement("div"),"div"),e=!1;try{b.call(c.documentElement,"[test!='']:sizzle")}catch(f){e=!0}m.matchesSelector=function(a,c){c=c.replace(/\=\s*([^'"\]]*)\s*\]/g,"='$1']");if(!m.isXML(a))try{if(e||!o.match.PSEUDO.test(c)&&!/!=/.test(c)){var f=b.call(a,c);if(f||!d||a.document&&a.document.nodeType!==11)return f}}catch(g){}return m(c,null,null,[a]).length>0}}}(),function(){var a=c.createElement("div");a.innerHTML="<div class='test e'></div><div class='test'></div>";if(!!a.getElementsByClassName&&a.getElementsByClassName("e").length!==0){a.lastChild.className="e";if(a.getElementsByClassName("e").length===1)return;o.order.splice(1,0,"CLASS"),o.find.CLASS=function(a,b,c){if(typeof b.getElementsByClassName!="undefined"&&!c)return b.getElementsByClassName(a[1])},a=null}}(),c.documentElement.contains?m.contains=function(a,b){return a!==b&&(a.contains?a.contains(b):!0)}:c.documentElement.compareDocumentPosition?m.contains=function(a,b){return!!(a.compareDocumentPosition(b)&16)}:m.contains=function(){return!1},m.isXML=function(a){var b=(a?a.ownerDocument||a:0).documentElement;return b?b.nodeName!=="HTML":!1};var y=function(a,b,c){var d,e=[],f="",g=b.nodeType?[b]:b;while(d=o.match.PSEUDO.exec(a))f+=d[0],a=a.replace(o.match.PSEUDO,"");a=o.relative[a]?a+"*":a;for(var h=0,i=g.length;h<i;h++)m(a,g[h],e,c);return m.filter(f,e)};m.attr=f.attr,m.selectors.attrMap={},f.find=m,f.expr=m.selectors,f.expr[":"]=f.expr.filters,f.unique=m.uniqueSort,f.text=m.getText,f.isXMLDoc=m.isXML,f.contains=m.contains}();var L=/Until$/,M=/^(?:parents|prevUntil|prevAll)/,N=/,/,O=/^.[^:#\[\.,]*$/,P=Array.prototype.slice,Q=f.expr.match.POS,R={children:!0,contents:!0,next:!0,prev:!0};f.fn.extend({find:function(a){var b=this,c,d;if(typeof a!="string")return f(a).filter(function(){for(c=0,d=b.length;c<d;c++)if(f.contains(b[c],this))return!0});var e=this.pushStack("","find",a),g,h,i;for(c=0,d=this.length;c<d;c++){g=e.length,f.find(a,this[c],e);if(c>0)for(h=g;h<e.length;h++)for(i=0;i<g;i++)if(e[i]===e[h]){e.splice(h--,1);break}}return e},has:function(a){var b=f(a);return this.filter(function(){for(var a=0,c=b.length;a<c;a++)if(f.contains(this,b[a]))return!0})},not:function(a){return this.pushStack(T(this,a,!1),"not",a)},filter:function(a){return this.pushStack(T(this,a,!0),"filter",a)},is:function(a){return!!a&&(typeof a=="string"?Q.test(a)?f(a,this.context).index(this[0])>=0:f.filter(a,this).length>0:this.filter(a).length>0)},closest:function(a,b){var c=[],d,e,g=this[0];if(f.isArray(a)){var h=1;while(g&&g.ownerDocument&&g!==b){for(d=0;d<a.length;d++)f(g).is(a[d])&&c.push({selector:a[d],elem:g,level:h});g=g.parentNode,h++}return c}var i=Q.test(a)||typeof a!="string"?f(a,b||this.context):0;for(d=0,e=this.length;d<e;d++){g=this[d];while(g){if(i?i.index(g)>-1:f.find.matchesSelector(g,a)){c.push(g);break}g=g.parentNode;if(!g||!g.ownerDocument||g===b||g.nodeType===11)break}}c=c.length>1?f.unique(c):c;return this.pushStack(c,"closest",a)},index:function(a){if(!a)return this[0]&&this[0].parentNode?this.prevAll().length:-1;if(typeof a=="string")return f.inArray(this[0],f(a));return f.inArray(a.jquery?a[0]:a,this)},add:function(a,b){var c=typeof a=="string"?f(a,b):f.makeArray(a&&a.nodeType?[a]:a),d=f.merge(this.get(),c);return this.pushStack(S(c[0])||S(d[0])?d:f.unique(d))},andSelf:function(){return this.add(this.prevObject)}}),f.each({parent:function(a){var b=a.parentNode;return b&&b.nodeType!==11?b:null},parents:function(a){return f.dir(a,"parentNode")},parentsUntil:function(a,b,c){return f.dir(a,"parentNode",c)},next:function(a){return f.nth(a,2,"nextSibling")},prev:function(a){return f.nth(a,2,"previousSibling")},nextAll:function(a){return f.dir(a,"nextSibling")},prevAll:function(a){return f.dir(a,"previousSibling")},nextUntil:function(a,b,c){return f.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return f.dir(a,"previousSibling",c)},siblings:function(a){return f.sibling(a.parentNode.firstChild,a)},children:function(a){return f.sibling(a.firstChild)},contents:function(a){return f.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:f.makeArray(a.childNodes)}},function(a,b){f.fn[a]=function(c,d){var e=f.map(this,b,c);L.test(a)||(d=c),d&&typeof d=="string"&&(e=f.filter(d,e)),e=this.length>1&&!R[a]?f.unique(e):e,(this.length>1||N.test(d))&&M.test(a)&&(e=e.reverse());return this.pushStack(e,a,P.call(arguments).join(","))}}),f.extend({filter:function(a,b,c){c&&(a=":not("+a+")");return b.length===1?f.find.matchesSelector(b[0],a)?[b[0]]:[]:f.find.matches(a,b)},dir:function(a,c,d){var e=[],g=a[c];while(g&&g.nodeType!==9&&(d===b||g.nodeType!==1||!f(g).is(d)))g.nodeType===1&&e.push(g),g=g[c];return e},nth:function(a,b,c,d){b=b||1;var e=0;for(;a;a=a[c])if(a.nodeType===1&&++e===b)break;return a},sibling:function(a,b){var c=[];for(;a;a=a.nextSibling)a.nodeType===1&&a!==b&&c.push(a);return c}});var V="abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",W=/ jQuery\d+="(?:\d+|null)"/g,X=/^\s+/,Y=/<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig,Z=/<([\w:]+)/,$=/<tbody/i,_=/<|&#?\w+;/,ba=/<(?:script|style)/i,bb=/<(?:script|object|embed|option|style)/i,bc=new RegExp("<(?:"+V+")","i"),bd=/checked\s*(?:[^=]|=\s*.checked.)/i,be=/\/(java|ecma)script/i,bf=/^\s*<!(?:\[CDATA\[|\-\-)/,bg={option:[1,"<select multiple='multiple'>","</select>"],legend:[1,"<fieldset>","</fieldset>"],thead:[1,"<table>","</table>"],tr:[2,"<table><tbody>","</tbody></table>"],td:[3,"<table><tbody><tr>","</tr></tbody></table>"],col:[2,"<table><tbody></tbody><colgroup>","</colgroup></table>"],area:[1,"<map>","</map>"],_default:[0,"",""]},bh=U(c);bg.optgroup=bg.option,bg.tbody=bg.tfoot=bg.colgroup=bg.caption=bg.thead,bg.th=bg.td,f.support.htmlSerialize||(bg._default=[1,"div<div>","</div>"]),f.fn.extend({text:function(a){if(f.isFunction(a))return this.each(function(b){var c=f(this);c.text(a.call(this,b,c.text()))});if(typeof a!="object"&&a!==b)return this.empty().append((this[0]&&this[0].ownerDocument||c).createTextNode(a));return f.text(this)},wrapAll:function(a){if(f.isFunction(a))return this.each(function(b){f(this).wrapAll(a.call(this,b))});if(this[0]){var b=f(a,this[0].ownerDocument).eq(0).clone(!0);this[0].parentNode&&b.insertBefore(this[0]),b.map(function(){var a=this;while(a.firstChild&&a.firstChild.nodeType===1)a=a.firstChild;return a}).append(this)}return this},wrapInner:function(a){if(f.isFunction(a))return this.each(function(b){f(this).wrapInner(a.call(this,b))});return this.each(function(){var b=f(this),c=b.contents();c.length?c.wrapAll(a):b.append(a)})},wrap:function(a){var b=f.isFunction(a);return this.each(function(c){f(this).wrapAll(b?a.call(this,c):a)})},unwrap:function(){return this.parent().each(function(){f.nodeName(this,"body")||f(this).replaceWith(this.childNodes)}).end()},append:function(){return this.domManip(arguments,!0,function(a){this.nodeType===1&&this.appendChild(a)})},prepend:function(){return this.domManip(arguments,!0,function(a){this.nodeType===1&&this.insertBefore(a,this.firstChild)})},before:function(){if(this[0]&&this[0].parentNode)return this.domManip(arguments,!1,function(a){this.parentNode.insertBefore(a,this)});if(arguments.length){var a=f.clean(arguments);a.push.apply(a,this.toArray());return this.pushStack(a,"before",arguments)}},after:function(){if(this[0]&&this[0].parentNode)return this.domManip(arguments,!1,function(a){this.parentNode.insertBefore(a,this.nextSibling)});if(arguments.length){var a=this.pushStack(this,"after",arguments);a.push.apply(a,f.clean(arguments));return a}},remove:function(a,b){for(var c=0,d;(d=this[c])!=null;c++)if(!a||f.filter(a,[d]).length)!b&&d.nodeType===1&&(f.cleanData(d.getElementsByTagName("*")),f.cleanData([d])),d.parentNode&&d.parentNode.removeChild(d);return this},empty:function()
-{for(var a=0,b;(b=this[a])!=null;a++){b.nodeType===1&&f.cleanData(b.getElementsByTagName("*"));while(b.firstChild)b.removeChild(b.firstChild)}return this},clone:function(a,b){a=a==null?!1:a,b=b==null?a:b;return this.map(function(){return f.clone(this,a,b)})},html:function(a){if(a===b)return this[0]&&this[0].nodeType===1?this[0].innerHTML.replace(W,""):null;if(typeof a=="string"&&!ba.test(a)&&(f.support.leadingWhitespace||!X.test(a))&&!bg[(Z.exec(a)||["",""])[1].toLowerCase()]){a=a.replace(Y,"<$1></$2>");try{for(var c=0,d=this.length;c<d;c++)this[c].nodeType===1&&(f.cleanData(this[c].getElementsByTagName("*")),this[c].innerHTML=a)}catch(e){this.empty().append(a)}}else f.isFunction(a)?this.each(function(b){var c=f(this);c.html(a.call(this,b,c.html()))}):this.empty().append(a);return this},replaceWith:function(a){if(this[0]&&this[0].parentNode){if(f.isFunction(a))return this.each(function(b){var c=f(this),d=c.html();c.replaceWith(a.call(this,b,d))});typeof a!="string"&&(a=f(a).detach());return this.each(function(){var b=this.nextSibling,c=this.parentNode;f(this).remove(),b?f(b).before(a):f(c).append(a)})}return this.length?this.pushStack(f(f.isFunction(a)?a():a),"replaceWith",a):this},detach:function(a){return this.remove(a,!0)},domManip:function(a,c,d){var e,g,h,i,j=a[0],k=[];if(!f.support.checkClone&&arguments.length===3&&typeof j=="string"&&bd.test(j))return this.each(function(){f(this).domManip(a,c,d,!0)});if(f.isFunction(j))return this.each(function(e){var g=f(this);a[0]=j.call(this,e,c?g.html():b),g.domManip(a,c,d)});if(this[0]){i=j&&j.parentNode,f.support.parentNode&&i&&i.nodeType===11&&i.childNodes.length===this.length?e={fragment:i}:e=f.buildFragment(a,this,k),h=e.fragment,h.childNodes.length===1?g=h=h.firstChild:g=h.firstChild;if(g){c=c&&f.nodeName(g,"tr");for(var l=0,m=this.length,n=m-1;l<m;l++)d.call(c?bi(this[l],g):this[l],e.cacheable||m>1&&l<n?f.clone(h,!0,!0):h)}k.length&&f.each(k,bp)}return this}}),f.buildFragment=function(a,b,d){var e,g,h,i,j=a[0];b&&b[0]&&(i=b[0].ownerDocument||b[0]),i.createDocumentFragment||(i=c),a.length===1&&typeof j=="string"&&j.length<512&&i===c&&j.charAt(0)==="<"&&!bb.test(j)&&(f.support.checkClone||!bd.test(j))&&(f.support.html5Clone||!bc.test(j))&&(g=!0,h=f.fragments[j],h&&h!==1&&(e=h)),e||(e=i.createDocumentFragment(),f.clean(a,i,e,d)),g&&(f.fragments[j]=h?e:1);return{fragment:e,cacheable:g}},f.fragments={},f.each({appendTo:"append",prependTo:"prepend",insertBefore:"before",insertAfter:"after",replaceAll:"replaceWith"},function(a,b){f.fn[a]=function(c){var d=[],e=f(c),g=this.length===1&&this[0].parentNode;if(g&&g.nodeType===11&&g.childNodes.length===1&&e.length===1){e[b](this[0]);return this}for(var h=0,i=e.length;h<i;h++){var j=(h>0?this.clone(!0):this).get();f(e[h])[b](j),d=d.concat(j)}return this.pushStack(d,a,e.selector)}}),f.extend({clone:function(a,b,c){var d,e,g,h=f.support.html5Clone||!bc.test("<"+a.nodeName)?a.cloneNode(!0):bo(a);if((!f.support.noCloneEvent||!f.support.noCloneChecked)&&(a.nodeType===1||a.nodeType===11)&&!f.isXMLDoc(a)){bk(a,h),d=bl(a),e=bl(h);for(g=0;d[g];++g)e[g]&&bk(d[g],e[g])}if(b){bj(a,h);if(c){d=bl(a),e=bl(h);for(g=0;d[g];++g)bj(d[g],e[g])}}d=e=null;return h},clean:function(a,b,d,e){var g;b=b||c,typeof b.createElement=="undefined"&&(b=b.ownerDocument||b[0]&&b[0].ownerDocument||c);var h=[],i;for(var j=0,k;(k=a[j])!=null;j++){typeof k=="number"&&(k+="");if(!k)continue;if(typeof k=="string")if(!_.test(k))k=b.createTextNode(k);else{k=k.replace(Y,"<$1></$2>");var l=(Z.exec(k)||["",""])[1].toLowerCase(),m=bg[l]||bg._default,n=m[0],o=b.createElement("div");b===c?bh.appendChild(o):U(b).appendChild(o),o.innerHTML=m[1]+k+m[2];while(n--)o=o.lastChild;if(!f.support.tbody){var p=$.test(k),q=l==="table"&&!p?o.firstChild&&o.firstChild.childNodes:m[1]==="<table>"&&!p?o.childNodes:[];for(i=q.length-1;i>=0;--i)f.nodeName(q[i],"tbody")&&!q[i].childNodes.length&&q[i].parentNode.removeChild(q[i])}!f.support.leadingWhitespace&&X.test(k)&&o.insertBefore(b.createTextNode(X.exec(k)[0]),o.firstChild),k=o.childNodes}var r;if(!f.support.appendChecked)if(k[0]&&typeof (r=k.length)=="number")for(i=0;i<r;i++)bn(k[i]);else bn(k);k.nodeType?h.push(k):h=f.merge(h,k)}if(d){g=function(a){return!a.type||be.test(a.type)};for(j=0;h[j];j++)if(e&&f.nodeName(h[j],"script")&&(!h[j].type||h[j].type.toLowerCase()==="text/javascript"))e.push(h[j].parentNode?h[j].parentNode.removeChild(h[j]):h[j]);else{if(h[j].nodeType===1){var s=f.grep(h[j].getElementsByTagName("script"),g);h.splice.apply(h,[j+1,0].concat(s))}d.appendChild(h[j])}}return h},cleanData:function(a){var b,c,d=f.cache,e=f.event.special,g=f.support.deleteExpando;for(var h=0,i;(i=a[h])!=null;h++){if(i.nodeName&&f.noData[i.nodeName.toLowerCase()])continue;c=i[f.expando];if(c){b=d[c];if(b&&b.events){for(var j in b.events)e[j]?f.event.remove(i,j):f.removeEvent(i,j,b.handle);b.handle&&(b.handle.elem=null)}g?delete i[f.expando]:i.removeAttribute&&i.removeAttribute(f.expando),delete d[c]}}}});var bq=/alpha\([^)]*\)/i,br=/opacity=([^)]*)/,bs=/([A-Z]|^ms)/g,bt=/^-?\d+(?:px)?$/i,bu=/^-?\d/,bv=/^([\-+])=([\-+.\de]+)/,bw={position:"absolute",visibility:"hidden",display:"block"},bx=["Left","Right"],by=["Top","Bottom"],bz,bA,bB;f.fn.css=function(a,c){if(arguments.length===2&&c===b)return this;return f.access(this,a,c,!0,function(a,c,d){return d!==b?f.style(a,c,d):f.css(a,c)})},f.extend({cssHooks:{opacity:{get:function(a,b){if(b){var c=bz(a,"opacity","opacity");return c===""?"1":c}return a.style.opacity}}},cssNumber:{fillOpacity:!0,fontWeight:!0,lineHeight:!0,opacity:!0,orphans:!0,widows:!0,zIndex:!0,zoom:!0},cssProps:{"float":f.support.cssFloat?"cssFloat":"styleFloat"},style:function(a,c,d,e){if(!!a&&a.nodeType!==3&&a.nodeType!==8&&!!a.style){var g,h,i=f.camelCase(c),j=a.style,k=f.cssHooks[i];c=f.cssProps[i]||i;if(d===b){if(k&&"get"in k&&(g=k.get(a,!1,e))!==b)return g;return j[c]}h=typeof d,h==="string"&&(g=bv.exec(d))&&(d=+(g[1]+1)*+g[2]+parseFloat(f.css(a,c)),h="number");if(d==null||h==="number"&&isNaN(d))return;h==="number"&&!f.cssNumber[i]&&(d+="px");if(!k||!("set"in k)||(d=k.set(a,d))!==b)try{j[c]=d}catch(l){}}},css:function(a,c,d){var e,g;c=f.camelCase(c),g=f.cssHooks[c],c=f.cssProps[c]||c,c==="cssFloat"&&(c="float");if(g&&"get"in g&&(e=g.get(a,!0,d))!==b)return e;if(bz)return bz(a,c)},swap:function(a,b,c){var d={};for(var e in b)d[e]=a.style[e],a.style[e]=b[e];c.call(a);for(e in b)a.style[e]=d[e]}}),f.curCSS=f.css,f.each(["height","width"],function(a,b){f.cssHooks[b]={get:function(a,c,d){var e;if(c){if(a.offsetWidth!==0)return bC(a,b,d);f.swap(a,bw,function(){e=bC(a,b,d)});return e}},set:function(a,b){if(!bt.test(b))return b;b=parseFloat(b);if(b>=0)return b+"px"}}}),f.support.opacity||(f.cssHooks.opacity={get:function(a,b){return br.test((b&&a.currentStyle?a.currentStyle.filter:a.style.filter)||"")?parseFloat(RegExp.$1)/100+"":b?"1":""},set:function(a,b){var c=a.style,d=a.currentStyle,e=f.isNumeric(b)?"alpha(opacity="+b*100+")":"",g=d&&d.filter||c.filter||"";c.zoom=1;if(b>=1&&f.trim(g.replace(bq,""))===""){c.removeAttribute("filter");if(d&&!d.filter)return}c.filter=bq.test(g)?g.replace(bq,e):g+" "+e}}),f(function(){f.support.reliableMarginRight||(f.cssHooks.marginRight={get:function(a,b){var c;f.swap(a,{display:"inline-block"},function(){b?c=bz(a,"margin-right","marginRight"):c=a.style.marginRight});return c}})}),c.defaultView&&c.defaultView.getComputedStyle&&(bA=function(a,b){var c,d,e;b=b.replace(bs,"-$1").toLowerCase(),(d=a.ownerDocument.defaultView)&&(e=d.getComputedStyle(a,null))&&(c=e.getPropertyValue(b),c===""&&!f.contains(a.ownerDocument.documentElement,a)&&(c=f.style(a,b)));return c}),c.documentElement.currentStyle&&(bB=function(a,b){var c,d,e,f=a.currentStyle&&a.currentStyle[b],g=a.style;f===null&&g&&(e=g[b])&&(f=e),!bt.test(f)&&bu.test(f)&&(c=g.left,d=a.runtimeStyle&&a.runtimeStyle.left,d&&(a.runtimeStyle.left=a.currentStyle.left),g.left=b==="fontSize"?"1em":f||0,f=g.pixelLeft+"px",g.left=c,d&&(a.runtimeStyle.left=d));return f===""?"auto":f}),bz=bA||bB,f.expr&&f.expr.filters&&(f.expr.filters.hidden=function(a){var b=a.offsetWidth,c=a.offsetHeight;return b===0&&c===0||!f.support.reliableHiddenOffsets&&(a.style&&a.style.display||f.css(a,"display"))==="none"},f.expr.filters.visible=function(a){return!f.expr.filters.hidden(a)});var bD=/%20/g,bE=/\[\]$/,bF=/\r?\n/g,bG=/#.*$/,bH=/^(.*?):[ \t]*([^\r\n]*)\r?$/mg,bI=/^(?:color|date|datetime|datetime-local|email|hidden|month|number|password|range|search|tel|text|time|url|week)$/i,bJ=/^(?:about|app|app\-storage|.+\-extension|file|res|widget):$/,bK=/^(?:GET|HEAD)$/,bL=/^\/\//,bM=/\?/,bN=/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,bO=/^(?:select|textarea)/i,bP=/\s+/,bQ=/([?&])_=[^&]*/,bR=/^([\w\+\.\-]+:)(?:\/\/([^\/?#:]*)(?::(\d+))?)?/,bS=f.fn.load,bT={},bU={},bV,bW,bX=["*/"]+["*"];try{bV=e.href}catch(bY){bV=c.createElement("a"),bV.href="",bV=bV.href}bW=bR.exec(bV.toLowerCase())||[],f.fn.extend({load:function(a,c,d){if(typeof a!="string"&&bS)return bS.apply(this,arguments);if(!this.length)return this;var e=a.indexOf(" ");if(e>=0){var g=a.slice(e,a.length);a=a.slice(0,e)}var h="GET";c&&(f.isFunction(c)?(d=c,c=b):typeof c=="object"&&(c=f.param(c,f.ajaxSettings.traditional),h="POST"));var i=this;f.ajax({url:a,type:h,dataType:"html",data:c,complete:function(a,b,c){c=a.responseText,a.isResolved()&&(a.done(function(a){c=a}),i.html(g?f("<div>").append(c.replace(bN,"")).find(g):c)),d&&i.each(d,[c,b,a])}});return this},serialize:function(){return f.param(this.serializeArray())},serializeArray:function(){return this.map(function(){return this.elements?f.makeArray(this.elements):this}).filter(function(){return this.name&&!this.disabled&&(this.checked||bO.test(this.nodeName)||bI.test(this.type))}).map(function(a,b){var c=f(this).val();return c==null?null:f.isArray(c)?f.map(c,function(a,c){return{name:b.name,value:a.replace(bF,"\r\n")}}):{name:b.name,value:c.replace(bF,"\r\n")}}).get()}}),f.each("ajaxStart ajaxStop ajaxComplete ajaxError ajaxSuccess ajaxSend".split(" "),function(a,b){f.fn[b]=function(a){return this.on(b,a)}}),f.each(["get","post"],function(a,c){f[c]=function(a,d,e,g){f.isFunction(d)&&(g=g||e,e=d,d=b);return f.ajax({type:c,url:a,data:d,success:e,dataType:g})}}),f.extend({getScript:function(a,c){return f.get(a,b,c,"script")},getJSON:function(a,b,c){return f.get(a,b,c,"json")},ajaxSetup:function(a,b){b?b_(a,f.ajaxSettings):(b=a,a=f.ajaxSettings),b_(a,b);return a},ajaxSettings:{url:bV,isLocal:bJ.test(bW[1]),global:!0,type:"GET",contentType:"application/x-www-form-urlencoded",processData:!0,async:!0,accepts:{xml:"application/xml, text/xml",html:"text/html",text:"text/plain",json:"application/json, text/javascript","*":bX},contents:{xml:/xml/,html:/html/,json:/json/},responseFields:{xml:"responseXML",text:"responseText"},converters:{"* text":a.String,"text html":!0,"text json":f.parseJSON,"text xml":f.parseXML},flatOptions:{context:!0,url:!0}},ajaxPrefilter:bZ(bT),ajaxTransport:bZ(bU),ajax:function(a,c){function w(a,c,l,m){if(s!==2){s=2,q&&clearTimeout(q),p=b,n=m||"",v.readyState=a>0?4:0;var o,r,u,w=c,x=l?cb(d,v,l):b,y,z;if(a>=200&&a<300||a===304){if(d.ifModified){if(y=v.getResponseHeader("Last-Modified"))f.lastModified[k]=y;if(z=v.getResponseHeader("Etag"))f.etag[k]=z}if(a===304)w="notmodified",o=!0;else try{r=cc(d,x),w="success",o=!0}catch(A){w="parsererror",u=A}}else{u=w;if(!w||a)w="error",a<0&&(a=0)}v.status=a,v.statusText=""+(c||w),o?h.resolveWith(e,[r,w,v]):h.rejectWith(e,[v,w,u]),v.statusCode(j),j=b,t&&g.trigger("ajax"+(o?"Success":"Error"),[v,d,o?r:u]),i.fireWith(e,[v,w]),t&&(g.trigger("ajaxComplete",[v,d]),--f.active||f.event.trigger("ajaxStop"))}}typeof a=="object"&&(c=a,a=b),c=c||{};var d=f.ajaxSetup({},c),e=d.context||d,g=e!==d&&(e.nodeType||e instanceof f)?f(e):f.event,h=f.Deferred(),i=f.Callbacks("once memory"),j=d.statusCode||{},k,l={},m={},n,o,p,q,r,s=0,t,u,v={readyState:0,setRequestHeader:function(a,b){if(!s){var c=a.toLowerCase();a=m[c]=m[c]||a,l[a]=b}return this},getAllResponseHeaders:function(){return s===2?n:null},getResponseHeader:function(a){var c;if(s===2){if(!o){o={};while(c=bH.exec(n))o[c[1].toLowerCase()]=c[2]}c=o[a.toLowerCase()]}return c===b?null:c},overrideMimeType:function(a){s||(d.mimeType=a);return this},abort:function(a){a=a||"abort",p&&p.abort(a),w(0,a);return this}};h.promise(v),v.success=v.done,v.error=v.fail,v.complete=i.add,v.statusCode=function(a){if(a){var b;if(s<2)for(b in a)j[b]=[j[b],a[b]];else b=a[v.status],v.then(b,b)}return this},d.url=((a||d.url)+"").replace(bG,"").replace(bL,bW[1]+"//"),d.dataTypes=f.trim(d.dataType||"*").toLowerCase().split(bP),d.crossDomain==null&&(r=bR.exec(d.url.toLowerCase()),d.crossDomain=!(!r||r[1]==bW[1]&&r[2]==bW[2]&&(r[3]||(r[1]==="http:"?80:443))==(bW[3]||(bW[1]==="http:"?80:443)))),d.data&&d.processData&&typeof d.data!="string"&&(d.data=f.param(d.data,d.traditional)),b$(bT,d,c,v);if(s===2)return!1;t=d.global,d.type=d.type.toUpperCase(),d.hasContent=!bK.test(d.type),t&&f.active++===0&&f.event.trigger("ajaxStart");if(!d.hasContent){d.data&&(d.url+=(bM.test(d.url)?"&":"?")+d.data,delete d.data),k=d.url;if(d.cache===!1){var x=f.now(),y=d.url.replace(bQ,"$1_="+x);d.url=y+(y===d.url?(bM.test(d.url)?"&":"?")+"_="+x:"")}}(d.data&&d.hasContent&&d.contentType!==!1||c.contentType)&&v.setRequestHeader("Content-Type",d.contentType),d.ifModified&&(k=k||d.url,f.lastModified[k]&&v.setRequestHeader("If-Modified-Since",f.lastModified[k]),f.etag[k]&&v.setRequestHeader("If-None-Match",f.etag[k])),v.setRequestHeader("Accept",d.dataTypes[0]&&d.accepts[d.dataTypes[0]]?d.accepts[d.dataTypes[0]]+(d.dataTypes[0]!=="*"?", "+bX+"; q=0.01":""):d.accepts["*"]);for(u in d.headers)v.setRequestHeader(u,d.headers[u]);if(d.beforeSend&&(d.beforeSend.call(e,v,d)===!1||s===2)){v.abort();return!1}for(u in{success:1,error:1,complete:1})v[u](d[u]);p=b$(bU,d,c,v);if(!p)w(-1,"No Transport");else{v.readyState=1,t&&g.trigger("ajaxSend",[v,d]),d.async&&d.timeout>0&&(q=setTimeout(function(){v.abort("timeout")},d.timeout));try{s=1,p.send(l,w)}catch(z){if(s<2)w(-1,z);else throw z}}return v},param:function(a,c){var d=[],e=function(a,b){b=f.isFunction(b)?b():b,d[d.length]=encodeURIComponent(a)+"="+encodeURIComponent(b)};c===b&&(c=f.ajaxSettings.traditional);if(f.isArray(a)||a.jquery&&!f.isPlainObject(a))f.each(a,function(){e(this.name,this.value)});else for(var g in a)ca(g,a[g],c,e);return d.join("&").replace(bD,"+")}}),f.extend({active:0,lastModified:{},etag:{}});var cd=f.now(),ce=/(\=)\?(&|$)|\?\?/i;f.ajaxSetup({jsonp:"callback",jsonpCallback:function(){return f.expando+"_"+cd++}}),f.ajaxPrefilter("json jsonp",function(b,c,d){var e=b.contentType==="application/x-www-form-urlencoded"&&typeof b.data=="string";if(b.dataTypes[0]==="jsonp"||b.jsonp!==!1&&(ce.test(b.url)||e&&ce.test(b.data))){var g,h=b.jsonpCallback=f.isFunction(b.jsonpCallback)?b.jsonpCallback():b.jsonpCallback,i=a[h],j=b.url,k=b.data,l="$1"+h+"$2";b.jsonp!==!1&&(j=j.replace(ce,l),b.url===j&&(e&&(k=k.replace(ce,l)),b.data===k&&(j+=(/\?/.test(j)?"&":"?")+b.jsonp+"="+h))),b.url=j,b.data=k,a[h]=function(a){g=[a]},d.always(function(){a[h]=i,g&&f.isFunction(i)&&a[h](g[0])}),b.converters["script json"]=function(){g||f.error(h+" was not called");return g[0]},b.dataTypes[0]="json";return"script"}}),f.ajaxSetup({accepts:{script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"},contents:{script:/javascript|ecmascript/},converters:{"text script":function(a){f.globalEval(a);return a}}}),f.ajaxPrefilter("script",function(a){a.cache===b&&(a.cache=!1),a.crossDomain&&(a.type="GET",a.global=!1)}),f.ajaxTransport("script",function(a){if(a.crossDomain){var d,e=c.head||c.getElementsByTagName("head")[0]||c.documentElement;return{send:function(f,g){d=c.createElement("script"),d.async="async",a.scriptCharset&&(d.charset=a.scriptCharset),d.src=a.url,d.onload=d.onreadystatechange=function(a,c){if(c||!d.readyState||/loaded|complete/.test(d.readyState))d.onload=d.onreadystatechange=null,e&&d.parentNode&&e.removeChild(d),d=b,c||g(200,"success")},e.insertBefore(d,e.firstChild)},abort:function(){d&&d.onload(0,1)}}}});var cf=a.ActiveXObject?function(){for(var a in ch)ch[a](0,1)}:!1,cg=0,ch;f.ajaxSettings.xhr=a.ActiveXObject?function(){return!this.isLocal&&ci()||cj()}:ci,function(a){f.extend(f.support,{ajax:!!a,cors:!!a&&"withCredentials"in a})}(f.ajaxSettings.xhr()),f.support.ajax&&f.ajaxTransport(function(c){if(!c.crossDomain||f.support.cors){var d;return{send:function(e,g){var h=c.xhr(),i,j;c.username?h.open(c.type,c.url,c.async,c.username,c.password):h.open(c.type,c.url,c.async);if(c.xhrFields)for(j in c.xhrFields)h[j]=c.xhrFields[j];c.mimeType&&h.overrideMimeType&&h.overrideMimeType(c.mimeType),!c.crossDomain&&!e["X-Requested-With"]&&(e["X-Requested-With"]="XMLHttpRequest");try{for(j in e)h.setRequestHeader(j,e[j])}catch(k){}h.send(c.hasContent&&c.data||null),d=function(a,e){var j,k,l,m,n;try{if(d&&(e||h.readyState===4)){d=b,i&&(h.onreadystatechange=f.noop,cf&&delete ch[i]);if(e)h.readyState!==4&&h.abort();else{j=h.status,l=h.getAllResponseHeaders(),m={},n=h.responseXML,n&&n.documentElement&&(m.xml=n),m.text=h.responseText;try{k=h.statusText}catch(o){k=""}!j&&c.isLocal&&!c.crossDomain?j=m.text?200:404:j===1223&&(j=204)}}}catch(p){e||g(-1,p)}m&&g(j,k,m,l)},!c.async||h.readyState===4?d():(i=++cg,cf&&(ch||(ch={},f(a).unload(cf)),ch[i]=d),h.onreadystatechange=d)},abort:function(){d&&d(0,1)}}}});var ck={},cl,cm,cn=/^(?:toggle|show|hide)$/,co=/^([+\-]=)?([\d+.\-]+)([a-z%]*)$/i,cp,cq=[["height","marginTop","marginBottom","paddingTop","paddingBottom"],["width","marginLeft","marginRight","paddingLeft","paddingRight"],["opacity"]],cr;f.fn.extend({show:function(a,b,c){var d,e;if(a||a===0)return this.animate(cu("show",3),a,b,c);for(var g=0,h=this.length;g<h;g++)d=this[g],d.style&&(e=d.style.display,!f._data(d,"olddisplay")&&e==="none"&&(e=d.style.display=""),e===""&&f.css(d,"display")==="none"&&f._data(d,"olddisplay",cv(d.nodeName)));for(g=0;g<h;g++){d=this[g];if(d.style){e=d.style.display;if(e===""||e==="none")d.style.display=f._data(d,"olddisplay")||""}}return this},hide:function(a,b,c){if(a||a===0)return this.animate(cu("hide",3),a,b,c);var d,e,g=0,h=this.length;for(;g<h;g++)d=this[g],d.style&&(e=f.css(d,"display"),e!=="none"&&!f._data(d,"olddisplay")&&f._data(d,"olddisplay",e));for(g=0;g<h;g++)this[g].style&&(this[g].style.display="none");return this},_toggle:f.fn.toggle,toggle:function(a,b,c){var d=typeof a=="boolean";f.isFunction(a)&&f.isFunction(b)?this._toggle.apply(this,arguments):a==null||d?this.each(function(){var b=d?a:f(this).is(":hidden");f(this)[b?"show":"hide"]()}):this.animate(cu("toggle",3),a,b,c);return this},fadeTo:function(a,b,c,d){return this.filter(":hidden").css("opacity",0).show().end().animate({opacity:b},a,c,d)},animate:function(a,b,c,d){function g(){e.queue===!1&&f._mark(this);var b=f.extend({},e),c=this.nodeType===1,d=c&&f(this).is(":hidden"),g,h,i,j,k,l,m,n,o;b.animatedProperties={};for(i in a){g=f.camelCase(i),i!==g&&(a[g]=a[i],delete a[i]),h=a[g],f.isArray(h)?(b.animatedProperties[g]=h[1],h=a[g]=h[0]):b.animatedProperties[g]=b.specialEasing&&b.specialEasing[g]||b.easing||"swing";if(h==="hide"&&d||h==="show"&&!d)return b.complete.call(this);c&&(g==="height"||g==="width")&&(b.overflow=[this.style.overflow,this.style.overflowX,this.style.overflowY],f.css(this,"display")==="inline"&&f.css(this,"float")==="none"&&(!f.support.inlineBlockNeedsLayout||cv(this.nodeName)==="inline"?this.style.display="inline-block":this.style.zoom=1))}b.overflow!=null&&(this.style.overflow="hidden");for(i in a)j=new f.fx(this,b,i),h=a[i],cn.test(h)?(o=f._data(this,"toggle"+i)||(h==="toggle"?d?"show":"hide":0),o?(f._data(this,"toggle"+i,o==="show"?"hide":"show"),j[o]()):j[h]()):(k=co.exec(h),l=j.cur(),k?(m=parseFloat(k[2]),n=k[3]||(f.cssNumber[i]?"":"px"),n!=="px"&&(f.style(this,i,(m||1)+n),l=(m||1)/j.cur()*l,f.style(this,i,l+n)),k[1]&&(m=(k[1]==="-="?-1:1)*m+l),j.custom(l,m,n)):j.custom(l,h,""));return!0}var e=f.speed(b,c,d);if(f.isEmptyObject(a))return this.each(e.complete,[!1]);a=f.extend({},a);return e.queue===!1?this.each(g):this.queue(e.queue,g)},stop:function(a,c,d){typeof a!="string"&&(d=c,c=a,a=b),c&&a!==!1&&this.queue(a||"fx",[]);return this.each(function(){function h(a,b,c){var e=b[c];f.removeData(a,c,!0),e.stop(d)}var b,c=!1,e=f.timers,g=f._data(this);d||f._unmark(!0,this);if(a==null)for(b in g)g[b]&&g[b].stop&&b.indexOf(".run")===b.length-4&&h(this,g,b);else g[b=a+".run"]&&g[b].stop&&h(this,g,b);for(b=e.length;b--;)e[b].elem===this&&(a==null||e[b].queue===a)&&(d?e[b](!0):e[b].saveState(),c=!0,e.splice(b,1));(!d||!c)&&f.dequeue(this,a)})}}),f.each({slideDown:cu("show",1),slideUp:cu("hide",1),slideToggle:cu("toggle",1),fadeIn:{opacity:"show"},fadeOut:{opacity:"hide"},fadeToggle:{opacity:"toggle"}},function(a,b){f.fn[a]=function(a,c,d){return this.animate(b,a,c,d)}}),f.extend({speed:function(a,b,c){var d=a&&typeof a=="object"?f.extend({},a):{complete:c||!c&&b||f.isFunction(a)&&a,duration:a,easing:c&&b||b&&!f.isFunction(b)&&b};d.duration=f.fx.off?0:typeof d.duration=="number"?d.duration:d.duration in f.fx.speeds?f.fx.speeds[d.duration]:f.fx.speeds._default;if(d.queue==null||d.queue===!0)d.queue="fx";d.old=d.complete,d.complete=function(a){f.isFunction(d.old)&&d.old.call(this),d.queue?f.dequeue(this,d.queue):a!==!1&&f._unmark(this)};return d},easing:{linear:function(a,b,c,d){return c+d*a},swing:function(a,b,c,d){return(-Math.cos(a*Math.PI)/2+.5)*d+c}},timers:[],fx:function(a,b,c){this.options=b,this.elem=a,this.prop=c,b.orig=b.orig||{}}}),f.fx.prototype={update:function(){this.options.step&&this.options.step.call(this.elem,this.now,this),(f.fx.step[this.prop]||f.fx.step._default)(this)},cur:function(){if(this.elem[this.prop]!=null&&(!this.elem.style||this.elem.style[this.prop]==null))return this.elem[this.prop];var a,b=f.css(this.elem,this.prop);return isNaN(a=parseFloat(b))?!b||b==="auto"?0:b:a},custom:function(a,c,d){function h(a){return e.step(a)}var e=this,g=f.fx;this.startTime=cr||cs(),this.end=c,this.now=this.start=a,this.pos=this.state=0,this.unit=d||this.unit||(f.cssNumber[this.prop]?"":"px"),h.queue=this.options.queue,h.elem=this.elem,h.saveState=function(){e.options.hide&&f._data(e.elem,"fxshow"+e.prop)===b&&f._data(e.elem,"fxshow"+e.prop,e.start)},h()&&f.timers.push(h)&&!cp&&(cp=setInterval(g.tick,g.interval))},show:function(){var a=f._data(this.elem,"fxshow"+this.prop);this.options.orig[this.prop]=a||f.style(this.elem,this.prop),this.options.show=!0,a!==b?this.custom(this.cur(),a):this.custom(this.prop==="width"||this.prop==="height"?1:0,this.cur()),f(this.elem).show()},hide:function(){this.options.orig[this.prop]=f._data(this.elem,"fxshow"+this.prop)||f.style(this.elem,this.prop),this.options.hide=!0,this.custom(this.cur(),0)},step:function(a){var b,c,d,e=cr||cs(),g=!0,h=this.elem,i=this.options;if(a||e>=i.duration+this.startTime){this.now=this.end,this.pos=this.state=1,this.update(),i.animatedProperties[this.prop]=!0;for(b in i.animatedProperties)i.animatedProperties[b]!==!0&&(g=!1);if(g){i.overflow!=null&&!f.support.shrinkWrapBlocks&&f.each(["","X","Y"],function(a,b){h.style["overflow"+b]=i.overflow[a]}),i.hide&&f(h).hide();if(i.hide||i.show)for(b in i.animatedProperties)f.style(h,b,i.orig[b]),f.removeData(h,"fxshow"+b,!0),f.removeData(h,"toggle"+b,!0);d=i.complete,d&&(i.complete=!1,d.call(h))}return!1}i.duration==Infinity?this.now=e:(c=e-this.startTime,this.state=c/i.duration,this.pos=f.easing[i.animatedProperties[this.prop]](this.state,c,0,1,i.duration),this.now=this.start+(this.end-this.start)*this.pos),this.update();return!0}},f.extend(f.fx,{tick:function(){var a,b=f.timers,c=0;for(;c<b.length;c++)a=b[c],!a()&&b[c]===a&&b.splice(c--,1);b.length||f.fx.stop()},interval:13,stop:function(){clearInterval(cp),cp=null},speeds:{slow:600,fast:200,_default:400},step:{opacity:function(a){f.style(a.elem,"opacity",a.now)},_default:function(a){a.elem.style&&a.elem.style[a.prop]!=null?a.elem.style[a.prop]=a.now+a.unit:a.elem[a.prop]=a.now}}}),f.each(["width","height"],function(a,b){f.fx.step[b]=function(a){f.style(a.elem,b,Math.max(0,a.now)+a.unit)}}),f.expr&&f.expr.filters&&(f.expr.filters.animated=function(a){return f.grep(f.timers,function(b){return a===b.elem}).length});var cw=/^t(?:able|d|h)$/i,cx=/^(?:body|html)$/i;"getBoundingClientRect"in c.documentElement?f.fn.offset=function(a){var b=this[0],c;if(a)return this.each(function(b){f.offset.setOffset(this,a,b)});if(!b||!b.ownerDocument)return null;if(b===b.ownerDocument.body)return f.offset.bodyOffset(b);try{c=b.getBoundingClientRect()}catch(d){}var e=b.ownerDocument,g=e.documentElement;if(!c||!f.contains(g,b))return c?{top:c.top,left:c.left}:{top:0,left:0};var h=e.body,i=cy(e),j=g.clientTop||h.clientTop||0,k=g.clientLeft||h.clientLeft||0,l=i.pageYOffset||f.support.boxModel&&g.scrollTop||h.scrollTop,m=i.pageXOffset||f.support.boxModel&&g.scrollLeft||h.scrollLeft,n=c.top+l-j,o=c.left+m-k;return{top:n,left:o}}:f.fn.offset=function(a){var b=this[0];if(a)return this.each(function(b){f.offset.setOffset(this,a,b)});if(!b||!b.ownerDocument)return null;if(b===b.ownerDocument.body)return f.offset.bodyOffset(b);var c,d=b.offsetParent,e=b,g=b.ownerDocument,h=g.documentElement,i=g.body,j=g.defaultView,k=j?j.getComputedStyle(b,null):b.currentStyle,l=b.offsetTop,m=b.offsetLeft;while((b=b.parentNode)&&b!==i&&b!==h){if(f.support.fixedPosition&&k.position==="fixed")break;c=j?j.getComputedStyle(b,null):b.currentStyle,l-=b.scrollTop,m-=b.scrollLeft,b===d&&(l+=b.offsetTop,m+=b.offsetLeft,f.support.doesNotAddBorder&&(!f.support.doesAddBorderForTableAndCells||!cw.test(b.nodeName))&&(l+=parseFloat(c.borderTopWidth)||0,m+=parseFloat(c.borderLeftWidth)||0),e=d,d=b.offsetParent),f.support.subtractsBorderForOverflowNotVisible&&c.overflow!=="visible"&&(l+=parseFloat(c.borderTopWidth)||0,m+=parseFloat(c.borderLeftWidth)||0),k=c}if(k.position==="relative"||k.position==="static")l+=i.offsetTop,m+=i.offsetLeft;f.support.fixedPosition&&k.position==="fixed"&&(l+=Math.max(h.scrollTop,i.scrollTop),m+=Math.max(h.scrollLeft,i.scrollLeft));return{top:l,left:m}},f.offset={bodyOffset:function(a){var b=a.offsetTop,c=a.offsetLeft;f.support.doesNotIncludeMarginInBodyOffset&&(b+=parseFloat(f.css(a,"marginTop"))||0,c+=parseFloat(f.css(a,"marginLeft"))||0);return{top:b,left:c}},setOffset:function(a,b,c){var d=f.css(a,"position");d==="static"&&(a.style.position="relative");var e=f(a),g=e.offset(),h=f.css(a,"top"),i=f.css(a,"left"),j=(d==="absolute"||d==="fixed")&&f.inArray("auto",[h,i])>-1,k={},l={},m,n;j?(l=e.position(),m=l.top,n=l.left):(m=parseFloat(h)||0,n=parseFloat(i)||0),f.isFunction(b)&&(b=b.call(a,c,g)),b.top!=null&&(k.top=b.top-g.top+m),b.left!=null&&(k.left=b.left-g.left+n),"using"in b?b.using.call(a,k):e.css(k)}},f.fn.extend({position:function(){if(!this[0])return null;var a=this[0],b=this.offsetParent(),c=this.offset(),d=cx.test(b[0].nodeName)?{top:0,left:0}:b.offset();c.top-=parseFloat(f.css(a,"marginTop"))||0,c.left-=parseFloat(f.css(a,"marginLeft"))||0,d.top+=parseFloat(f.css(b[0],"borderTopWidth"))||0,d.left+=parseFloat(f.css(b[0],"borderLeftWidth"))||0;return{top:c.top-d.top,left:c.left-d.left}},offsetParent:function(){return this.map(function(){var a=this.offsetParent||c.body;while(a&&!cx.test(a.nodeName)&&f.css(a,"position")==="static")a=a.offsetParent;return a})}}),f.each(["Left","Top"],function(a,c){var d="scroll"+c;f.fn[d]=function(c){var e,g;if(c===b){e=this[0];if(!e)return null;g=cy(e);return g?"pageXOffset"in g?g[a?"pageYOffset":"pageXOffset"]:f.support.boxModel&&g.document.documentElement[d]||g.document.body[d]:e[d]}return this.each(function(){g=cy(this),g?g.scrollTo(a?f(g).scrollLeft():c,a?c:f(g).scrollTop()):this[d]=c})}}),f.each(["Height","Width"],function(a,c){var d=c.toLowerCase();f.fn["inner"+c]=function(){var a=this[0];return a?a.style?parseFloat(f.css(a,d,"padding")):this[d]():null},f.fn["outer"+c]=function(a){var b=this[0];return b?b.style?parseFloat(f.css(b,d,a?"margin":"border")):this[d]():null},f.fn[d]=function(a){var e=this[0];if(!e)return a==null?null:this;if(f.isFunction(a))return this.each(function(b){var c=f(this);c[d](a.call(this,b,c[d]()))});if(f.isWindow(e)){var g=e.document.documentElement["client"+c],h=e.document.body;return e.document.compatMode==="CSS1Compat"&&g||h&&h["client"+c]||g}if(e.nodeType===9)return Math.max(e.documentElement["client"+c],e.body["scroll"+c],e.documentElement["scroll"+c],e.body["offset"+c],e.documentElement["offset"+c]);if(a===b){var i=f.css(e,d),j=parseFloat(i);return f.isNumeric(j)?j:i}return this.css(d,typeof a=="string"?a:a+"px")}}),a.jQuery=a.$=f,typeof define=="function"&&define.amd&&define.amd.jQuery&&define("jquery",[],function(){return f})})(window);
-jQuery.noConflict();
+/**
+ * @version 0.5-rc1
+ *
+ * WYMeditor : what you see is What You Mean web-based editor
+ * Copyright (c) 2005 - 2009 Jean-Francois Hovinne, http://www.wymeditor.org/
+ * Dual licensed under the MIT (MIT-license.txt)
+ * and GPL (GPL-license.txt) licenses.
+ *
+ * For further information visit:
+ *        http://www.wymeditor.org/
+ *
+ * File: jquery.wymeditor.js
+ *
+ *        Main JS file with core classes and functions.
+ *        See the documentation for more info.
+ *
+ * About: authors
+ *
+ *        Jean-Francois Hovinne (jf.hovinne a-t wymeditor dotorg)
+ *        Volker Mische (vmx a-t gmx dotde)
+ *        Scott Lewis (lewiscot a-t gmail dotcom)
+ *        Bermi Ferrer (wymeditor a-t bermi dotorg)
+ *        Daniel Reszka (d.reszka a-t wymeditor dotorg)
+ *        Jonatan Lundin (jonatan.lundin _at_ gmail.com)
+ */
+
+/*
+   Namespace: WYMeditor
+   Global WYMeditor namespace.
+*/
+if(!WYMeditor) var WYMeditor = {};
+
+//Wrap the Firebug console in WYMeditor.console
+(function() {
+    if ( !window.console || !console.firebug ) {
+        var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml",
+        "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+
+        WYMeditor.console = {};
+        for (var i = 0; i < names.length; ++i)
+            WYMeditor.console[names[i]] = function() {}
+
+    } else WYMeditor.console = window.console;
+})();
+
+jQuery.extend(WYMeditor, {
+
+/*
+    Constants: Global WYMeditor constants.
+
+    VERSION             - Defines WYMeditor version.
+    INSTANCES           - An array of loaded WYMeditor.editor instances.
+    STRINGS             - An array of loaded WYMeditor language pairs/values.
+    SKINS               - An array of loaded WYMeditor skins.
+    NAME                - The "name" attribute.
+    INDEX               - A string replaced by the instance index.
+    WYM_INDEX           - A string used to get/set the instance index.
+    BASE_PATH           - A string replaced by WYMeditor's base path.
+    SKIN_PATH           - A string replaced by WYMeditor's skin path.
+    WYM_PATH            - A string replaced by WYMeditor's main JS file path.
+    SKINS_DEFAULT_PATH  - The skins default base path.
+    SKINS_DEFAULT_CSS   - The skins default CSS file.
+    LANG_DEFAULT_PATH   - The language files default path.
+    IFRAME_BASE_PATH    - A string replaced by the designmode iframe's base path.
+    IFRAME_DEFAULT      - The iframe's default base path.
+    JQUERY_PATH         - A string replaced by the computed jQuery path.
+    DIRECTION           - A string replaced by the text direction (rtl or ltr).
+    LOGO                - A string replaced by WYMeditor logo.
+    TOOLS               - A string replaced by the toolbar's HTML.
+    TOOLS_ITEMS         - A string replaced by the toolbar items.
+    TOOL_NAME           - A string replaced by a toolbar item's name.
+    TOOL_TITLE          - A string replaced by a toolbar item's title.
+    TOOL_CLASS          - A string replaced by a toolbar item's class.
+    CLASSES             - A string replaced by the classes panel's HTML.
+    CLASSES_ITEMS       - A string replaced by the classes items.
+    CLASS_NAME          - A string replaced by a class item's name.
+    CLASS_TITLE         - A string replaced by a class item's title.
+    CONTAINERS          - A string replaced by the containers panel's HTML.
+    CONTAINERS_ITEMS    - A string replaced by the containers items.
+    CONTAINER_NAME      - A string replaced by a container item's name.
+    CONTAINER_TITLE     - A string replaced by a container item's title.
+    CONTAINER_CLASS     - A string replaced by a container item's class.
+    HTML                - A string replaced by the HTML view panel's HTML.
+    IFRAME              - A string replaced by the designmode iframe.
+    STATUS              - A string replaced by the status panel's HTML.
+    DIALOG_TITLE        - A string replaced by a dialog's title.
+    DIALOG_BODY         - A string replaced by a dialog's HTML body.
+    BODY                - The BODY element.
+    STRING              - The "string" type.
+    BODY,DIV,P,
+    H1,H2,H3,H4,H5,H6,
+    PRE,BLOCKQUOTE,
+    A,BR,IMG,
+    TABLE,TD,TH,
+    UL,OL,LI            - HTML elements string representation.
+    CLASS,HREF,SRC,
+    TITLE,ALT           - HTML attributes string representation.
+    DIALOG_LINK         - A link dialog type.
+    DIALOG_IMAGE        - An image dialog type.
+    DIALOG_TABLE        - A table dialog type.
+    DIALOG_PASTE        - A 'Paste from Word' dialog type.
+    BOLD                - Command: (un)set selection to <strong>.
+    ITALIC              - Command: (un)set selection to <em>.
+    CREATE_LINK         - Command: open the link dialog or (un)set link.
+    INSERT_IMAGE        - Command: open the image dialog or insert an image.
+    INSERT_TABLE        - Command: open the table dialog.
+    PASTE               - Command: open the paste dialog.
+    INDENT              - Command: nest a list item.
+    OUTDENT             - Command: unnest a list item.
+    TOGGLE_HTML         - Command: display/hide the HTML view.
+    FORMAT_BLOCK        - Command: set a block element to another type.
+    PREVIEW             - Command: open the preview dialog.
+    UNLINK              - Command: unset a link.
+    INSERT_UNORDEREDLIST- Command: insert an unordered list.
+    INSERT_ORDEREDLIST  - Command: insert an ordered list.
+    MAIN_CONTAINERS     - An array of the main HTML containers used in WYMeditor.
+    BLOCKS              - An array of the HTML block elements.
+    KEY                 - Standard key codes.
+    NODE                - Node types.
+
+*/
+
+    VERSION             : "0.5-rc1",
+    INSTANCES           : [],
+    STRINGS             : [],
+    SKINS               : [],
+    NAME                : "name",
+    INDEX               : "{Wym_Index}",
+    WYM_INDEX           : "wym_index",
+    BASE_PATH           : "{Wym_Base_Path}",
+    CSS_PATH            : "{Wym_Css_Path}",
+    WYM_PATH            : "{Wym_Wym_Path}",
+    SKINS_DEFAULT_PATH  : "skins/",
+    SKINS_DEFAULT_CSS   : "skin.css",
+    SKINS_DEFAULT_JS    : "skin.js",
+    LANG_DEFAULT_PATH   : "lang/",
+    IFRAME_BASE_PATH    : "{Wym_Iframe_Base_Path}",
+    IFRAME_DEFAULT      : "iframe/default/",
+    JQUERY_PATH         : "{Wym_Jquery_Path}",
+    DIRECTION           : "{Wym_Direction}",
+    LOGO                : "{Wym_Logo}",
+    TOOLS               : "{Wym_Tools}",
+    TOOLS_ITEMS         : "{Wym_Tools_Items}",
+    TOOL_NAME           : "{Wym_Tool_Name}",
+    TOOL_TITLE          : "{Wym_Tool_Title}",
+    TOOL_CLASS          : "{Wym_Tool_Class}",
+    CLASSES             : "{Wym_Classes}",
+    CLASSES_ITEMS       : "{Wym_Classes_Items}",
+    CLASS_NAME          : "{Wym_Class_Name}",
+    CLASS_TITLE         : "{Wym_Class_Title}",
+    CONTAINERS          : "{Wym_Containers}",
+    CONTAINERS_ITEMS    : "{Wym_Containers_Items}",
+    CONTAINER_NAME      : "{Wym_Container_Name}",
+    CONTAINER_TITLE     : "{Wym_Containers_Title}",
+    CONTAINER_CLASS     : "{Wym_Container_Class}",
+    HTML                : "{Wym_Html}",
+    IFRAME              : "{Wym_Iframe}",
+    STATUS              : "{Wym_Status}",
+    DIALOG_TITLE        : "{Wym_Dialog_Title}",
+    DIALOG_BODY         : "{Wym_Dialog_Body}",
+    STRING              : "string",
+    BODY                : "body",
+    DIV                 : "div",
+    P                   : "p",
+    H1                  : "h1",
+    H2                  : "h2",
+    H3                  : "h3",
+    H4                  : "h4",
+    H5                  : "h5",
+    H6                  : "h6",
+    PRE                 : "pre",
+    BLOCKQUOTE          : "blockquote",
+    A                   : "a",
+    BR                  : "br",
+    IMG                 : "img",
+    TABLE               : "table",
+    TD                  : "td",
+    TH                  : "th",
+    UL                  : "ul",
+    OL                  : "ol",
+    LI                  : "li",
+    CLASS               : "class",
+    HREF                : "href",
+    SRC                 : "src",
+    TITLE               : "title",
+    ALT                 : "alt",
+    DIALOG_LINK         : "Link",
+    DIALOG_IMAGE        : "Image",
+    DIALOG_TABLE        : "Table",
+    DIALOG_PASTE        : "Paste_From_Word",
+    BOLD                : "Bold",
+    ITALIC              : "Italic",
+    CREATE_LINK         : "CreateLink",
+    INSERT_IMAGE        : "InsertImage",
+    INSERT_TABLE        : "InsertTable",
+    INSERT_HTML         : "InsertHTML",
+    PASTE               : "Paste",
+    INDENT              : "Indent",
+    OUTDENT             : "Outdent",
+    TOGGLE_HTML         : "ToggleHtml",
+    FORMAT_BLOCK        : "FormatBlock",
+    PREVIEW             : "Preview",
+    UNLINK			        : "Unlink",
+    INSERT_UNORDEREDLIST: "InsertUnorderedList",
+    INSERT_ORDEREDLIST	: "InsertOrderedList",
+
+    MAIN_CONTAINERS : new Array("p","h1","h2","h3","h4","h5","h6","pre","blockquote"),
+
+    BLOCKS : new Array("address", "blockquote", "div", "dl",
+	   "fieldset", "form", "h1", "h2", "h3", "h4", "h5", "h6", "hr",
+	   "noscript", "ol", "p", "pre", "table", "ul", "dd", "dt",
+	   "li", "tbody", "td", "tfoot", "th", "thead", "tr"),
+
+    KEY : {
+      BACKSPACE: 8,
+      ENTER: 13,
+      END: 35,
+      HOME: 36,
+      LEFT: 37,
+      UP: 38,
+      RIGHT: 39,
+      DOWN: 40,
+      CURSOR: new Array(37, 38, 39, 40),
+      DELETE: 46
+    },
+
+    NODE : {
+      ELEMENT: 1,
+      ATTRIBUTE: 2,
+      TEXT: 3
+    },
+	
+    /*
+        Class: WYMeditor.editor
+        WYMeditor editor main class, instanciated for each editor occurrence.
+    */
+
+	editor : function(elem, options) {
+
+        /*
+            Constructor: WYMeditor.editor
+
+            Initializes main values (index, elements, paths, ...)
+            and call WYMeditor.editor.init which initializes the editor.
+
+            Parameters:
+
+                elem - The HTML element to be replaced by the editor.
+                options - The hash of options.
+
+            Returns:
+
+                Nothing.
+
+            See Also:
+
+                <WYMeditor.editor.init>
+        */
+
+        //store the instance in the INSTANCES array and store the index
+        this._index = WYMeditor.INSTANCES.push(this) - 1;
+        //store the element replaced by the editor
+        this._element = elem;
+        //store the options
+        this._options = options;
+        //store the element's inner value
+        this._html = jQuery(elem).val();
+
+        //store the HTML option, if any
+        if(this._options.html) this._html = this._options.html;
+        //get or compute the base path (where the main JS file is located)
+        this._options.basePath = this._options.basePath
+        || this.computeBasePath();
+        //get or set the skin path (where the skin files are located)
+        this._options.skinPath = this._options.skinPath
+        || this._options.basePath + WYMeditor.SKINS_DEFAULT_PATH
+           + this._options.skin + '/';
+        //get or compute the main JS file location
+        this._options.wymPath = this._options.wymPath
+        || this.computeWymPath();
+        //get or set the language files path
+        this._options.langPath = this._options.langPath
+        || this._options.basePath + WYMeditor.LANG_DEFAULT_PATH;
+        //get or set the designmode iframe's base path
+        this._options.iframeBasePath = this._options.iframeBasePath
+        || this._options.basePath + WYMeditor.IFRAME_DEFAULT;
+        //get or compute the jQuery JS file location
+        this._options.jQueryPath = this._options.jQueryPath
+        || this.computeJqueryPath();
+
+        //initialize the editor instance
+        this.init();
+	
+	}
+
+});
+
+
+/********** JQUERY **********/
+
+/**
+ * Replace an HTML element by WYMeditor
+ *
+ * @example jQuery(".wymeditor").wymeditor(
+ *        {
+ *
+ *        }
+ *      );
+ * @desc Example description here
+ * 
+ * @name WYMeditor
+ * @description WYMeditor is a web-based WYSIWYM XHTML editor
+ * @param Hash hash A hash of parameters
+ * @option Integer iExample Description here
+ * @option String sExample Description here
+ *
+ * @type jQuery
+ * @cat Plugins/WYMeditor
+ * @author Jean-Francois Hovinne
+ */
+jQuery.fn.wymeditor = function(options) {
+
+  options = jQuery.extend({
+
+    html:       "",
+    
+    basePath:   false,
+    
+    skinPath:    false,
+    
+    wymPath:    false,
+    
+    iframeBasePath: false,
+    
+    jQueryPath: false,
+    
+    styles: false,
+    
+    stylesheet: false,
+    
+    skin:       "default",
+    initSkin:   true,
+    loadSkin:   true,
+
+    lang:       "en",
+
+    direction:  "ltr",
+
+    boxHtml:   "<div class='wym_box'>"
+              + "<div class='wym_area_top'>" 
+              + WYMeditor.TOOLS
+              + "</div>"
+              + "<div class='wym_area_left'></div>"
+              + "<div class='wym_area_right'>"
+              + WYMeditor.CONTAINERS
+              + WYMeditor.CLASSES
+              + "</div>"
+              + "<div class='wym_area_main'>"
+              + WYMeditor.HTML
+              + WYMeditor.IFRAME
+              + WYMeditor.STATUS
+              + "</div>"
+              + "<div class='wym_area_bottom'>"
+              + WYMeditor.LOGO
+              + "</div>"
+              + "</div>",
+
+    logoHtml:  "<a class='wym_wymeditor_link' "
+              + "href='http://www.wymeditor.org/'>WYMeditor</a>",
+
+    iframeHtml:"<div class='wym_iframe wym_section'>"
+              + "<iframe "
+              + "src='"
+              + WYMeditor.IFRAME_BASE_PATH
+              + "wymiframe.html' "
+              + "onload='this.contentWindow.parent.WYMeditor.INSTANCES["
+              + WYMeditor.INDEX + "].initIframe(this)'"
+              + "></iframe>"
+              + "</div>",
+              
+    editorStyles: [],
+
+    toolsHtml: "<div class='wym_tools wym_section'>"
+              + "<h2>{Tools}</h2>"
+              + "<ul>"
+              + WYMeditor.TOOLS_ITEMS
+              + "</ul>"
+              + "</div>",
+              
+    toolsItemHtml:   "<li class='"
+                        + WYMeditor.TOOL_CLASS
+                        + "'><a href='#' name='"
+                        + WYMeditor.TOOL_NAME
+                        + "' title='"
+                        + WYMeditor.TOOL_TITLE
+                        + "'>"
+                        + WYMeditor.TOOL_TITLE
+                        + "</a></li>",
+
+    toolsItems: [
+        {'name': 'Bold', 'title': 'Strong', 'css': 'wym_tools_strong'}, 
+        {'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'},
+        {'name': 'Superscript', 'title': 'Superscript',
+            'css': 'wym_tools_superscript'},
+        {'name': 'Subscript', 'title': 'Subscript',
+            'css': 'wym_tools_subscript'},
+        {'name': 'InsertOrderedList', 'title': 'Ordered_List',
+            'css': 'wym_tools_ordered_list'},
+        {'name': 'InsertUnorderedList', 'title': 'Unordered_List',
+            'css': 'wym_tools_unordered_list'},
+        {'name': 'Indent', 'title': 'Indent', 'css': 'wym_tools_indent'},
+        {'name': 'Outdent', 'title': 'Outdent', 'css': 'wym_tools_outdent'},
+        {'name': 'Undo', 'title': 'Undo', 'css': 'wym_tools_undo'},
+        {'name': 'Redo', 'title': 'Redo', 'css': 'wym_tools_redo'},
+        {'name': 'CreateLink', 'title': 'Link', 'css': 'wym_tools_link'},
+        {'name': 'Unlink', 'title': 'Unlink', 'css': 'wym_tools_unlink'},
+        {'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'},
+        {'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'},
+        {'name': 'Paste', 'title': 'Paste_From_Word',
+            'css': 'wym_tools_paste'},
+        {'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'},
+        {'name': 'Preview', 'title': 'Preview', 'css': 'wym_tools_preview'}
+    ],
+
+    containersHtml:    "<div class='wym_containers wym_section'>"
+                        + "<h2>{Containers}</h2>"
+                        + "<ul>"
+                        + WYMeditor.CONTAINERS_ITEMS
+                        + "</ul>"
+                        + "</div>",
+                        
+    containersItemHtml:"<li class='"
+                        + WYMeditor.CONTAINER_CLASS
+                        + "'>"
+                        + "<a href='#' name='"
+                        + WYMeditor.CONTAINER_NAME
+                        + "'>"
+                        + WYMeditor.CONTAINER_TITLE
+                        + "</a></li>",
+                        
+    containersItems: [
+        {'name': 'P', 'title': 'Paragraph', 'css': 'wym_containers_p'},
+        {'name': 'H1', 'title': 'Heading_1', 'css': 'wym_containers_h1'},
+        {'name': 'H2', 'title': 'Heading_2', 'css': 'wym_containers_h2'},
+        {'name': 'H3', 'title': 'Heading_3', 'css': 'wym_containers_h3'},
+        {'name': 'H4', 'title': 'Heading_4', 'css': 'wym_containers_h4'},
+        {'name': 'H5', 'title': 'Heading_5', 'css': 'wym_containers_h5'},
+        {'name': 'H6', 'title': 'Heading_6', 'css': 'wym_containers_h6'},
+        {'name': 'PRE', 'title': 'Preformatted', 'css': 'wym_containers_pre'},
+        {'name': 'BLOCKQUOTE', 'title': 'Blockquote',
+            'css': 'wym_containers_blockquote'},
+        {'name': 'TH', 'title': 'Table_Header', 'css': 'wym_containers_th'}
+    ],
+
+    classesHtml:       "<div class='wym_classes wym_section'>"
+                        + "<h2>{Classes}</h2><ul>"
+                        + WYMeditor.CLASSES_ITEMS
+                        + "</ul></div>",
+
+    classesItemHtml:   "<li><a href='#' name='"
+                        + WYMeditor.CLASS_NAME
+                        + "'>"
+                        + WYMeditor.CLASS_TITLE
+                        + "</a></li>",
+
+    classesItems:      [],
+
+    statusHtml:        "<div class='wym_status wym_section'>"
+                        + "<h2>{Status}</h2>"
+                        + "</div>",
+
+    htmlHtml:          "<div class='wym_html wym_section'>"
+                        + "<h2>{Source_Code}</h2>"
+                        + "<textarea class='wym_html_val'></textarea>"
+                        + "</div>",
+
+    boxSelector:       ".wym_box",
+    toolsSelector:     ".wym_tools",
+    toolsListSelector: " ul",
+    containersSelector:".wym_containers",
+    classesSelector:   ".wym_classes",
+    htmlSelector:      ".wym_html",
+    iframeSelector:    ".wym_iframe iframe",
+    iframeBodySelector:".wym_iframe",
+    statusSelector:    ".wym_status",
+    toolSelector:      ".wym_tools a",
+    containerSelector: ".wym_containers a",
+    classSelector:     ".wym_classes a",
+    htmlValSelector:   ".wym_html_val",
+    
+    hrefSelector:      ".wym_href",
+    srcSelector:       ".wym_src",
+    titleSelector:     ".wym_title",
+    altSelector:       ".wym_alt",
+    textSelector:      ".wym_text",
+    
+    rowsSelector:      ".wym_rows",
+    colsSelector:      ".wym_cols",
+    captionSelector:   ".wym_caption",
+    summarySelector:   ".wym_summary",
+    
+    submitSelector:    ".wym_submit",
+    cancelSelector:    ".wym_cancel",
+    previewSelector:   "",
+    
+    dialogTypeSelector:    ".wym_dialog_type",
+    dialogLinkSelector:    ".wym_dialog_link",
+    dialogImageSelector:   ".wym_dialog_image",
+    dialogTableSelector:   ".wym_dialog_table",
+    dialogPasteSelector:   ".wym_dialog_paste",
+    dialogPreviewSelector: ".wym_dialog_preview",
+    
+    updateSelector:    ".wymupdate",
+    updateEvent:       "click",
+    
+    dialogFeatures:    "menubar=no,titlebar=no,toolbar=no,resizable=no"
+                      + ",width=560,height=300,top=0,left=0",
+    dialogFeaturesPreview: "menubar=no,titlebar=no,toolbar=no,resizable=no"
+                      + ",scrollbars=yes,width=560,height=300,top=0,left=0",
+
+    dialogHtml:      "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'"
+                      + " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>"
+                      + "<html dir='"
+                      + WYMeditor.DIRECTION
+                      + "'><head>"
+                      + "<link rel='stylesheet' type='text/css' media='screen'"
+                      + " href='"
+                      + WYMeditor.CSS_PATH
+                      + "' />"
+                      + "<title>"
+                      + WYMeditor.DIALOG_TITLE
+                      + "</title>"
+                      + "<script type='text/javascript'"
+                      + " src='"
+                      + WYMeditor.JQUERY_PATH
+                      + "'></script>"
+                      + "<script type='text/javascript'"
+                      + " src='"
+                      + WYMeditor.WYM_PATH
+                      + "'></script>"
+                      + "</head>"
+                      + WYMeditor.DIALOG_BODY
+                      + "</html>",
+                      
+    dialogLinkHtml:  "<body class='wym_dialog wym_dialog_link'"
+               + " onload='WYMeditor.INIT_DIALOG(" + WYMeditor.INDEX + ")'"
+               + ">"
+               + "<form>"
+               + "<fieldset>"
+               + "<input type='hidden' class='wym_dialog_type' value='"
+               + WYMeditor.DIALOG_LINK
+               + "' />"
+               + "<legend>{Link}</legend>"
+               + "<div class='row'>"
+               + "<label>{URL}</label>"
+               + "<input type='text' class='wym_href' value='' size='40' />"
+               + "</div>"
+               + "<div class='row'>"
+               + "<label>{Title}</label>"
+               + "<input type='text' class='wym_title' value='' size='40' />"
+               + "</div>"
+               + "<div class='row row-indent'>"
+               + "<input class='wym_submit' type='button'"
+               + " value='{Submit}' />"
+               + "<input class='wym_cancel' type='button'"
+               + "value='{Cancel}' />"
+               + "</div>"
+               + "</fieldset>"
+               + "</form>"
+               + "</body>",
+    
+    dialogImageHtml:  "<body class='wym_dialog wym_dialog_image'"
+               + " onload='WYMeditor.INIT_DIALOG(" + WYMeditor.INDEX + ")'"
+               + ">"
+               + "<form>"
+               + "<fieldset>"
+               + "<input type='hidden' class='wym_dialog_type' value='"
+               + WYMeditor.DIALOG_IMAGE
+               + "' />"
+               + "<legend>{Image}</legend>"
+               + "<div class='row'>"
+               + "<label>{URL}</label>"
+               + "<input type='text' class='wym_src' value='' size='40' />"
+               + "</div>"
+               + "<div class='row'>"
+               + "<label>{Alternative_Text}</label>"
+               + "<input type='text' class='wym_alt' value='' size='40' />"
+               + "</div>"
+               + "<div class='row'>"
+               + "<label>{Title}</label>"
+               + "<input type='text' class='wym_title' value='' size='40' />"
+               + "</div>"
+               + "<div class='row row-indent'>"
+               + "<input class='wym_submit' type='button'"
+               + " value='{Submit}' />"
+               + "<input class='wym_cancel' type='button'"
+               + "value='{Cancel}' />"
+               + "</div>"
+               + "</fieldset>"
+               + "</form>"
+               + "</body>",
+    
+    dialogTableHtml:  "<body class='wym_dialog wym_dialog_table'"
+               + " onload='WYMeditor.INIT_DIALOG(" + WYMeditor.INDEX + ")'"
+               + ">"
+               + "<form>"
+               + "<fieldset>"
+               + "<input type='hidden' class='wym_dialog_type' value='"
+               + WYMeditor.DIALOG_TABLE
+               + "' />"
+               + "<legend>{Table}</legend>"
+               + "<div class='row'>"
+               + "<label>{Caption}</label>"
+               + "<input type='text' class='wym_caption' value='' size='40' />"
+               + "</div>"
+               + "<div class='row'>"
+               + "<label>{Summary}</label>"
+               + "<input type='text' class='wym_summary' value='' size='40' />"
+               + "</div>"
+               + "<div class='row'>"
+               + "<label>{Number_Of_Rows}</label>"
+               + "<input type='text' class='wym_rows' value='3' size='3' />"
+               + "</div>"
+               + "<div class='row'>"
+               + "<label>{Number_Of_Cols}</label>"
+               + "<input type='text' class='wym_cols' value='2' size='3' />"
+               + "</div>"
+               + "<div class='row row-indent'>"
+               + "<input class='wym_submit' type='button'"
+               + " value='{Submit}' />"
+               + "<input class='wym_cancel' type='button'"
+               + "value='{Cancel}' />"
+               + "</div>"
+               + "</fieldset>"
+               + "</form>"
+               + "</body>",
+
+    dialogPasteHtml:  "<body class='wym_dialog wym_dialog_paste'"
+               + " onload='WYMeditor.INIT_DIALOG(" + WYMeditor.INDEX + ")'"
+               + ">"
+               + "<form>"
+               + "<input type='hidden' class='wym_dialog_type' value='"
+               + WYMeditor.DIALOG_PASTE
+               + "' />"
+               + "<fieldset>"
+               + "<legend>{Paste_From_Word}</legend>"
+               + "<div class='row'>"
+               + "<textarea class='wym_text' rows='10' cols='50'></textarea>"
+               + "</div>"
+               + "<div class='row'>"
+               + "<input class='wym_submit' type='button'"
+               + " value='{Submit}' />"
+               + "<input class='wym_cancel' type='button'"
+               + "value='{Cancel}' />"
+               + "</div>"
+               + "</fieldset>"
+               + "</form>"
+               + "</body>",
+
+    dialogPreviewHtml: "<body class='wym_dialog wym_dialog_preview'"
+                      + " onload='WYMeditor.INIT_DIALOG(" + WYMeditor.INDEX + ")'"
+                      + "></body>",
+                      
+    dialogStyles: [],
+
+    stringDelimiterLeft: "{",
+    stringDelimiterRight:"}",
+    
+    preInit: null,
+    preBind: null,
+    postInit: null,
+    
+    preInitDialog: null,
+    postInitDialog: null
+
+  }, options);
+
+  return this.each(function() {
+
+    new WYMeditor.editor(jQuery(this),options);
+  });
+};
+
+/* @name extend
+ * @description Returns the WYMeditor instance based on its index
+ */
+jQuery.extend({
+  wymeditors: function(i) {
+    return (WYMeditor.INSTANCES[i]);
+  }
+});
+
+
+/********** WYMeditor **********/
+
+/* @name Wymeditor
+ * @description WYMeditor class
+ */
+
+/* @name init
+ * @description Initializes a WYMeditor instance
+ */
+WYMeditor.editor.prototype.init = function() {
+
+  //load subclass - browser specific
+  //unsupported browsers: do nothing
+  if (jQuery.browser.msie) {
+    var WymClass = new WYMeditor.WymClassExplorer(this);
+  }
+  else if (jQuery.browser.mozilla) {
+    var WymClass = new WYMeditor.WymClassMozilla(this);
+  }
+  else if (jQuery.browser.opera) {
+    var WymClass = new WYMeditor.WymClassOpera(this);
+  }
+  else if (jQuery.browser.safari) {
+    var WymClass = new WYMeditor.WymClassSafari(this);
+  }
+  
+  if(WymClass) {
+  
+      if(jQuery.isFunction(this._options.preInit)) this._options.preInit(this);
+
+      var SaxListener = new WYMeditor.XhtmlSaxListener();
+      jQuery.extend(SaxListener, WymClass);
+      this.parser = new WYMeditor.XhtmlParser(SaxListener);
+      
+      if(this._options.styles || this._options.stylesheet){
+        this.configureEditorUsingRawCss();
+      }
+      
+      this.helper = new WYMeditor.XmlHelper();
+      
+      //extend the Wymeditor object
+      //don't use jQuery.extend since 1.1.4
+      //jQuery.extend(this, WymClass);
+      for (var prop in WymClass) { this[prop] = WymClass[prop]; }
+
+      //load wymbox
+      this._box = jQuery(this._element).hide().after(this._options.boxHtml).next().addClass('wym_box_' + this._index);
+
+      //store the instance index in wymbox and element replaced by editor instance
+      //but keep it compatible with jQuery < 1.2.3, see #122
+      if( jQuery.isFunction( jQuery.fn.data ) ) {
+        jQuery.data(this._box.get(0), WYMeditor.WYM_INDEX, this._index);
+        jQuery.data(this._element.get(0), WYMeditor.WYM_INDEX, this._index);
+      }
+      
+      var h = WYMeditor.Helper;
+
+      //construct the iframe
+      var iframeHtml = this._options.iframeHtml;
+      iframeHtml = h.replaceAll(iframeHtml, WYMeditor.INDEX, this._index);
+      iframeHtml = h.replaceAll(iframeHtml, WYMeditor.IFRAME_BASE_PATH, this._options.iframeBasePath);
+      
+      //construct wymbox
+      var boxHtml = jQuery(this._box).html();
+      
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.LOGO, this._options.logoHtml);
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.TOOLS, this._options.toolsHtml);
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.CONTAINERS,this._options.containersHtml);
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.CLASSES, this._options.classesHtml);
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.HTML, this._options.htmlHtml);
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.IFRAME, iframeHtml);
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.STATUS, this._options.statusHtml);
+      
+      //construct tools list
+      var aTools = eval(this._options.toolsItems);
+      var sTools = "";
+
+      for(var i = 0; i < aTools.length; i++) {
+        var oTool = aTools[i];
+        if(oTool.name && oTool.title)
+          var sTool = this._options.toolsItemHtml;
+          var sTool = h.replaceAll(sTool, WYMeditor.TOOL_NAME, oTool.name);
+          sTool = h.replaceAll(sTool, WYMeditor.TOOL_TITLE, this._options.stringDelimiterLeft
+            + oTool.title
+            + this._options.stringDelimiterRight);
+          sTool = h.replaceAll(sTool, WYMeditor.TOOL_CLASS, oTool.css);
+          sTools += sTool;
+      }
+
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.TOOLS_ITEMS, sTools);
+
+      //construct classes list
+      var aClasses = eval(this._options.classesItems);
+      var sClasses = "";
+
+      for(var i = 0; i < aClasses.length; i++) {
+        var oClass = aClasses[i];
+        if(oClass.name && oClass.title)
+          var sClass = this._options.classesItemHtml;
+          sClass = h.replaceAll(sClass, WYMeditor.CLASS_NAME, oClass.name);
+          sClass = h.replaceAll(sClass, WYMeditor.CLASS_TITLE, oClass.title);
+          sClasses += sClass;
+      }
+
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.CLASSES_ITEMS, sClasses);
+      
+      //construct containers list
+      var aContainers = eval(this._options.containersItems);
+      var sContainers = "";
+
+      for(var i = 0; i < aContainers.length; i++) {
+        var oContainer = aContainers[i];
+        if(oContainer.name && oContainer.title)
+          var sContainer = this._options.containersItemHtml;
+          sContainer = h.replaceAll(sContainer, WYMeditor.CONTAINER_NAME, oContainer.name);
+          sContainer = h.replaceAll(sContainer, WYMeditor.CONTAINER_TITLE,
+              this._options.stringDelimiterLeft
+            + oContainer.title
+            + this._options.stringDelimiterRight);
+          sContainer = h.replaceAll(sContainer, WYMeditor.CONTAINER_CLASS, oContainer.css);
+          sContainers += sContainer;
+      }
+
+      boxHtml = h.replaceAll(boxHtml, WYMeditor.CONTAINERS_ITEMS, sContainers);
+
+      //l10n
+      boxHtml = this.replaceStrings(boxHtml);
+      
+      //load html in wymbox
+      jQuery(this._box).html(boxHtml);
+      
+      //hide the html value
+      jQuery(this._box).find(this._options.htmlSelector).hide();
+      
+      //enable the skin
+      this.loadSkin();
+      
+    }
+};
+
+WYMeditor.editor.prototype.bindEvents = function() {
+
+  //copy the instance
+  var wym = this;
+  
+  //handle click event on tools buttons
+  jQuery(this._box).find(this._options.toolSelector).click(function() {
+    wym._iframe.contentWindow.focus(); //See #154
+    wym.exec(jQuery(this).attr(WYMeditor.NAME));    
+    return(false);
+  });
+  
+  //handle click event on containers buttons
+  jQuery(this._box).find(this._options.containerSelector).click(function() {
+    wym.container(jQuery(this).attr(WYMeditor.NAME));
+    return(false);
+  });
+  
+  //handle keyup event on html value: set the editor value
+  //handle focus/blur events to check if the element has focus, see #147
+  jQuery(this._box).find(this._options.htmlValSelector)
+    .keyup(function() { jQuery(wym._doc.body).html(jQuery(this).val());})
+    .focus(function() { jQuery(this).toggleClass('hasfocus'); })
+    .blur(function() { jQuery(this).toggleClass('hasfocus'); });
+
+  //handle click event on classes buttons
+  jQuery(this._box).find(this._options.classSelector).click(function() {
+  
+    var aClasses = eval(wym._options.classesItems);
+    var sName = jQuery(this).attr(WYMeditor.NAME);
+    
+    var oClass = WYMeditor.Helper.findByName(aClasses, sName);
+    
+    if(oClass) {
+      var jqexpr = oClass.expr;
+      wym.toggleClass(sName, jqexpr);
+    }
+    wym._iframe.contentWindow.focus(); //See #154
+    return(false);
+  });
+  
+  //handle event on update element
+  jQuery(this._options.updateSelector)
+    .bind(this._options.updateEvent, function() {
+      wym.update();
+  });
+};
+
+WYMeditor.editor.prototype.ready = function() {
+  return(this._doc != null);
+};
+
+
+/********** METHODS **********/
+
+/* @name box
+ * @description Returns the WYMeditor container
+ */
+WYMeditor.editor.prototype.box = function() {
+  return(this._box);
+};
+
+/* @name html
+ * @description Get/Set the html value
+ */
+WYMeditor.editor.prototype.html = function(html) {
+
+  if(typeof html === 'string') jQuery(this._doc.body).html(html);
+  else return(jQuery(this._doc.body).html());
+};
+
+/* @name xhtml
+ * @description Cleans up the HTML
+ */
+WYMeditor.editor.prototype.xhtml = function() {
+    return this.parser.parse(this.html());
+};
+
+/* @name exec
+ * @description Executes a button command
+ */
+WYMeditor.editor.prototype.exec = function(cmd) {
+  
+  //base function for execCommand
+  //open a dialog or exec
+  switch(cmd) {
+    case WYMeditor.CREATE_LINK:
+      var container = this.container();
+      if(container || this._selected_image) this.dialog(WYMeditor.DIALOG_LINK);
+    break;
+    
+    case WYMeditor.INSERT_IMAGE:
+      this.dialog(WYMeditor.DIALOG_IMAGE);
+    break;
+    
+    case WYMeditor.INSERT_TABLE:
+      this.dialog(WYMeditor.DIALOG_TABLE);
+    break;
+    
+    case WYMeditor.PASTE:
+      this.dialog(WYMeditor.DIALOG_PASTE);
+    break;
+    
+    case WYMeditor.TOGGLE_HTML:
+      this.update();
+      this.toggleHtml();
+
+      //partially fixes #121 when the user manually inserts an image
+      if(!jQuery(this._box).find(this._options.htmlSelector).is(':visible'))
+        this.listen();
+    break;
+    
+    case WYMeditor.PREVIEW:
+      this.dialog(WYMeditor.PREVIEW, this._options.dialogFeaturesPreview);
+    break;
+    
+    default:
+      this._exec(cmd);
+    break;
+  }
+};
+
+/* @name container
+ * @description Get/Set the selected container
+ */
+WYMeditor.editor.prototype.container = function(sType) {
+
+  if(sType) {
+  
+    var container = null;
+    
+    if(sType.toLowerCase() == WYMeditor.TH) {
+    
+      container = this.container();
+      
+      //find the TD or TH container
+      switch(container.tagName.toLowerCase()) {
+      
+        case WYMeditor.TD: case WYMeditor.TH:
+          break;
+        default:
+          var aTypes = new Array(WYMeditor.TD,WYMeditor.TH);
+          container = this.findUp(this.container(), aTypes);
+          break;
+      }
+      
+      //if it exists, switch
+      if(container!=null) {
+      
+        sType = (container.tagName.toLowerCase() == WYMeditor.TD)? WYMeditor.TH: WYMeditor.TD;
+        this.switchTo(container,sType);
+        this.update();
+      }
+    } else {
+  
+      //set the container type
+      var aTypes=new Array(WYMeditor.P,WYMeditor.H1,WYMeditor.H2,WYMeditor.H3,WYMeditor.H4,WYMeditor.H5,
+      WYMeditor.H6,WYMeditor.PRE,WYMeditor.BLOCKQUOTE);
+      container = this.findUp(this.container(), aTypes);
+      
+      if(container) {
+  
+        var newNode = null;
+  
+        //blockquotes must contain a block level element
+        if(sType.toLowerCase() == WYMeditor.BLOCKQUOTE) {
+        
+          var blockquote = this.findUp(this.container(), WYMeditor.BLOCKQUOTE);
+          
+          if(blockquote == null) {
+          
+            newNode = this._doc.createElement(sType);
+            container.parentNode.insertBefore(newNode,container);
+            newNode.appendChild(container);
+            this.setFocusToNode(newNode.firstChild);
+            
+          } else {
+          
+            var nodes = blockquote.childNodes;
+            var lgt = nodes.length;
+            var firstNode = null;
+            
+            if(lgt > 0) firstNode = nodes.item(0);
+            for(var x=0; x<lgt; x++) {
+              blockquote.parentNode.insertBefore(nodes.item(0),blockquote);
+            }
+            blockquote.parentNode.removeChild(blockquote);
+            if(firstNode) this.setFocusToNode(firstNode);
+          }
+        }
+        
+        else this.switchTo(container,sType);
+      
+        this.update();
+      }
+    }
+  }
+  else return(this.selected());
+};
+
+/* @name toggleClass
+ * @description Toggles class on selected element, or one of its parents
+ */
+WYMeditor.editor.prototype.toggleClass = function(sClass, jqexpr) {
+
+  var container = (this._selected_image
+                    ? this._selected_image
+                    : jQuery(this.selected()));
+  container = jQuery(container).parentsOrSelf(jqexpr);
+  jQuery(container).toggleClass(sClass);
+
+  if(!jQuery(container).attr(WYMeditor.CLASS)) jQuery(container).removeAttr(this._class);
+
+};
+
+/* @name findUp
+ * @description Returns the first parent or self container, based on its type
+ */
+WYMeditor.editor.prototype.findUp = function(node, filter) {
+
+  //filter is a string or an array of strings
+
+  if(node) {
+
+      var tagname = node.tagName.toLowerCase();
+      
+      if(typeof(filter) == WYMeditor.STRING) {
+    
+        while(tagname != filter && tagname != WYMeditor.BODY) {
+        
+          node = node.parentNode;
+          tagname = node.tagName.toLowerCase();
+        }
+      
+      } else {
+      
+        var bFound = false;
+        
+        while(!bFound && tagname != WYMeditor.BODY) {
+          for(var i = 0; i < filter.length; i++) {
+            if(tagname == filter[i]) {
+              bFound = true;
+              break;
+            }
+          }
+          if(!bFound) {
+            node = node.parentNode;
+            tagname = node.tagName.toLowerCase();
+          }
+        }
+      }
+      
+      if(tagname != WYMeditor.BODY) return(node);
+      else return(null);
+      
+  } else return(null);
+};
+
+/* @name switchTo
+ * @description Switch the node's type
+ */
+WYMeditor.editor.prototype.switchTo = function(node,sType) {
+
+  var newNode = this._doc.createElement(sType);
+  var html = jQuery(node).html();
+  node.parentNode.replaceChild(newNode,node);
+  jQuery(newNode).html(html);
+  this.setFocusToNode(newNode);
+};
+
+WYMeditor.editor.prototype.replaceStrings = function(sVal) {
+  //check if the language file has already been loaded
+  //if not, get it via a synchronous ajax call
+  if(!WYMeditor.STRINGS[this._options.lang]) {
+    try {
+      eval(jQuery.ajax({url:this._options.langPath
+        + this._options.lang + '.js', async:false}).responseText);
+    } catch(e) {
+        WYMeditor.console.error("WYMeditor: error while parsing language file.");
+        return sVal;
+    }
+  }
+
+  //replace all the strings in sVal and return it
+  for (var key in WYMeditor.STRINGS[this._options.lang]) {
+    sVal = WYMeditor.Helper.replaceAll(sVal, this._options.stringDelimiterLeft + key 
+    + this._options.stringDelimiterRight,
+    WYMeditor.STRINGS[this._options.lang][key]);
+  };
+  return(sVal);
+};
+
+WYMeditor.editor.prototype.encloseString = function(sVal) {
+
+  return(this._options.stringDelimiterLeft
+    + sVal
+    + this._options.stringDelimiterRight);
+};
+
+/* @name status
+ * @description Prints a status message
+ */
+WYMeditor.editor.prototype.status = function(sMessage) {
+
+  //print status message
+  jQuery(this._box).find(this._options.statusSelector).html(sMessage);
+};
+
+/* @name update
+ * @description Updates the element and textarea values
+ */
+WYMeditor.editor.prototype.update = function() {
+
+  var html = this.xhtml();
+  jQuery(this._element).val(html);
+  jQuery(this._box).find(this._options.htmlValSelector).not('.hasfocus').val(html); //#147
+};
+
+/* @name dialog
+ * @description Opens a dialog box
+ */
+WYMeditor.editor.prototype.dialog = function( dialogType, dialogFeatures, bodyHtml ) {
+  
+  var features = dialogFeatures || this._wym._options.dialogFeatures;
+  var wDialog = window.open('', 'dialog', features);
+
+  if(wDialog) {
+
+    var sBodyHtml = "";
+    
+    switch( dialogType ) {
+
+      case(WYMeditor.DIALOG_LINK):
+        sBodyHtml = this._options.dialogLinkHtml;
+      break;
+      case(WYMeditor.DIALOG_IMAGE):
+        sBodyHtml = this._options.dialogImageHtml;
+      break;
+      case(WYMeditor.DIALOG_TABLE):
+        sBodyHtml = this._options.dialogTableHtml;
+      break;
+      case(WYMeditor.DIALOG_PASTE):
+        sBodyHtml = this._options.dialogPasteHtml;
+      break;
+      case(WYMeditor.PREVIEW):
+        sBodyHtml = this._options.dialogPreviewHtml;
+      break;
+
+      default:
+        sBodyHtml = bodyHtml;
+    }
+    
+    var h = WYMeditor.Helper;
+
+    //construct the dialog
+    var dialogHtml = this._options.dialogHtml;
+    dialogHtml = h.replaceAll(dialogHtml, WYMeditor.BASE_PATH, this._options.basePath);
+    dialogHtml = h.replaceAll(dialogHtml, WYMeditor.DIRECTION, this._options.direction);
+    dialogHtml = h.replaceAll(dialogHtml, WYMeditor.CSS_PATH, this._options.skinPath + WYMeditor.SKINS_DEFAULT_CSS);
+    dialogHtml = h.replaceAll(dialogHtml, WYMeditor.WYM_PATH, this._options.wymPath);
+    dialogHtml = h.replaceAll(dialogHtml, WYMeditor.JQUERY_PATH, this._options.jQueryPath);
+    dialogHtml = h.replaceAll(dialogHtml, WYMeditor.DIALOG_TITLE, this.encloseString( dialogType ));
+    dialogHtml = h.replaceAll(dialogHtml, WYMeditor.DIALOG_BODY, sBodyHtml);
+    dialogHtml = h.replaceAll(dialogHtml, WYMeditor.INDEX, this._index);
+      
+    dialogHtml = this.replaceStrings(dialogHtml);
+    
+    var doc = wDialog.document;
+    doc.write(dialogHtml);
+    doc.close();
+  }
+};
+
+/* @name toggleHtml
+ * @description Shows/Hides the HTML
+ */
+WYMeditor.editor.prototype.toggleHtml = function() {
+  jQuery(this._box).find(this._options.htmlSelector).toggle();
+};
+
+WYMeditor.editor.prototype.uniqueStamp = function() {
+	var now = new Date();
+	return("wym-" + now.getTime());
+};
+
+WYMeditor.editor.prototype.paste = function(sData) {
+
+  var sTmp;
+  var container = this.selected();
+	
+  //split the data, using double newlines as the separator
+  var aP = sData.split(this._newLine + this._newLine);
+  var rExp = new RegExp(this._newLine, "g");
+
+  //add a P for each item
+  if(container && container.tagName.toLowerCase() != WYMeditor.BODY) {
+    for(x = aP.length - 1; x >= 0; x--) {
+        sTmp = aP[x];
+        //simple newlines are replaced by a break
+        sTmp = sTmp.replace(rExp, "<br />");
+        jQuery(container).after("<p>" + sTmp + "</p>");
+    }
+  } else {
+    for(x = 0; x < aP.length; x++) {
+        sTmp = aP[x];
+        //simple newlines are replaced by a break
+        sTmp = sTmp.replace(rExp, "<br />");
+        jQuery(this._doc.body).append("<p>" + sTmp + "</p>");
+    }
+  
+  }
+};
+
+WYMeditor.editor.prototype.insert = function(html) {
+    // Do we have a selection?
+    if (this._iframe.contentWindow.getSelection().focusNode != null) {
+        // Overwrite selection with provided html
+        this._exec( WYMeditor.INSERT_HTML, html);
+    } else {
+        // Fall back to the internal paste function if there's no selection
+        this.paste(html)
+    }
+};
+
+WYMeditor.editor.prototype.wrap = function(left, right) {
+    // Do we have a selection?
+    if (this._iframe.contentWindow.getSelection().focusNode != null) {
+        // Wrap selection with provided html
+        this._exec( WYMeditor.INSERT_HTML, left + this._iframe.contentWindow.getSelection().toString() + right);
+    }
+};
+
+WYMeditor.editor.prototype.unwrap = function() {
+    // Do we have a selection?
+    if (this._iframe.contentWindow.getSelection().focusNode != null) {
+        // Unwrap selection
+        this._exec( WYMeditor.INSERT_HTML, this._iframe.contentWindow.getSelection().toString() );
+    }
+};
+
+WYMeditor.editor.prototype.addCssRules = function(doc, aCss) {
+  var styles = doc.styleSheets[0];
+  if(styles) {
+    for(var i = 0; i < aCss.length; i++) {
+      var oCss = aCss[i];
+      if(oCss.name && oCss.css) this.addCssRule(styles, oCss);
+    }
+  }
+};
+
+/********** CONFIGURATION **********/
+
+WYMeditor.editor.prototype.computeBasePath = function() {
+  return jQuery(jQuery.grep(jQuery('script'), function(s){
+    return (s.src && s.src.match(/jquery\.wymeditor(\.pack|\.min|\.packed)?\.js(\?.*)?$/ ))
+  })).attr('src').replace(/jquery\.wymeditor(\.pack|\.min|\.packed)?\.js(\?.*)?$/, '');
+};
+
+WYMeditor.editor.prototype.computeWymPath = function() {
+  return jQuery(jQuery.grep(jQuery('script'), function(s){
+    return (s.src && s.src.match(/jquery\.wymeditor(\.pack|\.min|\.packed)?\.js(\?.*)?$/ ))
+  })).attr('src');
+};
+
+WYMeditor.editor.prototype.computeJqueryPath = function() {
+  return jQuery(jQuery.grep(jQuery('script'), function(s){
+    return (s.src && s.src.match(/jquery(-(.*)){0,1}(\.pack|\.min|\.packed)?\.js(\?.*)?$/ ))
+  })).attr('src');
+};
+
+WYMeditor.editor.prototype.computeCssPath = function() {
+  return jQuery(jQuery.grep(jQuery('link'), function(s){
+   return (s.href && s.href.match(/wymeditor\/skins\/(.*)screen\.css(\?.*)?$/ ))
+  })).attr('href');
+};
+
+WYMeditor.editor.prototype.configureEditorUsingRawCss = function() {
+
+  var CssParser = new WYMeditor.WymCssParser();
+  if(this._options.stylesheet){
+    CssParser.parse(jQuery.ajax({url: this._options.stylesheet,async:false}).responseText);
+  }else{
+    CssParser.parse(this._options.styles, false);
+  }
+
+  if(this._options.classesItems.length == 0) {
+    this._options.classesItems = CssParser.css_settings.classesItems;
+  }
+  if(this._options.editorStyles.length == 0) {
+    this._options.editorStyles = CssParser.css_settings.editorStyles;
+  }
+  if(this._options.dialogStyles.length == 0) {
+    this._options.dialogStyles = CssParser.css_settings.dialogStyles;
+  }
+};
+
+/********** EVENTS **********/
+
+WYMeditor.editor.prototype.listen = function() {
+
+  //don't use jQuery.find() on the iframe body
+  //because of MSIE + jQuery + expando issue (#JQ1143)
+  //jQuery(this._doc.body).find("*").bind("mouseup", this.mouseup);
+  
+  jQuery(this._doc.body).bind("mousedown", this.mousedown);
+  var images = this._doc.body.getElementsByTagName("img");
+  for(var i=0; i < images.length; i++) {
+    jQuery(images[i]).bind("mousedown", this.mousedown);
+  }
+};
+
+WYMeditor.editor.prototype.mousedown = function(evt) {
+  
+  var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
+  wym._selected_image = (this.tagName.toLowerCase() == WYMeditor.IMG) ? this : null;
+  evt.stopPropagation();
+};
+
+/********** SKINS **********/
+
+/*
+ * Function: WYMeditor.loadCss
+ *      Loads a stylesheet in the document.
+ *
+ * Parameters:
+ *      href - The CSS path.
+ */
+WYMeditor.loadCss = function(href) {
+    
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+
+    var head = jQuery('head').get(0);
+    head.appendChild(link);
+};
+
+/*
+ *  Function: WYMeditor.editor.loadSkin
+ *      Loads the skin CSS and initialization script (if needed).
+ */
+WYMeditor.editor.prototype.loadSkin = function() {
+
+    //does the user want to automatically load the CSS (default: yes)?
+    //we also test if it hasn't been already loaded by another instance
+    //see below for a better (second) test
+    if(this._options.loadSkin && !WYMeditor.SKINS[this._options.skin]) {
+
+        //check if it hasn't been already loaded
+        //so we don't load it more than once
+        //(we check the existing <link> elements)
+
+        var found = false;
+        var rExp = new RegExp(this._options.skin
+             + '\/' + WYMeditor.SKINS_DEFAULT_CSS + '$');
+
+        jQuery('link').each( function() {
+            if(this.href.match(rExp)) found = true;
+        });
+
+        //load it, using the skin path
+        if(!found) WYMeditor.loadCss( this._options.skinPath
+            + WYMeditor.SKINS_DEFAULT_CSS );
+    }
+
+    //put the classname (ex. wym_skin_default) on wym_box
+    jQuery(this._box).addClass( "wym_skin_" + this._options.skin );
+
+    //does the user want to use some JS to initialize the skin (default: yes)?
+    //also check if it hasn't already been loaded by another instance
+    if(this._options.initSkin && !WYMeditor.SKINS[this._options.skin]) {
+
+        eval(jQuery.ajax({url:this._options.skinPath
+            + WYMeditor.SKINS_DEFAULT_JS, async:false}).responseText);
+    }
+
+    //init the skin, if needed
+    if(WYMeditor.SKINS[this._options.skin]
+    && WYMeditor.SKINS[this._options.skin].init)
+       WYMeditor.SKINS[this._options.skin].init(this);
+
+};
+
+
+/********** DIALOGS **********/
+
+WYMeditor.INIT_DIALOG = function(index) {
+
+  var wym = window.opener.WYMeditor.INSTANCES[index];
+  var doc = window.document;
+  var selected = wym.selected();
+  var dialogType = jQuery(wym._options.dialogTypeSelector).val();
+  var sStamp = wym.uniqueStamp();
+
+  switch(dialogType) {
+
+  case WYMeditor.DIALOG_LINK:
+    //ensure that we select the link to populate the fields
+    if(selected && selected.tagName && selected.tagName.toLowerCase != WYMeditor.A)
+      selected = jQuery(selected).parentsOrSelf(WYMeditor.A);
+
+    //fix MSIE selection if link image has been clicked
+    if(!selected && wym._selected_image)
+      selected = jQuery(wym._selected_image).parentsOrSelf(WYMeditor.A);
+  break;
+
+  }
+
+  //pre-init functions
+  if(jQuery.isFunction(wym._options.preInitDialog))
+    wym._options.preInitDialog(wym,window);
+
+  //add css rules from options
+  var styles = doc.styleSheets[0];
+  var aCss = eval(wym._options.dialogStyles);
+
+  wym.addCssRules(doc, aCss);
+
+  //auto populate fields if selected container (e.g. A)
+  if(selected) {
+    jQuery(wym._options.hrefSelector).val(jQuery(selected).attr(WYMeditor.HREF));
+    jQuery(wym._options.srcSelector).val(jQuery(selected).attr(WYMeditor.SRC));
+    jQuery(wym._options.titleSelector).val(jQuery(selected).attr(WYMeditor.TITLE));
+    jQuery(wym._options.altSelector).val(jQuery(selected).attr(WYMeditor.ALT));
+  }
+
+  //auto populate image fields if selected image
+  if(wym._selected_image) {
+    jQuery(wym._options.dialogImageSelector + " " + wym._options.srcSelector)
+      .val(jQuery(wym._selected_image).attr(WYMeditor.SRC));
+    jQuery(wym._options.dialogImageSelector + " " + wym._options.titleSelector)
+      .val(jQuery(wym._selected_image).attr(WYMeditor.TITLE));
+    jQuery(wym._options.dialogImageSelector + " " + wym._options.altSelector)
+      .val(jQuery(wym._selected_image).attr(WYMeditor.ALT));
+  }
+
+  jQuery(wym._options.dialogLinkSelector + " "
+    + wym._options.submitSelector).click(function() {
+
+      var sUrl = jQuery(wym._options.hrefSelector).val();
+      if(sUrl.length > 0) {
+
+        wym._exec(WYMeditor.CREATE_LINK, sStamp);
+
+        jQuery("a[href=" + sStamp + "]", wym._doc.body)
+            .attr(WYMeditor.HREF, sUrl)
+            .attr(WYMeditor.TITLE, jQuery(wym._options.titleSelector).val());
+
+      }
+      window.close();
+  });
+
+  jQuery(wym._options.dialogImageSelector + " "
+    + wym._options.submitSelector).click(function() {
+
+      var sUrl = jQuery(wym._options.srcSelector).val();
+      if(sUrl.length > 0) {
+
+        wym._exec(WYMeditor.INSERT_IMAGE, sStamp);
+
+        jQuery("img[src$=" + sStamp + "]", wym._doc.body)
+            .attr(WYMeditor.SRC, sUrl)
+            .attr(WYMeditor.TITLE, jQuery(wym._options.titleSelector).val())
+            .attr(WYMeditor.ALT, jQuery(wym._options.altSelector).val());
+      }
+      window.close();
+  });
+
+  jQuery(wym._options.dialogTableSelector + " "
+    + wym._options.submitSelector).click(function() {
+
+      var iRows = jQuery(wym._options.rowsSelector).val();
+      var iCols = jQuery(wym._options.colsSelector).val();
+
+      if(iRows > 0 && iCols > 0) {
+
+        var table = wym._doc.createElement(WYMeditor.TABLE);
+        var newRow = null;
+		var newCol = null;
+
+		var sCaption = jQuery(wym._options.captionSelector).val();
+
+		//we create the caption
+		var newCaption = table.createCaption();
+		newCaption.innerHTML = sCaption;
+
+		//we create the rows and cells
+		for(x=0; x<iRows; x++) {
+			newRow = table.insertRow(x);
+			for(y=0; y<iCols; y++) {newRow.insertCell(y);}
+		}
+
+        //set the summary attr
+        jQuery(table).attr('summary',
+            jQuery(wym._options.summarySelector).val());
+
+        //append the table after the selected container
+        var node = jQuery(wym.findUp(wym.container(),
+          WYMeditor.MAIN_CONTAINERS)).get(0);
+        if(!node || !node.parentNode) jQuery(wym._doc.body).append(table);
+        else jQuery(node).after(table);
+      }
+      window.close();
+  });
+
+  jQuery(wym._options.dialogPasteSelector + " "
+    + wym._options.submitSelector).click(function() {
+
+      var sText = jQuery(wym._options.textSelector).val();
+      wym.paste(sText);
+      window.close();
+  });
+
+  jQuery(wym._options.dialogPreviewSelector + " "
+    + wym._options.previewSelector)
+    .html(wym.xhtml());
+
+  //cancel button
+  jQuery(wym._options.cancelSelector).mousedown(function() {
+    window.close();
+  });
+
+  //pre-init functions
+  if(jQuery.isFunction(wym._options.postInitDialog))
+    wym._options.postInitDialog(wym,window);
+
+};
+
+/********** XHTML LEXER/PARSER **********/
+
+/*
+* @name xml
+* @description Use these methods to generate XML and XHTML compliant tags and
+* escape tag attributes correctly
+* @author Bermi Ferrer - http://bermi.org
+* @author David Heinemeier Hansson http://loudthinking.com
+*/
+WYMeditor.XmlHelper = function()
+{
+  this._entitiesDiv = document.createElement('div');
+  return this;
+};
+
+
+/*
+* @name tag
+* @description
+* Returns an empty HTML tag of type *name* which by default is XHTML
+* compliant. Setting *open* to true will create an open tag compatible
+* with HTML 4.0 and below. Add HTML attributes by passing an attributes
+* array to *options*. For attributes with no value like (disabled and
+* readonly), give it a value of true in the *options* array.
+*
+* Examples:
+*
+*   this.tag('br')
+*    # => <br />
+*   this.tag ('br', false, true)
+*    # => <br>
+*   this.tag ('input', jQuery({type:'text',disabled:true }) )
+*    # => <input type="text" disabled="disabled" />
+*/
+WYMeditor.XmlHelper.prototype.tag = function(name, options, open)
+{
+  options = options || false;
+  open = open || false;
+  return '<'+name+(options ? this.tagOptions(options) : '')+(open ? '>' : ' />');
+};
+
+/*
+* @name contentTag
+* @description
+* Returns a XML block tag of type *name* surrounding the *content*. Add
+* XML attributes by passing an attributes array to *options*. For attributes
+* with no value like (disabled and readonly), give it a value of true in
+* the *options* array. You can use symbols or strings for the attribute names.
+*
+*   this.contentTag ('p', 'Hello world!' )
+*    # => <p>Hello world!</p>
+*   this.contentTag('div', this.contentTag('p', "Hello world!"), jQuery({class : "strong"}))
+*    # => <div class="strong"><p>Hello world!</p></div>
+*   this.contentTag("select", options, jQuery({multiple : true}))
+*    # => <select multiple="multiple">...options...</select>
+*/
+WYMeditor.XmlHelper.prototype.contentTag = function(name, content, options)
+{
+  options = options || false;
+  return '<'+name+(options ? this.tagOptions(options) : '')+'>'+content+'</'+name+'>';
+};
+
+/*
+* @name cdataSection
+* @description
+* Returns a CDATA section for the given +content+.  CDATA sections
+* are used to escape blocks of text containing characters which would
+* otherwise be recognized as markup. CDATA sections begin with the string
+* <tt>&lt;![CDATA[</tt> and } with (and may not contain) the string
+* <tt>]]></tt>.
+*/
+WYMeditor.XmlHelper.prototype.cdataSection = function(content)
+{
+  return '<![CDATA['+content+']]>';
+};
+
+
+/*
+* @name escapeOnce
+* @description
+* Returns the escaped +xml+ without affecting existing escaped entities.
+*
+*  this.escapeOnce( "1 > 2 &amp; 3")
+*    # => "1 &gt; 2 &amp; 3"
+*/
+WYMeditor.XmlHelper.prototype.escapeOnce = function(xml)
+{
+  return this._fixDoubleEscape(this.escapeEntities(xml));
+};
+
+/*
+* @name _fixDoubleEscape
+* @description
+* Fix double-escaped entities, such as &amp;amp;, &amp;#123;, etc.
+*/
+WYMeditor.XmlHelper.prototype._fixDoubleEscape = function(escaped)
+{
+  return escaped.replace(/&amp;([a-z]+|(#\d+));/ig, "&$1;");
+};
+
+/*
+* @name tagOptions
+* @description
+* Takes an array like the one generated by Tag.parseAttributes
+*  [["src", "http://www.editam.com/?a=b&c=d&amp;f=g"], ["title", "Editam, <Simplified> CMS"]]
+* or an object like {src:"http://www.editam.com/?a=b&c=d&amp;f=g", title:"Editam, <Simplified> CMS"}
+* and returns a string properly escaped like
+* ' src = "http://www.editam.com/?a=b&amp;c=d&amp;f=g" title = "Editam, &lt;Simplified&gt; CMS"'
+* which is valid for strict XHTML
+*/
+WYMeditor.XmlHelper.prototype.tagOptions = function(options)
+{
+  var xml = this;
+  xml._formated_options = '';
+
+  for (var key in options) {
+    var formated_options = '';
+    var value = options[key];
+    if(typeof value != 'function' && value.length > 0) {
+
+      if(parseInt(key) == key && typeof value == 'object'){
+        key = value.shift();
+        value = value.pop();
+      }
+      if(key != '' && value != ''){
+        xml._formated_options += ' '+key+'="'+xml.escapeOnce(value)+'"';
+      }
+    }
+  }
+  return xml._formated_options;
+};
+
+/*
+* @name escapeEntities
+* @description
+* Escapes XML/HTML entities <, >, & and ". If seccond parameter is set to false it
+* will not escape ". If set to true it will also escape '
+*/
+WYMeditor.XmlHelper.prototype.escapeEntities = function(string, escape_quotes)
+{
+  this._entitiesDiv.innerHTML = string;
+  this._entitiesDiv.textContent = string;
+  var result = this._entitiesDiv.innerHTML;
+  if(typeof escape_quotes == 'undefined'){
+    if(escape_quotes != false) result = result.replace('"', '&quot;');
+    if(escape_quotes == true)  result = result.replace('"', '&#039;');
+  }
+  return result;
+};
+
+/*
+* Parses a string conatining tag attributes and values an returns an array formated like
+*  [["src", "http://www.editam.com"], ["title", "Editam, Simplified CMS"]]
+*/
+WYMeditor.XmlHelper.prototype.parseAttributes = function(tag_attributes)
+{
+  // Use a compounded regex to match single quoted, double quoted and unquoted attribute pairs
+  var result = [];
+  var matches = tag_attributes.split(/((=\s*")(")("))|((=\s*\')(\')(\'))|((=\s*[^>\s]*))/g);
+  if(matches.toString() != tag_attributes){
+    for (var k in matches) {
+      var v = matches[k];
+      if(typeof v != 'function' && v.length != 0){
+        var re = new RegExp('(\\w+)\\s*'+v);
+        if(match = tag_attributes.match(re) ){
+          var value = v.replace(/^[\s=]+/, "");
+          var delimiter = value.charAt(0);
+          delimiter = delimiter == '"' ? '"' : (delimiter=="'"?"'":'');
+          if(delimiter != ''){
+            value = delimiter == '"' ? value.replace(/^"|"+$/g, '') :  value.replace(/^'|'+$/g, '');
+          }
+          tag_attributes = tag_attributes.replace(match[0],'');
+          result.push([match[1] , value]);
+        }
+      }
+    }
+  }
+  return result;
+};
+
+/**
+* XhtmlValidator for validating tag attributes
+*
+* @author Bermi Ferrer - http://bermi.org
+*/
+WYMeditor.XhtmlValidator = {
+  "_attributes":
+  {
+    "core":
+    {
+      "except":[
+      "base",
+      "head",
+      "html",
+      "meta",
+      "param",
+      "script",
+      "style",
+      "title"
+      ],
+      "attributes":[
+      "class",
+      "id",
+      "style",
+      "title",
+      "accesskey",
+      "tabindex"
+      ]
+    },
+    "language":
+    {
+      "except":[
+      "base",
+      "br",
+      "hr",
+      "iframe",
+      "param",
+      "script"
+      ],
+      "attributes":
+      {
+        "dir":[
+        "ltr",
+        "rtl"
+        ],
+        "0":"lang",
+        "1":"xml:lang"
+      }
+    },
+    "keyboard":
+    {
+      "attributes":
+      {
+        "accesskey":/^(\w){1}$/,
+        "tabindex":/^(\d)+$/
+      }
+    }
+  },
+  "_events":
+  {
+    "window":
+    {
+      "only":[
+      "body"
+      ],
+      "attributes":[
+      "onload",
+      "onunload"
+      ]
+    },
+    "form":
+    {
+      "only":[
+      "form",
+      "input",
+      "textarea",
+      "select",
+      "a",
+      "label",
+      "button"
+      ],
+      "attributes":[
+      "onchange",
+      "onsubmit",
+      "onreset",
+      "onselect",
+      "onblur",
+      "onfocus"
+      ]
+    },
+    "keyboard":
+    {
+      "except":[
+      "base",
+      "bdo",
+      "br",
+      "frame",
+      "frameset",
+      "head",
+      "html",
+      "iframe",
+      "meta",
+      "param",
+      "script",
+      "style",
+      "title"
+      ],
+      "attributes":[
+      "onkeydown",
+      "onkeypress",
+      "onkeyup"
+      ]
+    },
+    "mouse":
+    {
+      "except":[
+      "base",
+      "bdo",
+      "br",
+      "head",
+      "html",
+      "meta",
+      "param",
+      "script",
+      "style",
+      "title"
+      ],
+      "attributes":[
+      "onclick",
+      "ondblclick",
+      "onmousedown",
+      "onmousemove",
+      "onmouseover",
+      "onmouseout",
+      "onmouseup"
+      ]
+    }
+  },
+  "_tags":
+  {
+    "a":
+    {
+      "attributes":
+      {
+        "0":"charset",
+        "1":"coords",
+        "2":"href",
+        "3":"hreflang",
+        "4":"name",
+        "rel":/^(alternate|designates|stylesheet|start|next|prev|contents|index|glossary|copyright|chapter|section|subsection|appendix|help|bookmark| |shortcut|icon)+$/,
+        "rev":/^(alternate|designates|stylesheet|start|next|prev|contents|index|glossary|copyright|chapter|section|subsection|appendix|help|bookmark| |shortcut|icon)+$/,
+        "shape":/^(rect|rectangle|circ|circle|poly|polygon)$/,
+        "5":"type"
+      }
+    },
+    "0":"abbr",
+    "1":"acronym",
+    "2":"address",
+    "area":
+    {
+      "attributes":
+      {
+        "0":"alt",
+        "1":"coords",
+        "2":"href",
+        "nohref":/^(true|false)$/,
+        "shape":/^(rect|rectangle|circ|circle|poly|polygon)$/
+      },
+      "required":[
+      "alt"
+      ]
+    },
+    "3":"b",
+    "base":
+    {
+      "attributes":[
+      "href"
+      ],
+      "required":[
+      "href"
+      ]
+    },
+    "bdo":
+    {
+      "attributes":
+      {
+        "dir":/^(ltr|rtl)$/
+      },
+      "required":[
+      "dir"
+      ]
+    },
+    "4":"big",
+    "blockquote":
+    {
+      "attributes":[
+      "cite"
+      ]
+    },
+    "5":"body",
+    "6":"br",
+    "button":
+    {
+      "attributes":
+      {
+        "disabled":/^(disabled)$/,
+        "type":/^(button|reset|submit)$/,
+        "0":"value"
+      },
+      "inside":"form"
+    },
+    "7":"caption",
+    "8":"cite",
+    "9":"code",
+    "col":
+    {
+      "attributes":
+      {
+        "align":/^(right|left|center|justify)$/,
+        "0":"char",
+        "1":"charoff",
+        "span":/^(\d)+$/,
+        "valign":/^(top|middle|bottom|baseline)$/,
+        "2":"width"
+      },
+      "inside":"colgroup"
+    },
+    "colgroup":
+    {
+      "attributes":
+      {
+        "align":/^(right|left|center|justify)$/,
+        "0":"char",
+        "1":"charoff",
+        "span":/^(\d)+$/,
+        "valign":/^(top|middle|bottom|baseline)$/,
+        "2":"width"
+      }
+    },
+    "10":"dd",
+    "del":
+    {
+      "attributes":
+      {
+        "0":"cite",
+        "datetime":/^([0-9]){8}/
+      }
+    },
+    "11":"div",
+    "12":"dfn",
+    "13":"dl",
+    "14":"dt",
+    "15":"em",
+    "fieldset":
+    {
+      "inside":"form"
+    },
+    "form":
+    {
+      "attributes":
+      {
+        "0":"action",
+        "1":"accept",
+        "2":"accept-charset",
+        "3":"enctype",
+        "method":/^(get|post)$/
+      },
+      "required":[
+      "action"
+      ]
+    },
+    "head":
+    {
+      "attributes":[
+      "profile"
+      ]
+    },
+    "16":"h1",
+    "17":"h2",
+    "18":"h3",
+    "19":"h4",
+    "20":"h5",
+    "21":"h6",
+    "22":"hr",
+    "html":
+    {
+      "attributes":[
+      "xmlns"
+      ]
+    },
+    "23":"i",
+    "img":
+    {
+      "attributes":[
+      "alt",
+      "src",
+      "height",
+      "ismap",
+      "longdesc",
+      "usemap",
+      "width"
+      ],
+      "required":[
+      "alt",
+      "src"
+      ]
+    },
+    "input":
+    {
+      "attributes":
+      {
+        "0":"accept",
+        "1":"alt",
+        "checked":/^(checked)$/,
+        "disabled":/^(disabled)$/,
+        "maxlength":/^(\d)+$/,
+        "2":"name",
+        "readonly":/^(readonly)$/,
+        "size":/^(\d)+$/,
+        "3":"src",
+        "type":/^(button|checkbox|file|hidden|image|password|radio|reset|submit|text)$/,
+        "4":"value"
+      },
+      "inside":"form"
+    },
+    "ins":
+    {
+      "attributes":
+      {
+        "0":"cite",
+        "datetime":/^([0-9]){8}/
+      }
+    },
+    "24":"kbd",
+    "label":
+    {
+      "attributes":[
+      "for"
+      ],
+      "inside":"form"
+    },
+    "25":"legend",
+    "26":"li",
+    "link":
+    {
+      "attributes":
+      {
+        "0":"charset",
+        "1":"href",
+        "2":"hreflang",
+        "media":/^(all|braille|print|projection|screen|speech|,|;| )+$/i,
+        //next comment line required by Opera!
+        /*"rel":/^(alternate|appendix|bookmark|chapter|contents|copyright|glossary|help|home|index|next|prev|section|start|stylesheet|subsection| |shortcut|icon)+$/i,*/
+        "rel":/^(alternate|appendix|bookmark|chapter|contents|copyright|glossary|help|home|index|next|prev|section|start|stylesheet|subsection| |shortcut|icon)+$/i,
+        "rev":/^(alternate|appendix|bookmark|chapter|contents|copyright|glossary|help|home|index|next|prev|section|start|stylesheet|subsection| |shortcut|icon)+$/i,
+        "3":"type"
+      },
+      "inside":"head"
+    },
+    "map":
+    {
+      "attributes":[
+      "id",
+      "name"
+      ],
+      "required":[
+      "id"
+      ]
+    },
+    "meta":
+    {
+      "attributes":
+      {
+        "0":"content",
+        "http-equiv":/^(content\-type|expires|refresh|set\-cookie)$/i,
+        "1":"name",
+        "2":"scheme"
+      },
+      "required":[
+      "content"
+      ]
+    },
+    "27":"noscript",
+    "object":
+    {
+      "attributes":[
+      "archive",
+      "classid",
+      "codebase",
+      "codetype",
+      "data",
+      "declare",
+      "height",
+      "name",
+      "standby",
+      "type",
+      "usemap",
+      "width"
+      ]
+    },
+    "28":"ol",
+    "optgroup":
+    {
+      "attributes":
+      {
+        "0":"label",
+        "disabled": /^(disabled)$/
+      },
+      "required":[
+      "label"
+      ]
+    },
+    "option":
+    {
+      "attributes":
+      {
+        "0":"label",
+        "disabled":/^(disabled)$/,
+        "selected":/^(selected)$/,
+        "1":"value"
+      },
+      "inside":"select"
+    },
+    "29":"p",
+    "param":
+    {
+      "attributes":
+      {
+        "0":"type",
+        "valuetype":/^(data|ref|object)$/,
+        "1":"valuetype",
+        "2":"value"
+      },
+      "required":[
+      "name"
+      ]
+    },
+    "30":"pre",
+    "q":
+    {
+      "attributes":[
+      "cite"
+      ]
+    },
+    "31":"samp",
+    "script":
+    {
+      "attributes":
+      {
+        "type":/^(text\/ecmascript|text\/javascript|text\/jscript|text\/vbscript|text\/vbs|text\/xml)$/,
+        "0":"charset",
+        "defer":/^(defer)$/,
+        "1":"src"
+      },
+      "required":[
+      "type"
+      ]
+    },
+    "select":
+    {
+      "attributes":
+      {
+        "disabled":/^(disabled)$/,
+        "multiple":/^(multiple)$/,
+        "0":"name",
+        "1":"size"
+      },
+      "inside":"form"
+    },
+    "32":"small",
+    "33":"span",
+    "34":"strong",
+    "style":
+    {
+      "attributes":
+      {
+        "0":"type",
+        "media":/^(screen|tty|tv|projection|handheld|print|braille|aural|all)$/
+      },
+      "required":[
+      "type"
+      ]
+    },
+    "35":"sub",
+    "36":"sup",
+    "table":
+    {
+      "attributes":
+      {
+        "0":"border",
+        "1":"cellpadding",
+        "2":"cellspacing",
+        "frame":/^(void|above|below|hsides|lhs|rhs|vsides|box|border)$/,
+        "rules":/^(none|groups|rows|cols|all)$/,
+        "3":"summary",
+        "4":"width"
+      }
+    },
+    "tbody":
+    {
+      "attributes":
+      {
+        "align":/^(right|left|center|justify)$/,
+        "0":"char",
+        "1":"charoff",
+        "valign":/^(top|middle|bottom|baseline)$/
+      }
+    },
+    "td":
+    {
+      "attributes":
+      {
+        "0":"abbr",
+        "align":/^(left|right|center|justify|char)$/,
+        "1":"axis",
+        "2":"char",
+        "3":"charoff",
+        "colspan":/^(\d)+$/,
+        "4":"headers",
+        "rowspan":/^(\d)+$/,
+        "scope":/^(col|colgroup|row|rowgroup)$/,
+        "valign":/^(top|middle|bottom|baseline)$/
+      }
+    },
+    "textarea":
+    {
+      "attributes":[
+      "cols",
+      "rows",
+      "disabled",
+      "name",
+      "readonly"
+      ],
+      "required":[
+      "cols",
+      "rows"
+      ],
+      "inside":"form"
+    },
+    "tfoot":
+    {
+      "attributes":
+      {
+        "align":/^(right|left|center|justify)$/,
+        "0":"char",
+        "1":"charoff",
+        "valign":/^(top|middle|bottom)$/,
+        "2":"baseline"
+      }
+    },
+    "th":
+    {
+      "attributes":
+      {
+        "0":"abbr",
+        "align":/^(left|right|center|justify|char)$/,
+        "1":"axis",
+        "2":"char",
+        "3":"charoff",
+        "colspan":/^(\d)+$/,
+        "4":"headers",
+        "rowspan":/^(\d)+$/,
+        "scope":/^(col|colgroup|row|rowgroup)$/,
+        "valign":/^(top|middle|bottom|baseline)$/
+      }
+    },
+    "thead":
+    {
+      "attributes":
+      {
+        "align":/^(right|left|center|justify)$/,
+        "0":"char",
+        "1":"charoff",
+        "valign":/^(top|middle|bottom|baseline)$/
+      }
+    },
+    "37":"title",
+    "tr":
+    {
+      "attributes":
+      {
+        "align":/^(right|left|center|justify|char)$/,
+        "0":"char",
+        "1":"charoff",
+        "valign":/^(top|middle|bottom|baseline)$/
+      }
+    },
+    "38":"tt",
+    "39":"ul",
+    "40":"var"
+  },
+
+  // Temporary skiped attributes
+  skiped_attributes : [],
+  skiped_attribute_values : [],
+
+  getValidTagAttributes: function(tag, attributes)
+  {
+    var valid_attributes = {};
+    var possible_attributes = this.getPossibleTagAttributes(tag);
+    for(var attribute in attributes) {
+      var value = attributes[attribute];
+      var h = WYMeditor.Helper;
+      if(!h.contains(this.skiped_attributes, attribute) && !h.contains(this.skiped_attribute_values, value)){
+        if (typeof value != 'function' && h.contains(possible_attributes, attribute)) {
+          if (this.doesAttributeNeedsValidation(tag, attribute)) {
+            if(this.validateAttribute(tag, attribute, value)){
+              valid_attributes[attribute] = value;
+            }
+          }else{
+            valid_attributes[attribute] = value;
+          }
+        }
+      }
+    }
+    return valid_attributes;
+  },
+  getUniqueAttributesAndEventsForTag : function(tag)
+  {
+    var result = [];
+
+    if (this._tags[tag] && this._tags[tag]['attributes']) {
+      for (k in this._tags[tag]['attributes']) {
+        result.push(parseInt(k) == k ? this._tags[tag]['attributes'][k] : k);
+      }
+    }
+    return result;
+  },
+  getDefaultAttributesAndEventsForTags : function()
+  {
+    var result = [];
+    for (var key in this._events){
+      result.push(this._events[key]);
+    }
+    for (var key in this._attributes){
+      result.push(this._attributes[key]);
+    }
+    return result;
+  },
+  isValidTag : function(tag)
+  {
+    if(this._tags[tag]){
+      return true;
+    }
+    for(var key in this._tags){
+      if(this._tags[key] == tag){
+        return true;
+      }
+    }
+    return false;
+  },
+  getDefaultAttributesAndEventsForTag : function(tag)
+  {
+    var default_attributes = [];
+    if (this.isValidTag(tag)) {
+      var default_attributes_and_events = this.getDefaultAttributesAndEventsForTags();
+
+      for(var key in default_attributes_and_events) {
+        var defaults = default_attributes_and_events[key];
+        if(typeof defaults == 'object'){
+          var h = WYMeditor.Helper;
+          if ((defaults['except'] && h.contains(defaults['except'], tag)) || (defaults['only'] && !h.contains(defaults['only'], tag))) {
+            continue;
+          }
+
+          var tag_defaults = defaults['attributes'] ? defaults['attributes'] : defaults['events'];
+          for(var k in tag_defaults) {
+            default_attributes.push(typeof tag_defaults[k] != 'string' ? k : tag_defaults[k]);
+          }
+        }
+      }
+    }
+    return default_attributes;
+  },
+  doesAttributeNeedsValidation: function(tag, attribute)
+  {
+    return this._tags[tag] && ((this._tags[tag]['attributes'] && this._tags[tag]['attributes'][attribute]) || (this._tags[tag]['required'] &&
+     WYMeditor.Helper.contains(this._tags[tag]['required'], attribute)));
+  },
+  validateAttribute : function(tag, attribute, value)
+  {
+    if ( this._tags[tag] &&
+      (this._tags[tag]['attributes'] && this._tags[tag]['attributes'][attribute] && value.length > 0 && !value.match(this._tags[tag]['attributes'][attribute])) || // invalid format
+      (this._tags[tag] && this._tags[tag]['required'] && WYMeditor.Helper.contains(this._tags[tag]['required'], attribute) && value.length == 0) // required attribute
+    ) {
+      return false;
+    }
+    return typeof this._tags[tag] != 'undefined';
+  },
+  getPossibleTagAttributes : function(tag)
+  {
+    if (!this._possible_tag_attributes) {
+      this._possible_tag_attributes = {};
+    }
+    if (!this._possible_tag_attributes[tag]) {
+      this._possible_tag_attributes[tag] = this.getUniqueAttributesAndEventsForTag(tag).concat(this.getDefaultAttributesAndEventsForTag(tag));
+    }
+    return this._possible_tag_attributes[tag];
+  }
+};
+
+
+/**
+*    Compounded regular expression. Any of
+*    the contained patterns could match and
+*    when one does, it's label is returned.
+*
+*    Constructor. Starts with no patterns.
+*    @param boolean case    True for case sensitive, false
+*                            for insensitive.
+*    @access public
+*    @author Marcus Baker (http://lastcraft.com)
+*    @author Bermi Ferrer (http://bermi.org)
+*/
+WYMeditor.ParallelRegex = function(case_sensitive)
+{
+  this._case = case_sensitive;
+  this._patterns = [];
+  this._labels = [];
+  this._regex = null;
+  return this;
+};
+
+
+/**
+*    Adds a pattern with an optional label.
+*    @param string pattern      Perl style regex, but ( and )
+*                                lose the usual meaning.
+*    @param string label        Label of regex to be returned
+*                                on a match.
+*    @access public
+*/
+WYMeditor.ParallelRegex.prototype.addPattern = function(pattern, label)
+{
+  label = label || true;
+  var count = this._patterns.length;
+  this._patterns[count] = pattern;
+  this._labels[count] = label;
+  this._regex = null;
+};
+
+/**
+*    Attempts to match all patterns at once against
+*    a string.
+*    @param string subject      String to match against.
+*
+*    @return boolean             True on success.
+*    @return string match         First matched portion of
+*                                subject.
+*    @access public
+*/
+WYMeditor.ParallelRegex.prototype.match = function(subject)
+{
+  if (this._patterns.length == 0) {
+    return [false, ''];
+  }
+  var matches = subject.match(this._getCompoundedRegex());
+
+  if(!matches){
+    return [false, ''];
+  }
+  var match = matches[0];
+  for (var i = 1; i < matches.length; i++) {
+    if (matches[i]) {
+      return [this._labels[i-1], match];
+    }
+  }
+  return [true, matches[0]];
+};
+
+/**
+*    Compounds the patterns into a single
+*    regular expression separated with the
+*    "or" operator. Caches the regex.
+*    Will automatically escape (, ) and / tokens.
+*    @param array patterns    List of patterns in order.
+*    @access private
+*/
+WYMeditor.ParallelRegex.prototype._getCompoundedRegex = function()
+{
+  if (this._regex == null) {
+    for (var i = 0, count = this._patterns.length; i < count; i++) {
+      this._patterns[i] = '(' + this._untokenizeRegex(this._tokenizeRegex(this._patterns[i]).replace(/([\/\(\)])/g,'\\$1')) + ')';
+    }
+    this._regex = new RegExp(this._patterns.join("|") ,this._getPerlMatchingFlags());
+  }
+  return this._regex;
+};
+
+/**
+* Escape lookahead/lookbehind blocks
+*/
+WYMeditor.ParallelRegex.prototype._tokenizeRegex = function(regex)
+{
+  return regex.
+  replace(/\(\?(i|m|s|x|U)\)/,     '~~~~~~Tk1\$1~~~~~~').
+  replace(/\(\?(\-[i|m|s|x|U])\)/, '~~~~~~Tk2\$1~~~~~~').
+  replace(/\(\?\=(.*)\)/,          '~~~~~~Tk3\$1~~~~~~').
+  replace(/\(\?\!(.*)\)/,          '~~~~~~Tk4\$1~~~~~~').
+  replace(/\(\?\<\=(.*)\)/,        '~~~~~~Tk5\$1~~~~~~').
+  replace(/\(\?\<\!(.*)\)/,        '~~~~~~Tk6\$1~~~~~~').
+  replace(/\(\?\:(.*)\)/,          '~~~~~~Tk7\$1~~~~~~');
+};
+
+/**
+* Unscape lookahead/lookbehind blocks
+*/
+WYMeditor.ParallelRegex.prototype._untokenizeRegex = function(regex)
+{
+  return regex.
+  replace(/~~~~~~Tk1(.{1})~~~~~~/,    "(?\$1)").
+  replace(/~~~~~~Tk2(.{2})~~~~~~/,    "(?\$1)").
+  replace(/~~~~~~Tk3(.*)~~~~~~/,      "(?=\$1)").
+  replace(/~~~~~~Tk4(.*)~~~~~~/,      "(?!\$1)").
+  replace(/~~~~~~Tk5(.*)~~~~~~/,      "(?<=\$1)").
+  replace(/~~~~~~Tk6(.*)~~~~~~/,      "(?<!\$1)").
+  replace(/~~~~~~Tk7(.*)~~~~~~/,      "(?:\$1)");
+};
+
+
+/**
+*    Accessor for perl regex mode flags to use.
+*    @return string       Perl regex flags.
+*    @access private
+*/
+WYMeditor.ParallelRegex.prototype._getPerlMatchingFlags = function()
+{
+  return (this._case ? "m" : "mi");
+};
+
+
+
+/**
+*    States for a stack machine.
+*
+*    Constructor. Starts in named state.
+*    @param string start        Starting state name.
+*    @access public
+*    @author Marcus Baker (http://lastcraft.com)
+*    @author Bermi Ferrer (http://bermi.org)
+*/
+WYMeditor.StateStack = function(start)
+{
+  this._stack = [start];
+  return this;
+};
+
+/**
+*    Accessor for current state.
+*    @return string       State.
+*    @access public
+*/
+WYMeditor.StateStack.prototype.getCurrent = function()
+{
+  return this._stack[this._stack.length - 1];
+};
+
+/**
+*    Adds a state to the stack and sets it
+*    to be the current state.
+*    @param string state        New state.
+*    @access public
+*/
+WYMeditor.StateStack.prototype.enter = function(state)
+{
+  this._stack.push(state);
+};
+
+/**
+*    Leaves the current state and reverts
+*    to the previous one.
+*    @return boolean    False if we drop off
+*                       the bottom of the list.
+*    @access public
+*/
+WYMeditor.StateStack.prototype.leave = function()
+{
+  if (this._stack.length == 1) {
+    return false;
+  }
+  this._stack.pop();
+  return true;
+};
+
+
+// GLOBALS
+WYMeditor.LEXER_ENTER = 1;
+WYMeditor.LEXER_MATCHED = 2;
+WYMeditor.LEXER_UNMATCHED = 3;
+WYMeditor.LEXER_EXIT = 4;
+WYMeditor.LEXER_SPECIAL = 5;
+
+
+/**
+*    Accepts text and breaks it into tokens.
+*    Some optimisation to make the sure the
+*    content is only scanned by the PHP regex
+*    parser once. Lexer modes must not start
+*    with leading underscores.
+*
+*    Sets up the lexer in case insensitive matching
+*    by default.
+*    @param Parser parser  Handling strategy by reference.
+*    @param string start            Starting handler.
+*    @param boolean case            True for case sensitive.
+*    @access public
+*    @author Marcus Baker (http://lastcraft.com)
+*    @author Bermi Ferrer (http://bermi.org)
+*/
+WYMeditor.Lexer = function(parser, start, case_sensitive)
+{
+  start = start || 'accept';
+  this._case = case_sensitive || false;
+  this._regexes = {};
+  this._parser = parser;
+  this._mode = new WYMeditor.StateStack(start);
+  this._mode_handlers = {};
+  this._mode_handlers[start] = start;
+  return this;
+};
+
+/**
+*    Adds a token search pattern for a particular
+*    parsing mode. The pattern does not change the
+*    current mode.
+*    @param string pattern      Perl style regex, but ( and )
+*                                lose the usual meaning.
+*    @param string mode         Should only apply this
+*                                pattern when dealing with
+*                                this type of input.
+*    @access public
+*/
+WYMeditor.Lexer.prototype.addPattern = function(pattern, mode)
+{
+  var mode = mode || "accept";
+  if (typeof this._regexes[mode] == 'undefined') {
+    this._regexes[mode] = new WYMeditor.ParallelRegex(this._case);
+  }
+  this._regexes[mode].addPattern(pattern);
+  if (typeof this._mode_handlers[mode] == 'undefined') {
+    this._mode_handlers[mode] = mode;
+  }
+};
+
+/**
+*    Adds a pattern that will enter a new parsing
+*    mode. Useful for entering parenthesis, strings,
+*    tags, etc.
+*    @param string pattern      Perl style regex, but ( and )
+*                                lose the usual meaning.
+*    @param string mode         Should only apply this
+*                                pattern when dealing with
+*                                this type of input.
+*    @param string new_mode     Change parsing to this new
+*                                nested mode.
+*    @access public
+*/
+WYMeditor.Lexer.prototype.addEntryPattern = function(pattern, mode, new_mode)
+{
+  if (typeof this._regexes[mode] == 'undefined') {
+    this._regexes[mode] = new WYMeditor.ParallelRegex(this._case);
+  }
+  this._regexes[mode].addPattern(pattern, new_mode);
+  if (typeof this._mode_handlers[new_mode] == 'undefined') {
+    this._mode_handlers[new_mode] = new_mode;
+  }
+};
+
+/**
+*    Adds a pattern that will exit the current mode
+*    and re-enter the previous one.
+*    @param string pattern      Perl style regex, but ( and )
+*                                lose the usual meaning.
+*    @param string mode         Mode to leave.
+*    @access public
+*/
+WYMeditor.Lexer.prototype.addExitPattern = function(pattern, mode)
+{
+  if (typeof this._regexes[mode] == 'undefined') {
+    this._regexes[mode] = new WYMeditor.ParallelRegex(this._case);
+  }
+  this._regexes[mode].addPattern(pattern, "__exit");
+  if (typeof this._mode_handlers[mode] == 'undefined') {
+    this._mode_handlers[mode] = mode;
+  }
+};
+
+/**
+*    Adds a pattern that has a special mode. Acts as an entry
+*    and exit pattern in one go, effectively calling a special
+*    parser handler for this token only.
+*    @param string pattern      Perl style regex, but ( and )
+*                                lose the usual meaning.
+*    @param string mode         Should only apply this
+*                                pattern when dealing with
+*                                this type of input.
+*    @param string special      Use this mode for this one token.
+*    @access public
+*/
+WYMeditor.Lexer.prototype.addSpecialPattern =  function(pattern, mode, special)
+{
+  if (typeof this._regexes[mode] == 'undefined') {
+    this._regexes[mode] = new WYMeditor.ParallelRegex(this._case);
+  }
+  this._regexes[mode].addPattern(pattern, '_'+special);
+  if (typeof this._mode_handlers[special] == 'undefined') {
+    this._mode_handlers[special] = special;
+  }
+};
+
+/**
+*    Adds a mapping from a mode to another handler.
+*    @param string mode        Mode to be remapped.
+*    @param string handler     New target handler.
+*    @access public
+*/
+WYMeditor.Lexer.prototype.mapHandler = function(mode, handler)
+{
+  this._mode_handlers[mode] = handler;
+};
+
+/**
+*    Splits the page text into tokens. Will fail
+*    if the handlers report an error or if no
+*    content is consumed. If successful then each
+*    unparsed and parsed token invokes a call to the
+*    held listener.
+*    @param string raw        Raw HTML text.
+*    @return boolean           True on success, else false.
+*    @access public
+*/
+WYMeditor.Lexer.prototype.parse = function(raw)
+{
+  if (typeof this._parser == 'undefined') {
+    return false;
+  }
+
+  var length = raw.length;
+  var parsed;
+  while (typeof (parsed = this._reduce(raw)) == 'object') {
+    var raw = parsed[0];
+    var unmatched = parsed[1];
+    var matched = parsed[2];
+    var mode = parsed[3];
+
+    if (! this._dispatchTokens(unmatched, matched, mode)) {
+      return false;
+    }
+
+    if (raw == '') {
+      return true;
+    }
+    if (raw.length == length) {
+      return false;
+    }
+    length = raw.length;
+  }
+  if (! parsed ) {
+    return false;
+  }
+
+  return this._invokeParser(raw, WYMeditor.LEXER_UNMATCHED);
+};
+
+/**
+*    Sends the matched token and any leading unmatched
+*    text to the parser changing the lexer to a new
+*    mode if one is listed.
+*    @param string unmatched    Unmatched leading portion.
+*    @param string matched      Actual token match.
+*    @param string mode         Mode after match. A boolean
+*                                false mode causes no change.
+*    @return boolean             False if there was any error
+*                                from the parser.
+*    @access private
+*/
+WYMeditor.Lexer.prototype._dispatchTokens = function(unmatched, matched, mode)
+{
+  mode = mode || false;
+
+  if (! this._invokeParser(unmatched, WYMeditor.LEXER_UNMATCHED)) {
+    return false;
+  }
+
+  if (typeof mode == 'boolean') {
+    return this._invokeParser(matched, WYMeditor.LEXER_MATCHED);
+  }
+  if (this._isModeEnd(mode)) {
+    if (! this._invokeParser(matched, WYMeditor.LEXER_EXIT)) {
+      return false;
+    }
+    return this._mode.leave();
+  }
+  if (this._isSpecialMode(mode)) {
+    this._mode.enter(this._decodeSpecial(mode));
+    if (! this._invokeParser(matched, WYMeditor.LEXER_SPECIAL)) {
+      return false;
+    }
+    return this._mode.leave();
+  }
+  this._mode.enter(mode);
+
+  return this._invokeParser(matched, WYMeditor.LEXER_ENTER);
+};
+
+/**
+*    Tests to see if the new mode is actually to leave
+*    the current mode and pop an item from the matching
+*    mode stack.
+*    @param string mode    Mode to test.
+*    @return boolean        True if this is the exit mode.
+*    @access private
+*/
+WYMeditor.Lexer.prototype._isModeEnd = function(mode)
+{
+  return (mode === "__exit");
+};
+
+/**
+*    Test to see if the mode is one where this mode
+*    is entered for this token only and automatically
+*    leaves immediately afterwoods.
+*    @param string mode    Mode to test.
+*    @return boolean        True if this is the exit mode.
+*    @access private
+*/
+WYMeditor.Lexer.prototype._isSpecialMode = function(mode)
+{
+  return (mode.substring(0,1) == "_");
+};
+
+/**
+*    Strips the magic underscore marking single token
+*    modes.
+*    @param string mode    Mode to decode.
+*    @return string         Underlying mode name.
+*    @access private
+*/
+WYMeditor.Lexer.prototype._decodeSpecial = function(mode)
+{
+  return mode.substring(1);
+};
+
+/**
+*    Calls the parser method named after the current
+*    mode. Empty content will be ignored. The lexer
+*    has a parser handler for each mode in the lexer.
+*    @param string content        Text parsed.
+*    @param boolean is_match      Token is recognised rather
+*                                  than unparsed data.
+*    @access private
+*/
+WYMeditor.Lexer.prototype._invokeParser = function(content, is_match)
+{
+
+  if (!/ +/.test(content) && ((content === '') || (content == false))) {
+    return true;
+  }
+  var current = this._mode.getCurrent();
+  var handler = this._mode_handlers[current];
+  var result;
+  eval('result = this._parser.' + handler + '(content, is_match);');
+  return result;
+};
+
+/**
+*    Tries to match a chunk of text and if successful
+*    removes the recognised chunk and any leading
+*    unparsed data. Empty strings will not be matched.
+*    @param string raw         The subject to parse. This is the
+*                               content that will be eaten.
+*    @return array/boolean      Three item list of unparsed
+*                               content followed by the
+*                               recognised token and finally the
+*                               action the parser is to take.
+*                               True if no match, false if there
+*                               is a parsing error.
+*    @access private
+*/
+WYMeditor.Lexer.prototype._reduce = function(raw)
+{
+  var matched = this._regexes[this._mode.getCurrent()].match(raw);
+  var match = matched[1];
+  var action = matched[0];
+  if (action) {
+    var unparsed_character_count = raw.indexOf(match);
+    var unparsed = raw.substr(0, unparsed_character_count);
+    raw = raw.substring(unparsed_character_count + match.length);
+    return [raw, unparsed, match, action];
+  }
+  return true;
+};
+
+
+
+/**
+* This are the rules for breaking the XHTML code into events
+* handled by the provided parser.
+*
+*    @author Marcus Baker (http://lastcraft.com)
+*    @author Bermi Ferrer (http://bermi.org)
+*/
+WYMeditor.XhtmlLexer = function(parser)
+{
+  jQuery.extend(this, new WYMeditor.Lexer(parser, 'Text'));
+
+  this.mapHandler('Text', 'Text');
+
+  this.addTokens();
+
+  this.init();
+
+  return this;
+};
+
+
+WYMeditor.XhtmlLexer.prototype.init = function()
+{
+};
+
+WYMeditor.XhtmlLexer.prototype.addTokens = function()
+{
+  this.addCommentTokens('Text');
+  this.addScriptTokens('Text');
+  this.addCssTokens('Text');
+  this.addTagTokens('Text');
+};
+
+WYMeditor.XhtmlLexer.prototype.addCommentTokens = function(scope)
+{
+  this.addEntryPattern("<!--", scope, 'Comment');
+  this.addExitPattern("-->", 'Comment');
+};
+
+WYMeditor.XhtmlLexer.prototype.addScriptTokens = function(scope)
+{
+  this.addEntryPattern("<script", scope, 'Script');
+  this.addExitPattern("</script>", 'Script');
+};
+
+WYMeditor.XhtmlLexer.prototype.addCssTokens = function(scope)
+{
+  this.addEntryPattern("<style", scope, 'Css');
+  this.addExitPattern("</style>", 'Css');
+};
+
+WYMeditor.XhtmlLexer.prototype.addTagTokens = function(scope)
+{
+  this.addSpecialPattern("<\\s*[a-z0-9:\-]+\\s*>", scope, 'OpeningTag');
+  this.addEntryPattern("<[a-z0-9:\-]+"+'[\\\/ \\\>]+', scope, 'OpeningTag');
+  this.addInTagDeclarationTokens('OpeningTag');
+
+  this.addSpecialPattern("</\\s*[a-z0-9:\-]+\\s*>", scope, 'ClosingTag');
+
+};
+
+WYMeditor.XhtmlLexer.prototype.addInTagDeclarationTokens = function(scope)
+{
+  this.addSpecialPattern('\\s+', scope, 'Ignore');
+
+  this.addAttributeTokens(scope);
+
+  this.addExitPattern('/>', scope);
+  this.addExitPattern('>', scope);
+
+};
+
+WYMeditor.XhtmlLexer.prototype.addAttributeTokens = function(scope)
+{
+  this.addSpecialPattern("\\s*[a-z-_0-9]*:?[a-z-_0-9]+\\s*(?=\=)\\s*", scope, 'TagAttributes');
+
+  this.addEntryPattern('=\\s*"', scope, 'DoubleQuotedAttribute');
+  this.addPattern("\\\\\"", 'DoubleQuotedAttribute');
+  this.addExitPattern('"', 'DoubleQuotedAttribute');
+
+  this.addEntryPattern("=\\s*'", scope, 'SingleQuotedAttribute');
+  this.addPattern("\\\\'", 'SingleQuotedAttribute');
+  this.addExitPattern("'", 'SingleQuotedAttribute');
+
+  this.addSpecialPattern('=\\s*[^>\\s]*', scope, 'UnquotedAttribute');
+};
+
+
+
+/**
+* XHTML Parser.
+*
+* This XHTML parser will trigger the events available on on
+* current SaxListener
+*
+*    @author Bermi Ferrer (http://bermi.org)
+*/
+WYMeditor.XhtmlParser = function(Listener, mode)
+{
+  var mode = mode || 'Text';
+  this._Lexer = new WYMeditor.XhtmlLexer(this);
+  this._Listener = Listener;
+  this._mode = mode;
+  this._matches = [];
+  this._last_match = '';
+  this._current_match = '';
+
+  return this;
+};
+
+WYMeditor.XhtmlParser.prototype.parse = function(raw)
+{
+  this._Lexer.parse(this.beforeParsing(raw));
+  return this.afterParsing(this._Listener.getResult());
+};
+
+WYMeditor.XhtmlParser.prototype.beforeParsing = function(raw)
+{
+  if(raw.match(/class="MsoNormal"/) || raw.match(/ns = "urn:schemas-microsoft-com/)){
+    // Usefull for cleaning up content pasted from other sources (MSWord)
+    this._Listener.avoidStylingTagsAndAttributes();
+  }
+  return this._Listener.beforeParsing(raw);
+};
+
+WYMeditor.XhtmlParser.prototype.afterParsing = function(parsed)
+{
+  if(this._Listener._avoiding_tags_implicitly){
+    this._Listener.allowStylingTagsAndAttributes();
+  }
+  return this._Listener.afterParsing(parsed);
+};
+
+
+WYMeditor.XhtmlParser.prototype.Ignore = function(match, state)
+{
+  return true;
+};
+
+WYMeditor.XhtmlParser.prototype.Text = function(text)
+{
+  this._Listener.addContent(text);
+  return true;
+};
+
+WYMeditor.XhtmlParser.prototype.Comment = function(match, status)
+{
+  return this._addNonTagBlock(match, status, 'addComment');
+};
+
+WYMeditor.XhtmlParser.prototype.Script = function(match, status)
+{
+  return this._addNonTagBlock(match, status, 'addScript');
+};
+
+WYMeditor.XhtmlParser.prototype.Css = function(match, status)
+{
+  return this._addNonTagBlock(match, status, 'addCss');
+};
+
+WYMeditor.XhtmlParser.prototype._addNonTagBlock = function(match, state, type)
+{
+  switch (state){
+    case WYMeditor.LEXER_ENTER:
+    this._non_tag = match;
+    break;
+    case WYMeditor.LEXER_UNMATCHED:
+    this._non_tag += match;
+    break;
+    case WYMeditor.LEXER_EXIT:
+    switch(type) {
+      case 'addComment':
+      this._Listener.addComment(this._non_tag+match);
+      break;
+      case 'addScript':
+      this._Listener.addScript(this._non_tag+match);
+      break;
+      case 'addCss':
+      this._Listener.addCss(this._non_tag+match);
+      break;
+    }
+  }
+  return true;
+};
+
+WYMeditor.XhtmlParser.prototype.OpeningTag = function(match, state)
+{
+  switch (state){
+    case WYMeditor.LEXER_ENTER:
+    this._tag = this.normalizeTag(match);
+    this._tag_attributes = {};
+    break;
+    case WYMeditor.LEXER_SPECIAL:
+    this._callOpenTagListener(this.normalizeTag(match));
+    break;
+    case WYMeditor.LEXER_EXIT:
+    this._callOpenTagListener(this._tag, this._tag_attributes);
+  }
+  return true;
+};
+
+WYMeditor.XhtmlParser.prototype.ClosingTag = function(match, state)
+{
+  this._callCloseTagListener(this.normalizeTag(match));
+  return true;
+};
+
+WYMeditor.XhtmlParser.prototype._callOpenTagListener = function(tag, attributes)
+{
+  var  attributes = attributes || {};
+  this.autoCloseUnclosedBeforeNewOpening(tag);
+
+  if(this._Listener.isBlockTag(tag)){
+    this._Listener._tag_stack.push(tag);
+    this._Listener.fixNestingBeforeOpeningBlockTag(tag, attributes);
+    this._Listener.openBlockTag(tag, attributes);
+    this._increaseOpenTagCounter(tag);
+  }else if(this._Listener.isInlineTag(tag)){
+    this._Listener.inlineTag(tag, attributes);
+  }else{
+    this._Listener.openUnknownTag(tag, attributes);
+    this._increaseOpenTagCounter(tag);
+  }
+  this._Listener.last_tag = tag;
+  this._Listener.last_tag_opened = true;
+  this._Listener.last_tag_attributes = attributes;
+};
+
+WYMeditor.XhtmlParser.prototype._callCloseTagListener = function(tag)
+{
+  if(this._decreaseOpenTagCounter(tag)){
+    this.autoCloseUnclosedBeforeTagClosing(tag);
+
+    if(this._Listener.isBlockTag(tag)){
+      var expected_tag = this._Listener._tag_stack.pop();
+      if(expected_tag == false){
+        return;
+      }else if(expected_tag != tag){
+        tag = expected_tag;
+      }
+      this._Listener.closeBlockTag(tag);
+    }else{
+      this._Listener.closeUnknownTag(tag);
+    }
+  }else{
+    this._Listener.closeUnopenedTag(tag);
+  }
+  this._Listener.last_tag = tag;
+  this._Listener.last_tag_opened = false;
+};
+
+WYMeditor.XhtmlParser.prototype._increaseOpenTagCounter = function(tag)
+{
+  this._Listener._open_tags[tag] = this._Listener._open_tags[tag] || 0;
+  this._Listener._open_tags[tag]++;
+};
+
+WYMeditor.XhtmlParser.prototype._decreaseOpenTagCounter = function(tag)
+{
+  if(this._Listener._open_tags[tag]){
+    this._Listener._open_tags[tag]--;
+    if(this._Listener._open_tags[tag] == 0){
+      this._Listener._open_tags[tag] = undefined;
+    }
+    return true;
+  }
+  return false;
+};
+
+WYMeditor.XhtmlParser.prototype.autoCloseUnclosedBeforeNewOpening = function(new_tag)
+{
+  this._autoCloseUnclosed(new_tag, false);
+};
+
+WYMeditor.XhtmlParser.prototype.autoCloseUnclosedBeforeTagClosing = function(tag)
+{
+  this._autoCloseUnclosed(tag, true);
+};
+
+WYMeditor.XhtmlParser.prototype._autoCloseUnclosed = function(new_tag, closing)
+{
+  var closing = closing || false;
+  if(this._Listener._open_tags){
+    for (var tag in this._Listener._open_tags) {
+      var counter = this._Listener._open_tags[tag];
+      if(counter > 0 && this._Listener.shouldCloseTagAutomatically(tag, new_tag, closing)){
+        this._callCloseTagListener(tag, true);
+      }
+    }
+  }
+};
+
+WYMeditor.XhtmlParser.prototype.getTagReplacements = function()
+{
+  return this._Listener.getTagReplacements();
+};
+
+WYMeditor.XhtmlParser.prototype.normalizeTag = function(tag)
+{
+  tag = tag.replace(/^([\s<\/>]*)|([\s<\/>]*)$/gm,'').toLowerCase();
+  var tags = this._Listener.getTagReplacements();
+  if(tags[tag]){
+    return tags[tag];
+  }
+  return tag;
+};
+
+WYMeditor.XhtmlParser.prototype.TagAttributes = function(match, state)
+{
+  if(WYMeditor.LEXER_SPECIAL == state){
+    this._current_attribute = match;
+  }
+  return true;
+};
+
+WYMeditor.XhtmlParser.prototype.DoubleQuotedAttribute = function(match, state)
+{
+  if(WYMeditor.LEXER_UNMATCHED == state){
+    this._tag_attributes[this._current_attribute] = match;
+  }
+  return true;
+};
+
+WYMeditor.XhtmlParser.prototype.SingleQuotedAttribute = function(match, state)
+{
+  if(WYMeditor.LEXER_UNMATCHED == state){
+    this._tag_attributes[this._current_attribute] = match;
+  }
+  return true;
+};
+
+WYMeditor.XhtmlParser.prototype.UnquotedAttribute = function(match, state)
+{
+  this._tag_attributes[this._current_attribute] = match.replace(/^=/,'');
+  return true;
+};
+
+
+
+/**
+* XHTML Sax parser.
+*
+*    @author Bermi Ferrer (http://bermi.org)
+*/
+WYMeditor.XhtmlSaxListener = function()
+{
+  this.output = '';
+  this.helper = new WYMeditor.XmlHelper();
+  this._open_tags = {};
+  this.validator = WYMeditor.XhtmlValidator;
+  this._tag_stack = [];
+  this.avoided_tags = [];
+
+  this.entities = {
+    '&nbsp;':'&#160;','&iexcl;':'&#161;','&cent;':'&#162;',
+    '&pound;':'&#163;','&curren;':'&#164;','&yen;':'&#165;',
+    '&brvbar;':'&#166;','&sect;':'&#167;','&uml;':'&#168;',
+    '&copy;':'&#169;','&ordf;':'&#170;','&laquo;':'&#171;',
+    '&not;':'&#172;','&shy;':'&#173;','&reg;':'&#174;',
+    '&macr;':'&#175;','&deg;':'&#176;','&plusmn;':'&#177;',
+    '&sup2;':'&#178;','&sup3;':'&#179;','&acute;':'&#180;',
+    '&micro;':'&#181;','&para;':'&#182;','&middot;':'&#183;',
+    '&cedil;':'&#184;','&sup1;':'&#185;','&ordm;':'&#186;',
+    '&raquo;':'&#187;','&frac14;':'&#188;','&frac12;':'&#189;',
+    '&frac34;':'&#190;','&iquest;':'&#191;','&Agrave;':'&#192;',
+    '&Aacute;':'&#193;','&Acirc;':'&#194;','&Atilde;':'&#195;',
+    '&Auml;':'&#196;','&Aring;':'&#197;','&AElig;':'&#198;',
+    '&Ccedil;':'&#199;','&Egrave;':'&#200;','&Eacute;':'&#201;',
+    '&Ecirc;':'&#202;','&Euml;':'&#203;','&Igrave;':'&#204;',
+    '&Iacute;':'&#205;','&Icirc;':'&#206;','&Iuml;':'&#207;',
+    '&ETH;':'&#208;','&Ntilde;':'&#209;','&Ograve;':'&#210;',
+    '&Oacute;':'&#211;','&Ocirc;':'&#212;','&Otilde;':'&#213;',
+    '&Ouml;':'&#214;','&times;':'&#215;','&Oslash;':'&#216;',
+    '&Ugrave;':'&#217;','&Uacute;':'&#218;','&Ucirc;':'&#219;',
+    '&Uuml;':'&#220;','&Yacute;':'&#221;','&THORN;':'&#222;',
+    '&szlig;':'&#223;','&agrave;':'&#224;','&aacute;':'&#225;',
+    '&acirc;':'&#226;','&atilde;':'&#227;','&auml;':'&#228;',
+    '&aring;':'&#229;','&aelig;':'&#230;','&ccedil;':'&#231;',
+    '&egrave;':'&#232;','&eacute;':'&#233;','&ecirc;':'&#234;',
+    '&euml;':'&#235;','&igrave;':'&#236;','&iacute;':'&#237;',
+    '&icirc;':'&#238;','&iuml;':'&#239;','&eth;':'&#240;',
+    '&ntilde;':'&#241;','&ograve;':'&#242;','&oacute;':'&#243;',
+    '&ocirc;':'&#244;','&otilde;':'&#245;','&ouml;':'&#246;',
+    '&divide;':'&#247;','&oslash;':'&#248;','&ugrave;':'&#249;',
+    '&uacute;':'&#250;','&ucirc;':'&#251;','&uuml;':'&#252;',
+    '&yacute;':'&#253;','&thorn;':'&#254;','&yuml;':'&#255;',
+    '&OElig;':'&#338;','&oelig;':'&#339;','&Scaron;':'&#352;',
+    '&scaron;':'&#353;','&Yuml;':'&#376;','&fnof;':'&#402;',
+    '&circ;':'&#710;','&tilde;':'&#732;','&Alpha;':'&#913;',
+    '&Beta;':'&#914;','&Gamma;':'&#915;','&Delta;':'&#916;',
+    '&Epsilon;':'&#917;','&Zeta;':'&#918;','&Eta;':'&#919;',
+    '&Theta;':'&#920;','&Iota;':'&#921;','&Kappa;':'&#922;',
+    '&Lambda;':'&#923;','&Mu;':'&#924;','&Nu;':'&#925;',
+    '&Xi;':'&#926;','&Omicron;':'&#927;','&Pi;':'&#928;',
+    '&Rho;':'&#929;','&Sigma;':'&#931;','&Tau;':'&#932;',
+    '&Upsilon;':'&#933;','&Phi;':'&#934;','&Chi;':'&#935;',
+    '&Psi;':'&#936;','&Omega;':'&#937;','&alpha;':'&#945;',
+    '&beta;':'&#946;','&gamma;':'&#947;','&delta;':'&#948;',
+    '&epsilon;':'&#949;','&zeta;':'&#950;','&eta;':'&#951;',
+    '&theta;':'&#952;','&iota;':'&#953;','&kappa;':'&#954;',
+    '&lambda;':'&#955;','&mu;':'&#956;','&nu;':'&#957;',
+    '&xi;':'&#958;','&omicron;':'&#959;','&pi;':'&#960;',
+    '&rho;':'&#961;','&sigmaf;':'&#962;','&sigma;':'&#963;',
+    '&tau;':'&#964;','&upsilon;':'&#965;','&phi;':'&#966;',
+    '&chi;':'&#967;','&psi;':'&#968;','&omega;':'&#969;',
+    '&thetasym;':'&#977;','&upsih;':'&#978;','&piv;':'&#982;',
+    '&ensp;':'&#8194;','&emsp;':'&#8195;','&thinsp;':'&#8201;',
+    '&zwnj;':'&#8204;','&zwj;':'&#8205;','&lrm;':'&#8206;',
+    '&rlm;':'&#8207;','&ndash;':'&#8211;','&mdash;':'&#8212;',
+    '&lsquo;':'&#8216;','&rsquo;':'&#8217;','&sbquo;':'&#8218;',
+    '&ldquo;':'&#8220;','&rdquo;':'&#8221;','&bdquo;':'&#8222;',
+    '&dagger;':'&#8224;','&Dagger;':'&#8225;','&bull;':'&#8226;',
+    '&hellip;':'&#8230;','&permil;':'&#8240;','&prime;':'&#8242;',
+    '&Prime;':'&#8243;','&lsaquo;':'&#8249;','&rsaquo;':'&#8250;',
+    '&oline;':'&#8254;','&frasl;':'&#8260;','&euro;':'&#8364;',
+    '&image;':'&#8465;','&weierp;':'&#8472;','&real;':'&#8476;',
+    '&trade;':'&#8482;','&alefsym;':'&#8501;','&larr;':'&#8592;',
+    '&uarr;':'&#8593;','&rarr;':'&#8594;','&darr;':'&#8595;',
+    '&harr;':'&#8596;','&crarr;':'&#8629;','&lArr;':'&#8656;',
+    '&uArr;':'&#8657;','&rArr;':'&#8658;','&dArr;':'&#8659;',
+    '&hArr;':'&#8660;','&forall;':'&#8704;','&part;':'&#8706;',
+    '&exist;':'&#8707;','&empty;':'&#8709;','&nabla;':'&#8711;',
+    '&isin;':'&#8712;','&notin;':'&#8713;','&ni;':'&#8715;',
+    '&prod;':'&#8719;','&sum;':'&#8721;','&minus;':'&#8722;',
+    '&lowast;':'&#8727;','&radic;':'&#8730;','&prop;':'&#8733;',
+    '&infin;':'&#8734;','&ang;':'&#8736;','&and;':'&#8743;',
+    '&or;':'&#8744;','&cap;':'&#8745;','&cup;':'&#8746;',
+    '&int;':'&#8747;','&there4;':'&#8756;','&sim;':'&#8764;',
+    '&cong;':'&#8773;','&asymp;':'&#8776;','&ne;':'&#8800;',
+    '&equiv;':'&#8801;','&le;':'&#8804;','&ge;':'&#8805;',
+    '&sub;':'&#8834;','&sup;':'&#8835;','&nsub;':'&#8836;',
+    '&sube;':'&#8838;','&supe;':'&#8839;','&oplus;':'&#8853;',
+    '&otimes;':'&#8855;','&perp;':'&#8869;','&sdot;':'&#8901;',
+    '&lceil;':'&#8968;','&rceil;':'&#8969;','&lfloor;':'&#8970;',
+    '&rfloor;':'&#8971;','&lang;':'&#9001;','&rang;':'&#9002;',
+    '&loz;':'&#9674;','&spades;':'&#9824;','&clubs;':'&#9827;',
+    '&hearts;':'&#9829;','&diams;':'&#9830;'};
+
+    this.block_tags = ["a", "abbr", "acronym", "address", "area", "b",
+    "base", "bdo", "big", "blockquote", "body", "button",
+    "caption", "cite", "code", "col", "colgroup", "dd", "del", "div",
+    "dfn", "dl", "dt", "em", "fieldset", "form", "head", "h1", "h2",
+    "h3", "h4", "h5", "h6", "html", "i", "ins",
+    "kbd", "label", "legend", "li", "map", "noscript",
+    "object", "ol", "optgroup", "option", "p", "param", "pre", "q",
+    "samp", "script", "select", "small", "span", "strong", "style",
+    "sub", "sup", "table", "tbody", "td", "textarea", "tfoot", "th",
+    "thead", "title", "tr", "tt", "ul", "var", "extends"];
+
+
+    this.inline_tags = ["br", "hr", "img", "input"];
+
+    return this;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.shouldCloseTagAutomatically = function(tag, now_on_tag, closing)
+{
+  var closing = closing || false;
+  if(tag == 'td'){
+    if((closing && now_on_tag == 'tr') || (!closing && now_on_tag == 'td')){
+      return true;
+    }
+  }
+  if(tag == 'option'){
+    if((closing && now_on_tag == 'select') || (!closing && now_on_tag == 'option')){
+      return true;
+    }
+  }
+  return false;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.beforeParsing = function(raw)
+{
+  this.output = '';
+  return raw;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.afterParsing = function(xhtml)
+{
+  xhtml = this.replaceNamedEntities(xhtml);
+  xhtml = this.joinRepeatedEntities(xhtml);
+  xhtml = this.removeEmptyTags(xhtml);
+  xhtml = this.removeBrInPre(xhtml);
+  return xhtml;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.replaceNamedEntities = function(xhtml)
+{
+  for (var entity in this.entities) {
+    xhtml = xhtml.replace(new RegExp(entity, 'g'), this.entities[entity]);
+  }
+  return xhtml;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.joinRepeatedEntities = function(xhtml)
+{
+  var tags = 'em|strong|sub|sup|acronym|pre|del|address';
+  return xhtml.replace(new RegExp('<\/('+tags+')><\\1>' ,''),'').
+  replace(new RegExp('(\s*<('+tags+')>\s*){2}(.*)(\s*<\/\\2>\s*){2}' ,''),'<\$2>\$3<\$2>');
+};
+
+WYMeditor.XhtmlSaxListener.prototype.removeEmptyTags = function(xhtml)
+{
+  return xhtml.replace(new RegExp('<('+this.block_tags.join("|").replace(/\|td/,'').replace(/\|th/, '')+')>(<br \/>|&#160;|&nbsp;|\\s)*<\/\\1>' ,'g'),'');
+};
+
+WYMeditor.XhtmlSaxListener.prototype.removeBrInPre = function(xhtml)
+{
+  var matches = xhtml.match(new RegExp('<pre[^>]*>(.*?)<\/pre>','gmi'));
+  if(matches) {
+    for(var i=0; i<matches.length; i++) {
+      xhtml = xhtml.replace(matches[i], matches[i].replace(new RegExp('<br \/>', 'g'), String.fromCharCode(13,10)));
+    }
+  }
+  return xhtml;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.getResult = function()
+{
+  return this.output;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.getTagReplacements = function()
+{
+  return {'b':'strong', 'i':'em'};
+};
+
+WYMeditor.XhtmlSaxListener.prototype.addContent = function(text)
+{
+  this.output += text;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.addComment = function(text)
+{
+  if(this.remove_comments){
+    this.output += text;
+  }
+};
+
+WYMeditor.XhtmlSaxListener.prototype.addScript = function(text)
+{
+  if(!this.remove_scripts){
+    this.output += text;
+  }
+};
+
+WYMeditor.XhtmlSaxListener.prototype.addCss = function(text)
+{
+  if(!this.remove_embeded_styles){
+    this.output += text;
+  }
+};
+
+WYMeditor.XhtmlSaxListener.prototype.openBlockTag = function(tag, attributes)
+{
+  this.output += this.helper.tag(tag, this.validator.getValidTagAttributes(tag, attributes), true);
+};
+
+WYMeditor.XhtmlSaxListener.prototype.inlineTag = function(tag, attributes)
+{
+  this.output += this.helper.tag(tag, this.validator.getValidTagAttributes(tag, attributes));
+};
+
+WYMeditor.XhtmlSaxListener.prototype.openUnknownTag = function(tag, attributes)
+{
+  //this.output += this.helper.tag(tag, attributes, true);
+};
+
+WYMeditor.XhtmlSaxListener.prototype.closeBlockTag = function(tag)
+{
+  this.output = this.output.replace(/<br \/>$/, '')+this._getClosingTagContent('before', tag)+"</"+tag+">"+this._getClosingTagContent('after', tag);
+};
+
+WYMeditor.XhtmlSaxListener.prototype.closeUnknownTag = function(tag)
+{
+  //this.output += "</"+tag+">";
+};
+
+WYMeditor.XhtmlSaxListener.prototype.closeUnopenedTag = function(tag)
+{
+  this.output += "</"+tag+">";
+};
+
+WYMeditor.XhtmlSaxListener.prototype.avoidStylingTagsAndAttributes = function()
+{
+  this.avoided_tags = ['div','span'];
+  this.validator.skiped_attributes = ['style'];
+  this.validator.skiped_attribute_values = ['MsoNormal','main1']; // MS Word attributes for class
+  this._avoiding_tags_implicitly = true;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.allowStylingTagsAndAttributes = function()
+{
+  this.avoided_tags = [];
+  this.validator.skiped_attributes = [];
+  this.validator.skiped_attribute_values = [];
+  this._avoiding_tags_implicitly = false;
+};
+
+WYMeditor.XhtmlSaxListener.prototype.isBlockTag = function(tag)
+{
+  return !WYMeditor.Helper.contains(this.avoided_tags, tag) && WYMeditor.Helper.contains(this.block_tags, tag);
+};
+
+WYMeditor.XhtmlSaxListener.prototype.isInlineTag = function(tag)
+{
+  return !WYMeditor.Helper.contains(this.avoided_tags, tag) && WYMeditor.Helper.contains(this.inline_tags, tag);
+};
+
+WYMeditor.XhtmlSaxListener.prototype.insertContentAfterClosingTag = function(tag, content)
+{
+  this._insertContentWhenClosingTag('after', tag, content);
+};
+
+WYMeditor.XhtmlSaxListener.prototype.insertContentBeforeClosingTag = function(tag, content)
+{
+  this._insertContentWhenClosingTag('before', tag, content);
+};
+
+WYMeditor.XhtmlSaxListener.prototype.fixNestingBeforeOpeningBlockTag = function(tag, attributes)
+{
+    if(tag != 'li' && (tag == 'ul' || tag == 'ol') && this.last_tag && !this.last_tag_opened && this.last_tag == 'li'){
+      this.output = this.output.replace(/<\/li>$/, '');
+      this.insertContentAfterClosingTag(tag, '</li>');
+    }
+};
+
+WYMeditor.XhtmlSaxListener.prototype._insertContentWhenClosingTag = function(position, tag, content)
+{
+  if(!this['_insert_'+position+'_closing']){
+    this['_insert_'+position+'_closing'] = [];
+  }
+  if(!this['_insert_'+position+'_closing'][tag]){
+    this['_insert_'+position+'_closing'][tag] = [];
+  }
+  this['_insert_'+position+'_closing'][tag].push(content);
+};
+
+WYMeditor.XhtmlSaxListener.prototype._getClosingTagContent = function(position, tag)
+{
+  if( this['_insert_'+position+'_closing'] &&
+      this['_insert_'+position+'_closing'][tag] &&
+      this['_insert_'+position+'_closing'][tag].length > 0){
+        return this['_insert_'+position+'_closing'][tag].pop();
+  }
+  return '';
+};
+
+
+/********** CSS PARSER **********/
+
+
+WYMeditor.WymCssLexer = function(parser, only_wym_blocks)
+{
+  var only_wym_blocks = (typeof only_wym_blocks == 'undefined' ? true : only_wym_blocks);
+
+  jQuery.extend(this, new WYMeditor.Lexer(parser, (only_wym_blocks?'Ignore':'WymCss')));
+
+  this.mapHandler('WymCss', 'Ignore');
+
+  if(only_wym_blocks == true){
+    this.addEntryPattern("/\\\x2a[<\\s]*WYMeditor[>\\s]*\\\x2a/", 'Ignore', 'WymCss');
+    this.addExitPattern("/\\\x2a[<\/\\s]*WYMeditor[>\\s]*\\\x2a/", 'WymCss');
+  }
+
+  this.addSpecialPattern("[\\sa-z1-6]*\\\x2e[a-z-_0-9]+", 'WymCss', 'WymCssStyleDeclaration');
+
+  this.addEntryPattern("/\\\x2a", 'WymCss', 'WymCssComment');
+  this.addExitPattern("\\\x2a/", 'WymCssComment');
+
+  this.addEntryPattern("\x7b", 'WymCss', 'WymCssStyle');
+  this.addExitPattern("\x7d", 'WymCssStyle');
+
+  this.addEntryPattern("/\\\x2a", 'WymCssStyle', 'WymCssFeedbackStyle');
+  this.addExitPattern("\\\x2a/", 'WymCssFeedbackStyle');
+
+  return this;
+};
+
+WYMeditor.WymCssParser = function()
+{
+  this._in_style = false;
+  this._has_title = false;
+  this.only_wym_blocks = true;
+  this.css_settings = {'classesItems':[], 'editorStyles':[], 'dialogStyles':[]};
+  return this;
+};
+
+WYMeditor.WymCssParser.prototype.parse = function(raw, only_wym_blocks)
+{
+  var only_wym_blocks = (typeof only_wym_blocks == 'undefined' ? this.only_wym_blocks : only_wym_blocks);
+  this._Lexer = new WYMeditor.WymCssLexer(this, only_wym_blocks);
+  this._Lexer.parse(raw);
+};
+
+WYMeditor.WymCssParser.prototype.Ignore = function(match, state)
+{
+  return true;
+};
+
+WYMeditor.WymCssParser.prototype.WymCssComment = function(text, status)
+{
+  if(text.match(/end[a-z0-9\s]*wym[a-z0-9\s]*/mi)){
+    return false;
+  }
+  if(status == WYMeditor.LEXER_UNMATCHED){
+    if(!this._in_style){
+      this._has_title = true;
+      this._current_item = {'title':WYMeditor.Helper.trim(text)};
+    }else{
+      if(this._current_item[this._current_element]){
+        if(!this._current_item[this._current_element].expressions){
+          this._current_item[this._current_element].expressions = [text];
+        }else{
+          this._current_item[this._current_element].expressions.push(text);
+        }
+      }
+    }
+    this._in_style = true;
+  }
+  return true;
+};
+
+WYMeditor.WymCssParser.prototype.WymCssStyle = function(match, status)
+{
+  if(status == WYMeditor.LEXER_UNMATCHED){
+    match = WYMeditor.Helper.trim(match);
+    if(match != ''){
+      this._current_item[this._current_element].style = match;
+    }
+  }else if (status == WYMeditor.LEXER_EXIT){
+    this._in_style = false;
+    this._has_title = false;
+    this.addStyleSetting(this._current_item);
+  }
+  return true;
+};
+
+WYMeditor.WymCssParser.prototype.WymCssFeedbackStyle = function(match, status)
+{
+  if(status == WYMeditor.LEXER_UNMATCHED){
+    this._current_item[this._current_element].feedback_style = match.replace(/^([\s\/\*]*)|([\s\/\*]*)$/gm,'');
+  }
+  return true;
+};
+
+WYMeditor.WymCssParser.prototype.WymCssStyleDeclaration = function(match)
+{
+  match = match.replace(/^([\s\.]*)|([\s\.*]*)$/gm, '');
+
+  var tag = '';
+  if(match.indexOf('.') > 0){
+    var parts = match.split('.');
+    this._current_element = parts[1];
+    var tag = parts[0];
+  }else{
+    this._current_element = match;
+  }
+
+  if(!this._has_title){
+    this._current_item = {'title':(!tag?'':tag.toUpperCase()+': ')+this._current_element};
+    this._has_title = true;
+  }
+
+  if(!this._current_item[this._current_element]){
+    this._current_item[this._current_element] = {'name':this._current_element};
+  }
+  if(tag){
+    if(!this._current_item[this._current_element].tags){
+      this._current_item[this._current_element].tags = [tag];
+    }else{
+      this._current_item[this._current_element].tags.push(tag);
+    }
+  }
+  return true;
+};
+
+WYMeditor.WymCssParser.prototype.addStyleSetting = function(style_details)
+{
+  for (var name in style_details){
+    var details = style_details[name];
+    if(typeof details == 'object' && name != 'title'){
+
+      this.css_settings.classesItems.push({
+        'name': WYMeditor.Helper.trim(details.name),
+        'title': style_details.title,
+        'expr' : WYMeditor.Helper.trim((details.expressions||details.tags).join(', '))
+      });
+      if(details.feedback_style){
+        this.css_settings.editorStyles.push({
+          'name': '.'+ WYMeditor.Helper.trim(details.name),
+          'css': details.feedback_style
+        });
+      }
+      if(details.style){
+        this.css_settings.dialogStyles.push({
+          'name': '.'+ WYMeditor.Helper.trim(details.name),
+          'css': details.style
+        });
+      }
+    }
+  }
+};
+
+/********** HELPERS **********/
+
+// Returns true if it is a text node with whitespaces only
+jQuery.fn.isPhantomNode = function() {
+  if (this[0].nodeType == 3)
+    return !(/[^\t\n\r ]/.test(this[0].data));
+
+  return false;
+};
+
+WYMeditor.isPhantomNode = function(n) {
+  if (n.nodeType == 3)
+    return !(/[^\t\n\r ]/.test(n.data));
+
+  return false;
+};
+
+WYMeditor.isPhantomString = function(str) {
+    return !(/[^\t\n\r ]/.test(str));
+};
+
+// Returns the Parents or the node itself
+// jqexpr = a jQuery expression
+jQuery.fn.parentsOrSelf = function(jqexpr) {
+  var n = this;
+
+  if (n[0].nodeType == 3)
+    n = n.parents().slice(0,1);
+
+//  if (n.is(jqexpr)) // XXX should work, but doesn't (probably a jQuery bug)
+  if (n.filter(jqexpr).size() == 1)
+    return n;
+  else
+    return n.parents(jqexpr).slice(0,1);
+};
+
+// String & array helpers
+
+WYMeditor.Helper = {
+
+    //replace all instances of 'old' by 'rep' in 'str' string
+    replaceAll: function(str, old, rep) {
+        var rExp = new RegExp(old, "g");
+        return(str.replace(rExp, rep));
+    },
+
+    //insert 'inserted' at position 'pos' in 'str' string
+    insertAt: function(str, inserted, pos) {
+        return(str.substr(0,pos) + inserted + str.substring(pos));
+    },
+
+    //trim 'str' string
+    trim: function(str) {
+        return str.replace(/^(\s*)|(\s*)$/gm,'');
+    },
+
+    //return true if 'arr' array contains 'elem', or false
+    contains: function(arr, elem) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === elem) return true;
+        }
+        return false;
+    },
+
+    //return 'item' position in 'arr' array, or -1
+    indexOf: function(arr, item) {
+        var ret=-1;
+        for(var i = 0; i < arr.length; i++) {
+            if (arr[i] == item) {
+                ret = i;
+                break;
+            }
+        }
+	    return(ret);
+    },
+
+    //return 'item' object in 'arr' array, checking its 'name' property, or null
+    findByName: function(arr, name) {
+        for(var i = 0; i < arr.length; i++) {
+            var item = arr[i];
+            if(item.name == name) return(item);
+        }
+        return(null);
+    }
+};
+
+
+/*
+ * WYMeditor : what you see is What You Mean web-based editor
+ * Copyright (c) 2005 - 2009 Jean-Francois Hovinne, http://www.wymeditor.org/
+ * Dual licensed under the MIT (MIT-license.txt)
+ * and GPL (GPL-license.txt) licenses.
+ *
+ * For further information visit:
+ *        http://www.wymeditor.org/
+ *
+ * File Name:
+ *        jquery.wymeditor.explorer.js
+ *        MSIE specific class and functions.
+ *        See the documentation for more info.
+ *
+ * File Authors:
+ *        Jean-Francois Hovinne (jf.hovinne a-t wymeditor dotorg)
+ *        Bermi Ferrer (wymeditor a-t bermi dotorg)
+ *        Frédéric Palluel-Lafleur (fpalluel a-t gmail dotcom)
+ *        Jonatan Lundin (jonatan.lundin _at_ gmail.com)
+ */
+
+WYMeditor.WymClassExplorer = function(wym) {
+
+    this._wym = wym;
+    this._class = "className";
+    this._newLine = "\r\n";
+
+};
+
+WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
+
+    //This function is executed twice, though it is called once!
+    //But MSIE needs that, otherwise designMode won't work.
+    //Weird.
+    
+    this._iframe = iframe;
+    this._doc = iframe.contentWindow.document;
+    
+    //add css rules from options
+    var styles = this._doc.styleSheets[0];
+    var aCss = eval(this._options.editorStyles);
+
+    this.addCssRules(this._doc, aCss);
+
+    this._doc.title = this._wym._index;
+
+    //set the text direction
+    jQuery('html', this._doc).attr('dir', this._options.direction);
+    
+    //init html value
+    jQuery(this._doc.body).html(this._wym._html);
+    
+    //handle events
+    var wym = this;
+    
+    this._doc.body.onfocus = function()
+      {wym._doc.designMode = "on"; wym._doc = iframe.contentWindow.document;};
+    this._doc.onbeforedeactivate = function() {wym.saveCaret();};
+    this._doc.onkeyup = function() {
+      wym.saveCaret();
+      wym.keyup();
+    };
+    this._doc.onclick = function() {wym.saveCaret();};
+    
+    this._doc.body.onbeforepaste = function() {
+      wym._iframe.contentWindow.event.returnValue = false;
+    };
+    
+    this._doc.body.onpaste = function() {
+      wym._iframe.contentWindow.event.returnValue = false;
+      wym.paste(window.clipboardData.getData("Text"));
+    };
+    
+    //callback can't be executed twice, so we check
+    if(this._initialized) {
+      
+      //pre-bind functions
+      if(jQuery.isFunction(this._options.preBind)) this._options.preBind(this);
+      
+      //bind external events
+      this._wym.bindEvents();
+      
+      //post-init functions
+      if(jQuery.isFunction(this._options.postInit)) this._options.postInit(this);
+      
+      //add event listeners to doc elements, e.g. images
+      this.listen();
+    }
+    
+    this._initialized = true;
+    
+    //init designMode
+    this._doc.designMode="on";
+    try{
+        // (bermi's note) noticed when running unit tests on IE6
+        // Is this really needed, it trigger an unexisting property on IE6
+        this._doc = iframe.contentWindow.document; 
+    }catch(e){}
+};
+
+WYMeditor.WymClassExplorer.prototype._exec = function(cmd,param) {
+
+    switch(cmd) {
+    
+    case WYMeditor.INDENT: case WYMeditor.OUTDENT:
+    
+        var container = this.findUp(this.container(), WYMeditor.LI);
+        if(container) {
+            var ancestor = container.parentNode.parentNode;
+            if(container.parentNode.childNodes.length>1
+              || ancestor.tagName.toLowerCase() == WYMeditor.OL
+              || ancestor.tagName.toLowerCase() == WYMeditor.UL)
+              this._doc.execCommand(cmd);
+        }
+    break;
+    default:
+        if(param) this._doc.execCommand(cmd,false,param);
+        else this._doc.execCommand(cmd);
+    break;
+	}
+    
+    this.listen();
+};
+
+WYMeditor.WymClassExplorer.prototype.selected = function() {
+
+    var caretPos = this._iframe.contentWindow.document.caretPos;
+        if(caretPos!=null) {
+            if(caretPos.parentElement!=undefined)
+              return(caretPos.parentElement());
+        }
+};
+
+WYMeditor.WymClassExplorer.prototype.saveCaret = function() {
+
+    this._doc.caretPos = this._doc.selection.createRange();
+};
+
+WYMeditor.WymClassExplorer.prototype.addCssRule = function(styles, oCss) {
+
+    styles.addRule(oCss.name, oCss.css);
+};
+
+WYMeditor.WymClassExplorer.prototype.insert = function(html) {
+
+    // Get the current selection
+    var range = this._doc.selection.createRange();
+
+    // Check if the current selection is inside the editor
+    if ( jQuery(range.parentElement()).parents( this._options.iframeBodySelector ).is('*') ) {
+        try {
+            // Overwrite selection with provided html
+            range.pasteHTML(html);
+        } catch (e) { }
+    } else {
+        // Fall back to the internal paste function if there's no selection
+        this.paste(html);
+    }
+};
+
+WYMeditor.WymClassExplorer.prototype.wrap = function(left, right) {
+
+    // Get the current selection
+    var range = this._doc.selection.createRange();
+
+    // Check if the current selection is inside the editor
+    if ( jQuery(range.parentElement()).parents( this._options.iframeBodySelector ).is('*') ) {
+        try {
+            // Overwrite selection with provided html
+            range.pasteHTML(left + range.text + right);
+        } catch (e) { }
+    }
+};
+
+WYMeditor.WymClassExplorer.prototype.unwrap = function() {
+
+    // Get the current selection
+    var range = this._doc.selection.createRange();
+
+    // Check if the current selection is inside the editor
+    if ( jQuery(range.parentElement()).parents( this._options.iframeBodySelector ).is('*') ) {
+        try {
+            // Unwrap selection
+            var text = range.text;
+            this._exec( 'Cut' );
+            range.pasteHTML( text );
+        } catch (e) { }
+    }
+};
+
+//keyup handler
+WYMeditor.WymClassExplorer.prototype.keyup = function() {
+  this._selected_image = null;
+};
+
+WYMeditor.WymClassExplorer.prototype.setFocusToNode = function(node) {
+    var range = this._doc.selection.createRange();
+    range.moveToElementText(node);
+    range.collapse(false);
+    range.move('character',-1);
+    range.select();
+    node.focus();
+};
+
+/*
+ * WYMeditor : what you see is What You Mean web-based editor
+ * Copyright (c) 2005 - 2009 Jean-Francois Hovinne, http://www.wymeditor.org/
+ * Dual licensed under the MIT (MIT-license.txt)
+ * and GPL (GPL-license.txt) licenses.
+ *
+ * For further information visit:
+ *        http://www.wymeditor.org/
+ *
+ * File Name:
+ *        jquery.wymeditor.mozilla.js
+ *        Gecko specific class and functions.
+ *        See the documentation for more info.
+ *
+ * File Authors:
+ *        Jean-Francois Hovinne (jf.hovinne a-t wymeditor dotorg)
+ *        Volker Mische (vmx a-t gmx dotde)
+ *        Bermi Ferrer (wymeditor a-t bermi dotorg)
+ *        Frédéric Palluel-Lafleur (fpalluel a-t gmail dotcom)
+ */
+
+WYMeditor.WymClassMozilla = function(wym) {
+
+    this._wym = wym;
+    this._class = "class";
+    this._newLine = "\n";
+};
+
+WYMeditor.WymClassMozilla.prototype.initIframe = function(iframe) {
+
+    this._iframe = iframe;
+    this._doc = iframe.contentDocument;
+    
+    //add css rules from options
+    
+    var styles = this._doc.styleSheets[0];    
+    var aCss = eval(this._options.editorStyles);
+    
+    this.addCssRules(this._doc, aCss);
+
+    this._doc.title = this._wym._index;
+
+    //set the text direction
+    jQuery('html', this._doc).attr('dir', this._options.direction);
+    
+    //init html value
+    this.html(this._wym._html);
+    
+    //init designMode
+    this.enableDesignMode();
+    
+    //pre-bind functions
+    if(jQuery.isFunction(this._options.preBind)) this._options.preBind(this);
+    
+    //bind external events
+    this._wym.bindEvents();
+    
+    //bind editor keydown events
+    jQuery(this._doc).bind("keydown", this.keydown);
+    
+    //bind editor keyup events
+    jQuery(this._doc).bind("keyup", this.keyup);
+    
+    //bind editor focus events (used to reset designmode - Gecko bug)
+    jQuery(this._doc).bind("focus", this.enableDesignMode);
+    
+    //post-init functions
+    if(jQuery.isFunction(this._options.postInit)) this._options.postInit(this);
+    
+    //add event listeners to doc elements, e.g. images
+    this.listen();
+};
+
+/* @name html
+ * @description Get/Set the html value
+ */
+WYMeditor.WymClassMozilla.prototype.html = function(html) {
+
+  if(typeof html === 'string') {
+  
+    //disable designMode
+    try { this._doc.designMode = "off"; } catch(e) { };
+    
+    //replace em by i and strong by bold
+    //(designMode issue)
+    html = html.replace(/<em(\b[^>]*)>/gi, "<i$1>")
+      .replace(/<\/em>/gi, "</i>")
+      .replace(/<strong(\b[^>]*)>/gi, "<b$1>")
+      .replace(/<\/strong>/gi, "</b>");
+
+    //update the html body
+    jQuery(this._doc.body).html(html);
+    
+    //re-init designMode
+    this.enableDesignMode();
+  }
+  else return(jQuery(this._doc.body).html());
+};
+
+WYMeditor.WymClassMozilla.prototype._exec = function(cmd,param) {
+
+    if(!this.selected()) return(false);
+
+    switch(cmd) {
+    
+    case WYMeditor.INDENT: case WYMeditor.OUTDENT:
+    
+        var focusNode = this.selected();    
+        var sel = this._iframe.contentWindow.getSelection();
+        var anchorNode = sel.anchorNode;
+        if(anchorNode.nodeName == "#text") anchorNode = anchorNode.parentNode;
+        
+        focusNode = this.findUp(focusNode, WYMeditor.BLOCKS);
+        anchorNode = this.findUp(anchorNode, WYMeditor.BLOCKS);
+        
+        if(focusNode && focusNode == anchorNode
+          && focusNode.tagName.toLowerCase() == WYMeditor.LI) {
+
+            var ancestor = focusNode.parentNode.parentNode;
+
+            if(focusNode.parentNode.childNodes.length>1
+              || ancestor.tagName.toLowerCase() == WYMeditor.OL
+              || ancestor.tagName.toLowerCase() == WYMeditor.UL)
+                this._doc.execCommand(cmd,'',null);
+        }
+
+    break;
+    
+    default:
+
+        if(param) this._doc.execCommand(cmd,'',param);
+        else this._doc.execCommand(cmd,'',null);
+    }
+    
+    //set to P if parent = BODY
+    var container = this.selected();
+    if(container.tagName.toLowerCase() == WYMeditor.BODY)
+        this._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
+    
+    //add event handlers on doc elements
+
+    this.listen();
+};
+
+/* @name selected
+ * @description Returns the selected container
+ */
+WYMeditor.WymClassMozilla.prototype.selected = function() {
+
+    var sel = this._iframe.contentWindow.getSelection();
+    var node = sel.focusNode;
+    if(node) {
+        if(node.nodeName == "#text") return(node.parentNode);
+        else return(node);
+    } else return(null);
+};
+
+WYMeditor.WymClassMozilla.prototype.addCssRule = function(styles, oCss) {
+
+    styles.insertRule(oCss.name + " {" + oCss.css + "}",
+        styles.cssRules.length);
+};
+
+
+//keydown handler, mainly used for keyboard shortcuts
+WYMeditor.WymClassMozilla.prototype.keydown = function(evt) {
+  
+  //'this' is the doc
+  var wym = WYMeditor.INSTANCES[this.title];
+  var container = null;  
+
+  if(evt.ctrlKey){
+    if(evt.keyCode == 66){
+      //CTRL+b => STRONG
+      wym._exec(WYMeditor.BOLD);
+      return false;
+    }
+    if(evt.keyCode == 73){
+      //CTRL+i => EMPHASIS
+      wym._exec(WYMeditor.ITALIC);
+      return false;
+    }
+  }
+
+  else if(evt.keyCode == 13) {
+    if(!evt.shiftKey){
+      //fix PRE bug #73
+      container = wym.selected();
+      if(container && container.tagName.toLowerCase() == WYMeditor.PRE) {
+        evt.preventDefault();
+        wym.insert('<p></p>');
+      }
+    }
+  }
+};
+
+//keyup handler, mainly used for cleanups
+WYMeditor.WymClassMozilla.prototype.keyup = function(evt) {
+
+  //'this' is the doc
+  var wym = WYMeditor.INSTANCES[this.title];
+  
+  wym._selected_image = null;
+  var container = null;
+
+  if(evt.keyCode == 13 && !evt.shiftKey) {
+  
+    //RETURN key
+    //cleanup <br><br> between paragraphs
+    jQuery(wym._doc.body).children(WYMeditor.BR).remove();
+  }
+  
+  else if(evt.keyCode != 8
+       && evt.keyCode != 17
+       && evt.keyCode != 46
+       && evt.keyCode != 224
+       && !evt.metaKey
+       && !evt.ctrlKey) {
+      
+    //NOT BACKSPACE, NOT DELETE, NOT CTRL, NOT COMMAND
+    //text nodes replaced by P
+    
+    container = wym.selected();
+    var name = container.tagName.toLowerCase();
+
+    //fix forbidden main containers
+    if(
+      name == "strong" ||
+      name == "b" ||
+      name == "em" ||
+      name == "i" ||
+      name == "sub" ||
+      name == "sup" ||
+      name == "a"
+
+    ) name = container.parentNode.tagName.toLowerCase();
+
+    if(name == WYMeditor.BODY) wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
+  }
+};
+
+WYMeditor.WymClassMozilla.prototype.enableDesignMode = function() {
+    if(this.designMode == "off") {
+      try {
+        this.designMode = "on";
+        this.execCommand("styleWithCSS", '', false);
+      } catch(e) { }
+    }
+};
+
+WYMeditor.WymClassMozilla.prototype.setFocusToNode = function(node) {
+    var range = document.createRange();
+    range.selectNode(node);
+    var selected = this._iframe.contentWindow.getSelection();
+    selected.addRange(range);
+    selected.collapse(node, node.childNodes.length);
+    this._iframe.contentWindow.focus();
+};
+
+WYMeditor.WymClassMozilla.prototype.openBlockTag = function(tag, attributes)
+{
+  var attributes = this.validator.getValidTagAttributes(tag, attributes);
+
+  // Handle Mozilla styled spans
+  if(tag == 'span' && attributes.style){
+    var new_tag = this.getTagForStyle(attributes.style);
+    if(new_tag){
+      this._tag_stack.pop();
+      var tag = new_tag;
+      this._tag_stack.push(new_tag);
+      attributes.style = '';
+    }else{
+      return;
+    }
+  }
+  
+  this.output += this.helper.tag(tag, attributes, true);
+};
+
+WYMeditor.WymClassMozilla.prototype.getTagForStyle = function(style) {
+
+  if(/bold/.test(style)) return 'strong';
+  if(/italic/.test(style)) return 'em';
+  if(/sub/.test(style)) return 'sub';
+  if(/sub/.test(style)) return 'super';
+  return false;
+};
+
+/*
+ * WYMeditor : what you see is What You Mean web-based editor
+ * Copyright (c) 2005 - 2009 Jean-Francois Hovinne, http://www.wymeditor.org/
+ * Dual licensed under the MIT (MIT-license.txt)
+ * and GPL (GPL-license.txt) licenses.
+ *
+ * For further information visit:
+ *        http://www.wymeditor.org/
+ *
+ * File Name:
+ *        jquery.wymeditor.opera.js
+ *        Opera specific class and functions.
+ *        See the documentation for more info.
+ *
+ * File Authors:
+ *        Jean-Francois Hovinne (jf.hovinne a-t wymeditor dotorg)
+ */
+
+WYMeditor.WymClassOpera = function(wym) {
+
+    this._wym = wym;
+    this._class = "class";
+    this._newLine = "\r\n";
+};
+
+WYMeditor.WymClassOpera.prototype.initIframe = function(iframe) {
+
+    this._iframe = iframe;
+    this._doc = iframe.contentWindow.document;
+    
+    //add css rules from options
+    var styles = this._doc.styleSheets[0];    
+    var aCss = eval(this._options.editorStyles);
+
+    this.addCssRules(this._doc, aCss);
+
+    this._doc.title = this._wym._index;
+
+    //set the text direction
+    jQuery('html', this._doc).attr('dir', this._options.direction);
+    
+    //init designMode
+    this._doc.designMode = "on";
+
+    //init html value
+    this.html(this._wym._html);
+    
+    //pre-bind functions
+    if(jQuery.isFunction(this._options.preBind)) this._options.preBind(this);
+    
+    //bind external events
+    this._wym.bindEvents();
+    
+    //bind editor keydown events
+    jQuery(this._doc).bind("keydown", this.keydown);
+    
+    //bind editor events
+    jQuery(this._doc).bind("keyup", this.keyup);
+    
+    //post-init functions
+    if(jQuery.isFunction(this._options.postInit)) this._options.postInit(this);
+    
+    //add event listeners to doc elements, e.g. images
+    this.listen();
+};
+
+WYMeditor.WymClassOpera.prototype._exec = function(cmd,param) {
+
+    if(param) this._doc.execCommand(cmd,false,param);
+    else this._doc.execCommand(cmd);
+    
+    this.listen();
+};
+
+WYMeditor.WymClassOpera.prototype.selected = function() {
+
+    var sel=this._iframe.contentWindow.getSelection();
+    var node=sel.focusNode;
+    if(node) {
+        if(node.nodeName=="#text")return(node.parentNode);
+        else return(node);
+    } else return(null);
+};
+
+WYMeditor.WymClassOpera.prototype.addCssRule = function(styles, oCss) {
+
+    styles.insertRule(oCss.name + " {" + oCss.css + "}",
+        styles.cssRules.length);
+};
+
+//keydown handler
+WYMeditor.WymClassOpera.prototype.keydown = function(evt) {
+  
+  //'this' is the doc
+  var wym = WYMeditor.INSTANCES[this.title];
+  var sel = wym._iframe.contentWindow.getSelection();
+  startNode = sel.getRangeAt(0).startContainer;
+
+  //Get a P instead of no container
+  if(!jQuery(startNode).parentsOrSelf(
+                WYMeditor.MAIN_CONTAINERS.join(","))[0]
+      && !jQuery(startNode).parentsOrSelf('li')
+      && evt.keyCode != WYMeditor.KEY.ENTER
+      && evt.keyCode != WYMeditor.KEY.LEFT
+      && evt.keyCode != WYMeditor.KEY.UP
+      && evt.keyCode != WYMeditor.KEY.RIGHT
+      && evt.keyCode != WYMeditor.KEY.DOWN
+      && evt.keyCode != WYMeditor.KEY.BACKSPACE
+      && evt.keyCode != WYMeditor.KEY.DELETE)
+      wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
+
+};
+
+//keyup handler
+WYMeditor.WymClassOpera.prototype.keyup = function(evt) {
+
+  //'this' is the doc
+  var wym = WYMeditor.INSTANCES[this.title];
+  wym._selected_image = null;
+};
+
+// TODO: implement me
+WYMeditor.WymClassOpera.prototype.setFocusToNode = function(node) {
+
+};
+
+/*
+ * WYMeditor : what you see is What You Mean web-based editor
+ * Copyright (c) 2005 - 2009 Jean-Francois Hovinne, http://www.wymeditor.org/
+ * Dual licensed under the MIT (MIT-license.txt)
+ * and GPL (GPL-license.txt) licenses.
+ *
+ * For further information visit:
+ *        http://www.wymeditor.org/
+ *
+ * File Name:
+ *        jquery.wymeditor.safari.js
+ *        Safari specific class and functions.
+ *        See the documentation for more info.
+ *
+ * File Authors:
+ *        Jean-Francois Hovinne (jf.hovinne a-t wymeditor dotorg)
+ *        Scott Lewis (lewiscot a-t gmail dotcom)
+ */
+
+WYMeditor.WymClassSafari = function(wym) {
+
+    this._wym = wym;
+    this._class = "class";
+    this._newLine = "\n";
+};
+
+WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
+
+    this._iframe = iframe;
+    this._doc = iframe.contentDocument;
+    
+    //add css rules from options
+    
+    var styles = this._doc.styleSheets[0];    
+    var aCss = eval(this._options.editorStyles);
+    
+    this.addCssRules(this._doc, aCss);
+
+    this._doc.title = this._wym._index;
+
+    //set the text direction
+    jQuery('html', this._doc).attr('dir', this._options.direction);
+
+    //init designMode
+    this._doc.designMode = "on";
+    
+    //init html value
+    this.html(this._wym._html);
+    
+    //pre-bind functions
+    if(jQuery.isFunction(this._options.preBind)) this._options.preBind(this);
+    
+    //bind external events
+    this._wym.bindEvents();
+    
+    //bind editor keydown events
+    jQuery(this._doc).bind("keydown", this.keydown);
+    
+    //bind editor keyup events
+    jQuery(this._doc).bind("keyup", this.keyup);
+    
+    //post-init functions
+    if(jQuery.isFunction(this._options.postInit)) this._options.postInit(this);
+    
+    //add event listeners to doc elements, e.g. images
+    this.listen();
+};
+
+WYMeditor.WymClassSafari.prototype._exec = function(cmd,param) {
+
+    if(!this.selected()) return(false);
+
+    switch(cmd) {
+    
+    case WYMeditor.INDENT: case WYMeditor.OUTDENT:
+    
+        var focusNode = this.selected();    
+        var sel = this._iframe.contentWindow.getSelection();
+        var anchorNode = sel.anchorNode;
+        if(anchorNode.nodeName == "#text") anchorNode = anchorNode.parentNode;
+        
+        focusNode = this.findUp(focusNode, WYMeditor.BLOCKS);
+        anchorNode = this.findUp(anchorNode, WYMeditor.BLOCKS);
+        
+        if(focusNode && focusNode == anchorNode
+          && focusNode.tagName.toLowerCase() == WYMeditor.LI) {
+
+            var ancestor = focusNode.parentNode.parentNode;
+
+            if(focusNode.parentNode.childNodes.length>1
+              || ancestor.tagName.toLowerCase() == WYMeditor.OL
+              || ancestor.tagName.toLowerCase() == WYMeditor.UL)
+                this._doc.execCommand(cmd,'',null);
+        }
+
+    break;
+
+    case WYMeditor.INSERT_ORDEREDLIST: case WYMeditor.INSERT_UNORDEREDLIST:
+
+        this._doc.execCommand(cmd,'',null);
+
+        //Safari creates lists in e.g. paragraphs.
+        //Find the container, and remove it.
+        var focusNode = this.selected();
+        var container = this.findUp(focusNode, WYMeditor.MAIN_CONTAINERS);
+        if(container) jQuery(container).replaceWith(jQuery(container).html());
+
+    break;
+    
+    default:
+
+        if(param) this._doc.execCommand(cmd,'',param);
+        else this._doc.execCommand(cmd,'',null);
+    }
+    
+    //set to P if parent = BODY
+    var container = this.selected();
+    if(container && container.tagName.toLowerCase() == WYMeditor.BODY)
+        this._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
+
+    //add event handlers on doc elements
+    this.listen();
+};
+
+/* @name selected
+ * @description Returns the selected container
+ */
+WYMeditor.WymClassSafari.prototype.selected = function() {
+
+    var sel = this._iframe.contentWindow.getSelection();
+    var node = sel.focusNode;
+    if(node) {
+        if(node.nodeName == "#text") return(node.parentNode);
+        else return(node);
+    } else return(null);
+};
+
+WYMeditor.WymClassSafari.prototype.addCssRule = function(styles, oCss) {
+
+    styles.insertRule(oCss.name + " {" + oCss.css + "}",
+        styles.cssRules.length);
+};
+
+
+//keydown handler, mainly used for keyboard shortcuts
+WYMeditor.WymClassSafari.prototype.keydown = function(evt) {
+  
+  //'this' is the doc
+  var wym = WYMeditor.INSTANCES[this.title];
+  
+  if(evt.ctrlKey){
+    if(evt.keyCode == 66){
+      //CTRL+b => STRONG
+      wym._exec(WYMeditor.BOLD);
+      return false;
+    }
+    if(evt.keyCode == 73){
+      //CTRL+i => EMPHASIS
+      wym._exec(WYMeditor.ITALIC);
+      return false;
+    }
+  }
+};
+
+//keyup handler, mainly used for cleanups
+WYMeditor.WymClassSafari.prototype.keyup = function(evt) {
+
+  //'this' is the doc
+  var wym = WYMeditor.INSTANCES[this.title];
+  
+  wym._selected_image = null;
+  var container = null;
+
+  if(evt.keyCode == 13 && !evt.shiftKey) {
+  
+    //RETURN key
+    //cleanup <br><br> between paragraphs
+    jQuery(wym._doc.body).children(WYMeditor.BR).remove();
+    
+    //fix PRE bug #73
+    container = wym.selected();
+    if(container && container.tagName.toLowerCase() == WYMeditor.PRE)
+        wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //create P after PRE
+  }
+
+  //fix #112
+  if(evt.keyCode == 13 && evt.shiftKey) {
+    wym._exec('InsertLineBreak');
+  }
+  
+  if(evt.keyCode != 8
+       && evt.keyCode != 17
+       && evt.keyCode != 46
+       && evt.keyCode != 224
+       && !evt.metaKey
+       && !evt.ctrlKey) {
+      
+    //NOT BACKSPACE, NOT DELETE, NOT CTRL, NOT COMMAND
+    //text nodes replaced by P
+    
+    container = wym.selected();
+    var name = container.tagName.toLowerCase();
+
+    //fix forbidden main containers
+    if(
+      name == "strong" ||
+      name == "b" ||
+      name == "em" ||
+      name == "i" ||
+      name == "sub" ||
+      name == "sup" ||
+      name == "a" ||
+      name == "span" //fix #110
+
+    ) name = container.parentNode.tagName.toLowerCase();
+
+    if(name == WYMeditor.BODY || name == WYMeditor.DIV) wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //fix #110 for DIV
+  }
+};
+
+WYMeditor.WymClassSafari.prototype.setFocusToNode = function(node) {
+    var range = this._iframe.contentDocument.createRange();
+    range.selectNode(node);
+    var selected = this._iframe.contentWindow.getSelection();
+    selected.addRange(range);
+    selected.collapse(node, node.childNodes.length);
+    this._iframe.contentWindow.focus();
+};
+
+WYMeditor.WymClassSafari.prototype.openBlockTag = function(tag, attributes)
+{
+  var attributes = this.validator.getValidTagAttributes(tag, attributes);
+
+  // Handle Safari styled spans
+  if(tag == 'span' && attributes.style) {
+    var new_tag = this.getTagForStyle(attributes.style);
+    if(new_tag){
+      this._tag_stack.pop();
+      var tag = new_tag;
+      this._tag_stack.push(new_tag);
+      attributes.style = '';
+      
+      //should fix #125 - also removed the xhtml() override
+      if(typeof attributes['class'] == 'string')
+        attributes['class'] = attributes['class'].replace(/apple-style-span/gi, '');
+    
+    } else {
+      return;
+    }
+  }
+  
+  this.output += this.helper.tag(tag, attributes, true);
+};
+
+WYMeditor.WymClassSafari.prototype.getTagForStyle = function(style) {
+
+  if(/bold/.test(style)) return 'strong';
+  if(/italic/.test(style)) return 'em';
+  if(/sub/.test(style)) return 'sub';
+  if(/super/.test(style)) return 'sup';
+  return false;
+};
