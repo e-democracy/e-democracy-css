@@ -260,7 +260,12 @@ p img {
 }
 
 #gs-group-messages-topics-loading {
-  height: 39.25em; }
+  height: 39.25em; 
+}
+#gs-group-messages-topics-toolbar .ui-widget-header {
+  border: none;
+  background: none;
+}
 
 /*
  * jQuery UI CSS Framework 1.8.6
