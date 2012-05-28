@@ -1,398 +1,535 @@
 /*
- * jQuery blockUI plugin
- * Version 2.16 (20-MAR-2009)
- * @requires jQuery v1.2.3 or later
+ ### jQuery Multiple File Upload Plugin v1.46 - 2009-05-12 ###
+ * Home: http://www.fyneworks.com/jquery/multiple-file-upload/
+ * Code: http://code.google.com/p/jquery-multifile-plugin/
  *
- * Examples at: http://malsup.com/jquery/block/
- * Copyright (c) 2007-2008 M. Alsup
  * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
- *
- * Thanks to Amir-Hossein Sobhi for some excellent contributions!
- */
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ ###
+*/
 
-;(function($) {
-
-if (/1\.(0|1|2)\.(0|1|2)/.test($.fn.jquery) || /^1.1/.test($.fn.jquery)) {
-    alert('blockUI requires jQuery v1.2.3 or later!  You are using v' + $.fn.jquery);
-    return;
-}
-
-$.fn._fadeIn = $.fn.fadeIn;
-
-// global $ methods for blocking/unblocking the entire page
-$.blockUI   = function(opts) { install(window, opts); };
-$.unblockUI = function(opts) { remove(window, opts); };
-
-// convenience method for quick growl-like notifications  (http://www.google.com/search?q=growl)
-$.growlUI = function(title, message, timeout) {
-	var $m = $('<div class="growlUI"></div>');
-	if (title) $m.append('<h1>'+title+'</h1>');
-	if (message) $m.append('<h2>'+message+'</h2>');
-	if (timeout == undefined) timeout = 3000;
-    $.blockUI({
-		message: $m, fadeIn: 700, fadeOut: 1000, centerY: false,
-		timeout: timeout, showOverlay: false,
-		css: $.blockUI.defaults.growlCSS
+/*# AVOID COLLISIONS #*/
+;if(window.jQuery) (function($){
+/*# AVOID COLLISIONS #*/
+ 
+	// plugin initialization
+	$.fn.MultiFile = function(options){
+		if(this.length==0) return this; // quick fail
+		
+		// Handle API methods
+		if(typeof arguments[0]=='string'){
+			// Perform API methods on individual elements
+			if(this.length>1){
+				var args = arguments;
+				return this.each(function(){
+					$.fn.MultiFile.apply($(this), args);
     });
-};
-
-// plugin method for blocking element content
-$.fn.block = function(opts) {
-    return this.each(function() {
-        if ($.css(this,'position') == 'static')
-            this.style.position = 'relative';
-        if ($.browser.msie)
-            this.style.zoom = 1; // force 'hasLayout'
-        install(this, opts);
-    });
-};
-
-// plugin method for unblocking element content
-$.fn.unblock = function(opts) {
-    return this.each(function() {
-        remove(this, opts);
-    });
-};
-
-$.blockUI.version = 2.16; // 2nd generation blocking at no extra cost!
-
-// override these in your code to change the default behavior and style
-$.blockUI.defaults = {
-    // message displayed when blocking (use null for no message)
-    message:  '<h1>Please wait...</h1>',
-
-    // styles for the message when blocking; if you wish to disable
-    // these and use an external stylesheet then do this in your code:
-    // $.blockUI.defaults.css = {};
-    css: {
-        padding:        0,
-        margin:         0,
-        width:          '30%',
-        top:            '40%',
-        left:           '35%',
-        textAlign:      'center',
-        color:          '#000',
-        border:         '3px solid #aaa',
-        backgroundColor:'#fff',
-        cursor:         'wait'
-    },
-
-    // styles for the overlay
-    overlayCSS:  {
-        backgroundColor: '#000',
-        opacity:         '0.6'
-    },
-
-	// styles applied when using $.growlUI
-	growlCSS: {
-		width:    '350px',
-		top:      '10px',
-		left:     '',
-		right:    '10px',
-	    border:   'none',
-	    padding:  '5px',
-	    opacity:  '0.6',
-		cursor:    null,
-	    color:    '#fff',
-	    backgroundColor: '#000',
-	    '-webkit-border-radius': '10px',
-	    '-moz-border-radius':    '10px'
-	},
-
-    // z-index for the blocking overlay
-    baseZ: 1000,
-
-    // set these to true to have the message automatically centered
-    centerX: true, // <-- only effects element blocking (page block controlled via css above)
-    centerY: true,
-
-    // allow body element to be stetched in ie6; this makes blocking look better
-    // on "short" pages.  disable if you wish to prevent changes to the body height
-    allowBodyStretch: true,
-
-    // be default blockUI will supress tab navigation from leaving blocking content;
-    constrainTabKey: true,
-
-    // fadeIn time in millis; set to 0 to disable fadeIn on block
-    fadeIn:  200,
-
-    // fadeOut time in millis; set to 0 to disable fadeOut on unblock
-    fadeOut:  400,
-
-	// time in millis to wait before auto-unblocking; set to 0 to disable auto-unblock
-	timeout: 0,
-
-	// disable if you don't want to show the overlay
-	showOverlay: true,
-
-    // if true, focus will be placed in the first available input field when
-    // page blocking
-    focusInput: true,
-
-    // suppresses the use of overlay styles on FF/Linux (due to performance issues with opacity)
-    applyPlatformOpacityRules: true,
-
-    // callback method invoked when unblocking has completed; the callback is
-    // passed the element that has been unblocked (which is the window object for page
-    // blocks) and the options that were passed to the unblock call:
-    //     onUnblock(element, options)
-    onUnblock: null,
-
-    // don't ask; if you really must know: http://groups.google.com/group/jquery-en/browse_thread/thread/36640a8730503595/2f6a79a77a78e493#2f6a79a77a78e493
-    quirksmodeOffsetHack: 4
-};
-
-// private data and functions follow...
-
-var ie6 = $.browser.msie && /MSIE 6.0/.test(navigator.userAgent);
-var pageBlock = null;
-var pageBlockEls = [];
-
-function install(el, opts) {
-    var full = (el == window);
-    var msg = opts && opts.message !== undefined ? opts.message : undefined;
-    opts = $.extend({}, $.blockUI.defaults, opts || {});
-    opts.overlayCSS = $.extend({}, $.blockUI.defaults.overlayCSS, opts.overlayCSS || {});
-    var css = $.extend({}, $.blockUI.defaults.css, opts.css || {});
-    msg = msg === undefined ? opts.message : msg;
-
-    // remove the current block (if there is one)
-    if (full && pageBlock)
-        remove(window, {fadeOut:0});
-
-    // if an existing element is being used as the blocking content then we capture
-    // its current place in the DOM (and current display style) so we can restore
-    // it when we unblock
-    if (msg && typeof msg != 'string' && (msg.parentNode || msg.jquery)) {
-        var node = msg.jquery ? msg[0] : msg;
-        var data = {};
-        $(el).data('blockUI.history', data);
-        data.el = node;
-        data.parent = node.parentNode;
-        data.display = node.style.display;
-        data.position = node.style.position;
-		if (data.parent)
-			data.parent.removeChild(node);
-    }
-
-    var z = opts.baseZ;
-
-    // blockUI uses 3 layers for blocking, for simplicity they are all used on every platform;
-    // layer1 is the iframe layer which is used to supress bleed through of underlying content
-    // layer2 is the overlay layer which has opacity and a wait cursor
-    // layer3 is the message content that is displayed while blocking
-
-    var lyr1 = ($.browser.msie) ? $('<iframe class="blockUI" style="z-index:'+ (z++) +';display:none;border:none;margin:0;padding:0;position:absolute;width:100%;height:100%;top:0;left:0" src="about:blank"></iframe>')
-                                : $('<div class="blockUI" style="display:none"></div>');
-    var lyr2 = $('<div class="blockUI blockOverlay" style="z-index:'+ (z++) +';display:none;cursor:wait;border:none;margin:0;padding:0;width:100%;height:100%;top:0;left:0"></div>');
-    var lyr3 = full ? $('<div class="blockUI blockMsg blockPage" style="z-index:'+z+';display:none;position:fixed"></div>')
-                    : $('<div class="blockUI blockMsg blockElement" style="z-index:'+z+';display:none;position:absolute"></div>');
-
-    // if we have a message, style it
-    if (msg)
-        lyr3.css(css);
-
-    // style the overlay
-    if (!opts.applyPlatformOpacityRules || !($.browser.mozilla && /Linux/.test(navigator.platform)))
-        lyr2.css(opts.overlayCSS);
-    lyr2.css('position', full ? 'fixed' : 'absolute');
-
-    // make iframe layer transparent in IE
-    if ($.browser.msie)
-        lyr1.css('opacity','0.0');
-
-    $([lyr1[0],lyr2[0],lyr3[0]]).appendTo(full ? 'body' : el);
-
-    // ie7 must use absolute positioning in quirks mode and to account for activex issues (when scrolling)
-    var expr = $.browser.msie && ($.browser.version < 8 || !$.boxModel) && (!$.boxModel || $('object,embed', full ? null : el).length > 0);
-    if (ie6 || (expr && lyr3[0].style.setExpression)) {
-        // give body 100% height
-        if (full && opts.allowBodyStretch && $.boxModel)
-            $('html,body').css('height','100%');
-
-        // fix ie6 issue when blocked element has a border width
-        if ((ie6 || !$.boxModel) && !full) {
-            var t = sz(el,'borderTopWidth'), l = sz(el,'borderLeftWidth');
-            var fixT = t ? '(0 - '+t+')' : 0;
-            var fixL = l ? '(0 - '+l+')' : 0;
+			};
+			// Invoke API method handler
+			$.fn.MultiFile[arguments[0]].apply(this, $.makeArray(arguments).slice(1) || []);
+			// Quick exit...
+			return this;
+		};
+		
+		// Initialize options for this call
+		var options = $.extend(
+			{}/* new object */,
+			$.fn.MultiFile.options/* default options */,
+			options || {} /* just-in-time options */
+		);
+		
+		// Empty Element Fix!!!
+		// this code will automatically intercept native form submissions
+		// and disable empty file elements
+		$('form')
+		.not('MultiFile-intercepted')
+		.addClass('MultiFile-intercepted')
+		.submit($.fn.MultiFile.disableEmpty);
+		
+		//### http://plugins.jquery.com/node/1363
+		// utility method to integrate this plugin with others...
+		if($.fn.MultiFile.options.autoIntercept){
+			$.fn.MultiFile.intercept( $.fn.MultiFile.options.autoIntercept /* array of methods to intercept */ );
+			$.fn.MultiFile.options.autoIntercept = null; /* only run this once */
+		};
+		
+		// loop through each matched element
+		this
+		 .not('.MultiFile-applied')
+			.addClass('MultiFile-applied')
+		.each(function(){
+			//#####################################################################
+			// MAIN PLUGIN FUNCTIONALITY - START
+			//#####################################################################
+			
+       // BUG 1251 FIX: http://plugins.jquery.com/project/comments/add/1251
+       // variable group_count would repeat itself on multiple calls to the plugin.
+       // this would cause a conflict with multiple elements
+       // changes scope of variable to global so id will be unique over n calls
+       window.MultiFile = (window.MultiFile || 0) + 1;
+       var group_count = window.MultiFile;
+       
+       // Copy parent attributes - Thanks to Jonas Wagner
+       // we will use this one to create new input elements
+       var MultiFile = {e:this, E:$(this), clone:$(this).clone()};
+       
+       //===
+       
+       //# USE CONFIGURATION
+       if(typeof options=='number') options = {max:options};
+       var o = $.extend({},
+        $.fn.MultiFile.options,
+        options || {},
+   					($.metadata? MultiFile.E.metadata(): ($.meta?MultiFile.E.data():null)) || {}, /* metadata options */
+								{} /* internals */
+       );
+       // limit number of files that can be selected?
+       if(!(o.max>0) /*IsNull(MultiFile.max)*/){
+        o.max = MultiFile.E.attr('maxlength');
+        if(!(o.max>0) /*IsNull(MultiFile.max)*/){
+         o.max = (String(MultiFile.e.className.match(/\b(max|limit)\-([0-9]+)\b/gi) || ['']).match(/[0-9]+/gi) || [''])[0];
+         if(!(o.max>0)) o.max = -1;
+         else           o.max = String(o.max).match(/[0-9]+/gi)[0];
         }
-
-        // simulate fixed position
-        $.each([lyr1,lyr2,lyr3], function(i,o) {
-            var s = o[0].style;
-            s.position = 'absolute';
-            if (i < 2) {
-                full ? s.setExpression('height','Math.max(document.body.scrollHeight, document.body.offsetHeight) - (jQuery.boxModel?0:'+opts.quirksmodeOffsetHack+') + "px"')
-                     : s.setExpression('height','this.parentNode.offsetHeight + "px"');
-                full ? s.setExpression('width','jQuery.boxModel && document.documentElement.clientWidth || document.body.clientWidth + "px"')
-                     : s.setExpression('width','this.parentNode.offsetWidth + "px"');
-                if (fixL) s.setExpression('left', fixL);
-                if (fixT) s.setExpression('top', fixT);
-            }
-            else if (opts.centerY) {
-                if (full) s.setExpression('top','(document.documentElement.clientHeight || document.body.clientHeight) / 2 - (this.offsetHeight / 2) + (blah = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + "px"');
-                s.marginTop = 0;
-            }
-			else if (!opts.centerY && full) {
-				var top = (opts.css && opts.css.top) ? parseInt(opts.css.top) : 0;
-				var expression = '((document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + '+top+') + "px"';
-                s.setExpression('top',expression);
-			}
+       };
+       o.max = new Number(o.max);
+       // limit extensions?
+       o.accept = o.accept || MultiFile.E.attr('accept') || '';
+       if(!o.accept){
+        o.accept = (MultiFile.e.className.match(/\b(accept\-[\w\|]+)\b/gi)) || '';
+        o.accept = new String(o.accept).replace(/^(accept|ext)\-/i,'');
+       };
+       
+       //===
+       
+       // APPLY CONFIGURATION
+							$.extend(MultiFile, o || {});
+       MultiFile.STRING = $.extend({},$.fn.MultiFile.options.STRING,MultiFile.STRING);
+       
+       //===
+       
+       //#########################################
+       // PRIVATE PROPERTIES/METHODS
+       $.extend(MultiFile, {
+        n: 0, // How many elements are currently selected?
+        slaves: [], files: [],
+        instanceKey: MultiFile.e.id || 'MultiFile'+String(group_count), // Instance Key?
+        generateID: function(z){ return MultiFile.instanceKey + (z>0 ?'_F'+String(z):''); },
+        trigger: function(event, element){
+         var handler = MultiFile[event], value = $(element).attr('value');
+         if(handler){
+          var returnValue = handler(element, value, MultiFile);
+          if( returnValue!=null ) return returnValue;
+         }
+         return true;
+        }
+       });
+       
+       //===
+       
+       // Setup dynamic regular expression for extension validation
+       // - thanks to John-Paul Bader: http://smyck.de/2006/08/11/javascript-dynamic-regular-expresions/
+       if(String(MultiFile.accept).length>1){
+								MultiFile.accept = MultiFile.accept.replace(/\W+/g,'|').replace(/^\W|\W$/g,'');
+        MultiFile.rxAccept = new RegExp('\\.('+(MultiFile.accept?MultiFile.accept:'')+')$','gi');
+       };
+       
+       //===
+       
+       // Create wrapper to hold our file list
+       MultiFile.wrapID = MultiFile.instanceKey+'_wrap'; // Wrapper ID?
+       MultiFile.E.wrap('<div class="MultiFile-wrap" id="'+MultiFile.wrapID+'"></div>');
+       MultiFile.wrapper = $('#'+MultiFile.wrapID+'');
+       
+       //===
+       
+       // MultiFile MUST have a name - default: file1[], file2[], file3[]
+       MultiFile.e.name = MultiFile.e.name || 'file'+ group_count +'[]';
+       
+       //===
+       
+							if(!MultiFile.list){
+								// Create a wrapper for the list
+								// * OPERA BUG: NO_MODIFICATION_ALLOWED_ERR ('list' is a read-only property)
+								// this change allows us to keep the files in the order they were selected
+								MultiFile.wrapper.append( '<div class="MultiFile-list" id="'+MultiFile.wrapID+'_list"></div>' );
+								MultiFile.list = $('#'+MultiFile.wrapID+'_list');
+							};
+       MultiFile.list = $(MultiFile.list);
+							
+       //===
+       
+       // Bind a new element
+       MultiFile.addSlave = function( slave, slave_count ){
+								//if(window.console) console.log('MultiFile.addSlave',slave_count);
+								
+        // Keep track of how many elements have been displayed
+        MultiFile.n++;
+        // Add reference to master element
+        slave.MultiFile = MultiFile;
+								
+								// BUG FIX: http://plugins.jquery.com/node/1495
+								// Clear identifying properties from clones
+								if(slave_count>0) slave.id = slave.name = '';
+								
+        // Define element's ID and name (upload components need this!)
+        //slave.id = slave.id || MultiFile.generateID(slave_count);
+								if(slave_count>0) slave.id = MultiFile.generateID(slave_count);
+								//FIX for: http://code.google.com/p/jquery-multifile-plugin/issues/detail?id=23
+        
+        // 2008-Apr-29: New customizable naming convention (see url below)
+        // http://groups.google.com/group/jquery-dev/browse_frm/thread/765c73e41b34f924#
+        slave.name = String(MultiFile.namePattern
+         /*master name*/.replace(/\$name/gi,$(MultiFile.clone).attr('name'))
+         /*master id  */.replace(/\$id/gi,  $(MultiFile.clone).attr('id'))
+         /*group count*/.replace(/\$g/gi,   group_count)//(group_count>0?group_count:''))
+         /*slave count*/.replace(/\$i/gi,   slave_count)//(slave_count>0?slave_count:''))
+        );
+        
+        // If we've reached maximum number, disable input slave
+        if( (MultiFile.max > 0) && ((MultiFile.n-1) > (MultiFile.max)) )//{ // MultiFile.n Starts at 1, so subtract 1 to find true count
+         slave.disabled = true;
+        //};
+        
+        // Remember most recent slave
+        MultiFile.current = MultiFile.slaves[slave_count] = slave;
+        
+								// We'll use jQuery from now on
+								slave = $(slave);
+        
+        // Clear value
+        slave.val('').attr('value','')[0].value = '';
+        
+								// Stop plugin initializing on slaves
+								slave.addClass('MultiFile-applied');
+								
+        // Triggered when a file is selected
+        slave.change(function(){
+          //if(window.console) console.log('MultiFile.slave.change',slave_count);
+ 								 
+          // Lose focus to stop IE7 firing onchange again
+          $(this).blur();
+          
+          //# Trigger Event! onFileSelect
+          if(!MultiFile.trigger('onFileSelect', this, MultiFile)) return false;
+          //# End Event!
+          
+          //# Retrive value of selected file from element
+          var ERROR = '', v = String(this.value || ''/*.attr('value)*/);
+          
+          // check extension
+          if(MultiFile.accept && v && !v.match(MultiFile.rxAccept))//{
+            ERROR = MultiFile.STRING.denied.replace('$ext', String(v.match(/\.\w{1,4}$/gi)));
+           //}
+          //};
+          
+          // Disallow duplicates
+										for(var f in MultiFile.slaves)//{
+           if(MultiFile.slaves[f] && MultiFile.slaves[f]!=this)//{
+  										//console.log(MultiFile.slaves[f],MultiFile.slaves[f].value);
+            if(MultiFile.slaves[f].value==v)//{
+             ERROR = MultiFile.STRING.duplicate.replace('$file', v.match(/[^\/\\]+$/gi));
+            //};
+           //};
+          //};
+          
+          // Create a new file input element
+          var newEle = $(MultiFile.clone).clone();// Copy parent attributes - Thanks to Jonas Wagner
+          //# Let's remember which input we've generated so
+          // we can disable the empty ones before submission
+          // See: http://plugins.jquery.com/node/1495
+          newEle.addClass('MultiFile');
+          
+          // Handle error
+          if(ERROR!=''){
+            // Handle error
+            MultiFile.error(ERROR);
+												
+            // 2007-06-24: BUG FIX - Thanks to Adrian Wróbel <adrian [dot] wrobel [at] gmail.com>
+            // Ditch the trouble maker and add a fresh new element
+            MultiFile.n--;
+            MultiFile.addSlave(newEle[0], slave_count);
+            slave.parent().prepend(newEle);
+            slave.remove();
+            return false;
+          };
+          
+          // Hide this element (NB: display:none is evil!)
+          $(this).css({ position:'absolute', top: '-3000px' });
+          
+          // Add new element to the form
+          slave.after(newEle);
+          
+          // Update list
+          MultiFile.addToList( this, slave_count );
+          
+          // Bind functionality
+          MultiFile.addSlave( newEle[0], slave_count+1 );
+          
+          //# Trigger Event! afterFileSelect
+          if(!MultiFile.trigger('afterFileSelect', this, MultiFile)) return false;
+          //# End Event!
+          
+        }); // slave.change()
+								
+								// Save control to element
+								$(slave).data('MultiFile', MultiFile);
+								
+       };// MultiFile.addSlave
+       // Bind a new element
+       
+       
+       
+       // Add a new file to the list
+       MultiFile.addToList = function( slave, slave_count ){
+        //if(window.console) console.log('MultiFile.addToList',slave_count);
+								
+        //# Trigger Event! onFileAppend
+        if(!MultiFile.trigger('onFileAppend', slave, MultiFile)) return false;
+        //# End Event!
+        
+        // Create label elements
+        var
+         r = $('<div class="MultiFile-label"></div>'),
+         v = String(slave.value || ''/*.attr('value)*/),
+         a = $('<span class="MultiFile-title" title="'+MultiFile.STRING.selected.replace('$file', v)+'">'+MultiFile.STRING.file.replace('$file', v.match(/[^\/\\]+$/gi)[0])+'</span>'),
+         b = $('<a class="MultiFile-remove" href="#'+MultiFile.wrapID+'">'+MultiFile.STRING.remove+'</a>');
+        
+        // Insert label
+        MultiFile.list.append(
+         r.append(b, ' ', a)
+        );
+        
+        b
+								.click(function(){
+         
+          //# Trigger Event! onFileRemove
+          if(!MultiFile.trigger('onFileRemove', slave, MultiFile)) return false;
+          //# End Event!
+          
+          MultiFile.n--;
+          MultiFile.current.disabled = false;
+          
+          // Remove element, remove label, point to current
+										MultiFile.slaves[slave_count] = null;
+										$(slave).remove();
+										$(this).parent().remove();
+										
+          // Show most current element again (move into view) and clear selection
+          $(MultiFile.current).css({ position:'', top: '' });
+										$(MultiFile.current).reset().val('').attr('value', '')[0].value = '';
+          
+          //# Trigger Event! afterFileRemove
+          if(!MultiFile.trigger('afterFileRemove', slave, MultiFile)) return false;
+          //# End Event!
+										
+          return false;
         });
-    }
+        
+        //# Trigger Event! afterFileAppend
+        if(!MultiFile.trigger('afterFileAppend', slave, MultiFile)) return false;
+        //# End Event!
+        
+       }; // MultiFile.addToList
+       // Add element to selected files list
+       
+       
+       
+       // Bind functionality to the first element
+       if(!MultiFile.MultiFile) MultiFile.addSlave(MultiFile.e, 0);
+       
+       // Increment control count
+       //MultiFile.I++; // using window.MultiFile
+       MultiFile.n++;
+							
+							// Save control to element
+							MultiFile.E.data('MultiFile', MultiFile);
+							
 
-    // show the message
-	if (msg) {
-		lyr3.append(msg);
-		if (msg.jquery || msg.nodeType)
-			$(msg).show();
-	}
-
-	if ($.browser.msie && opts.showOverlay)
-		lyr1.show(); // opacity is zero
-	if (opts.fadeIn) {
-		if (opts.showOverlay)
-			lyr2._fadeIn(opts.fadeIn);
-		if (msg)
-			lyr3.fadeIn(opts.fadeIn);
-	}
-	else {
-		if (opts.showOverlay)
-			lyr2.show();
-		if (msg)
-			lyr3.show();
-	}
-
-    // bind key and mouse events
-    bind(1, el, opts);
-
-    if (full) {
-        pageBlock = lyr3[0];
-        pageBlockEls = $(':input:enabled:visible',pageBlock);
-        if (opts.focusInput)
-            setTimeout(focus, 20);
-    }
-    else
-        center(lyr3[0], opts.centerX, opts.centerY);
-
-	if (opts.timeout) {
-		// auto-unblock
-		var to = setTimeout(function() {
-			full ? $.unblockUI(opts) : $(el).unblock(opts);
-		}, opts.timeout);
-		$(el).data('blockUI.timeout', to);
-	}
-};
-
-// remove the block
-function remove(el, opts) {
-    var full = el == window;
-	var $el = $(el);
-    var data = $el.data('blockUI.history');
-	var to = $el.data('blockUI.timeout');
-	if (to) {
-		clearTimeout(to);
-		$el.removeData('blockUI.timeout');
-	}
-    opts = $.extend({}, $.blockUI.defaults, opts || {});
-    bind(0, el, opts); // unbind events
-    var els = full ? $('body').children().filter('.blockUI') : $('.blockUI', el);
-
-    if (full)
-        pageBlock = pageBlockEls = null;
-
-    if (opts.fadeOut) {
-        els.fadeOut(opts.fadeOut);
-        setTimeout(function() { reset(els,data,opts,el); }, opts.fadeOut);
-    }
-    else
-        reset(els, data, opts, el);
-};
-
-// move blocking element back into the DOM where it started
-function reset(els,data,opts,el) {
-    els.each(function(i,o) {
-        // remove via DOM calls so we don't lose event handlers
-        if (this.parentNode)
-            this.parentNode.removeChild(this);
-    });
-
-    if (data && data.el) {
-        data.el.style.display = data.display;
-        data.el.style.position = data.position;
-		if (data.parent)
-			data.parent.appendChild(data.el);
-        $(data.el).removeData('blockUI.history');
-    }
-
-    if (typeof opts.onUnblock == 'function')
-        opts.onUnblock(el,opts);
-};
-
-// bind/unbind the handler
-function bind(b, el, opts) {
-    var full = el == window, $el = $(el);
-
-    // don't bother unbinding if there is nothing to unbind
-    if (!b && (full && !pageBlock || !full && !$el.data('blockUI.isBlocked')))
-        return;
-    if (!full)
-        $el.data('blockUI.isBlocked', b);
-
-    if (b && !opts.showOverlay) // don't prevent events when overlay not in use
-		return;
-
-    // bind anchors and inputs for mouse and key events
-    var events = 'mousedown mouseup keydown keypress';
-    b ? $(document).bind(events, opts, handler) : $(document).unbind(events, handler);
-
-// former impl...
-//    var $e = $('a,:input');
-//    b ? $e.bind(events, opts, handler) : $e.unbind(events, handler);
-};
-
-// event handler to suppress keyboard/mouse events when blocking
-function handler(e) {
-    // allow tab navigation (conditionally)
-    if (e.keyCode && e.keyCode == 9) {
-        if (pageBlock && e.data.constrainTabKey) {
-            var els = pageBlockEls;
-            var fwd = !e.shiftKey && e.target == els[els.length-1];
-            var back = e.shiftKey && e.target == els[0];
-            if (fwd || back) {
-                setTimeout(function(){focus(back)},10);
-                return false;
-            }
-        }
-    }
-    // allow events within the message content
-    if ($(e.target).parents('div.blockMsg').length > 0)
-        return true;
-
-    // allow events for content that is not being blocked
-    return $(e.target).parents().children().filter('div.blockUI').length == 0;
-};
-
-function focus(back) {
-    if (!pageBlockEls)
-        return;
-    var e = pageBlockEls[back===true ? pageBlockEls.length-1 : 0];
-    if (e)
-        e.focus();
-};
-
-function center(el, x, y) {
-    var p = el.parentNode, s = el.style;
-    var l = ((p.offsetWidth - el.offsetWidth)/2) - sz(p,'borderLeftWidth');
-    var t = ((p.offsetHeight - el.offsetHeight)/2) - sz(p,'borderTopWidth');
-    if (x) s.left = l > 0 ? (l+'px') : '0';
-    if (y) s.top  = t > 0 ? (t+'px') : '0';
-};
-
-function sz(el, p) {
-    return parseInt($.css(el,p))||0;
-};
-
+			//#####################################################################
+			// MAIN PLUGIN FUNCTIONALITY - END
+			//#####################################################################
+		}); // each element
+	};
+	
+	/*--------------------------------------------------------*/
+	
+	/*
+		### Core functionality and API ###
+	*/
+	$.extend($.fn.MultiFile, {
+  /**
+   * This method removes all selected files
+   *
+   * Returns a jQuery collection of all affected elements.
+   *
+   * @name reset
+   * @type jQuery
+   * @cat Plugins/MultiFile
+   * @author Diego A. (http://www.fyneworks.com/)
+   *
+   * @example $.fn.MultiFile.reset();
+   */
+  reset: function(){
+			var settings = $(this).data('MultiFile');
+			//if(settings) settings.wrapper.find('a.MultiFile-remove').click();
+			if(settings) settings.list.find('a.MultiFile-remove').click();
+   return $(this);
+  },
+  
+  
+  /**
+   * This utility makes it easy to disable all 'empty' file elements in the document before submitting a form.
+   * It marks the affected elements so they can be easily re-enabled after the form submission or validation.
+   *
+   * Returns a jQuery collection of all affected elements.
+   *
+   * @name disableEmpty
+   * @type jQuery
+   * @cat Plugins/MultiFile
+   * @author Diego A. (http://www.fyneworks.com/)
+   *
+   * @example $.fn.MultiFile.disableEmpty();
+   * @param String class (optional) A string specifying a class to be applied to all affected elements - Default: 'mfD'.
+   */
+  disableEmpty: function(klass){ klass = (typeof(klass)=='string'?klass:'')||'mfD';
+   var o = [];
+   $('input:file.MultiFile').each(function(){ if($(this).val()=='') o[o.length] = this; });
+   return $(o).each(function(){ this.disabled = true }).addClass(klass);
+  },
+  
+  
+		/**
+			* This method re-enables 'empty' file elements that were disabled (and marked) with the $.fn.MultiFile.disableEmpty method.
+			*
+			* Returns a jQuery collection of all affected elements.
+			*
+			* @name reEnableEmpty
+			* @type jQuery
+			* @cat Plugins/MultiFile
+			* @author Diego A. (http://www.fyneworks.com/)
+			*
+			* @example $.fn.MultiFile.reEnableEmpty();
+			* @param String klass (optional) A string specifying the class that was used to mark affected elements - Default: 'mfD'.
+			*/
+  reEnableEmpty: function(klass){ klass = (typeof(klass)=='string'?klass:'')||'mfD';
+   return $('input:file.'+klass).removeClass(klass).each(function(){ this.disabled = false });
+  },
+  
+  
+		/**
+			* This method will intercept other jQuery plugins and disable empty file input elements prior to form submission
+			*
+	
+			* @name intercept
+			* @cat Plugins/MultiFile
+			* @author Diego A. (http://www.fyneworks.com/)
+			*
+			* @example $.fn.MultiFile.intercept();
+			* @param Array methods (optional) Array of method names to be intercepted
+			*/
+  intercepted: {},
+  intercept: function(methods, context, args){
+   var method, value; args = args || [];
+   if(args.constructor.toString().indexOf("Array")<0) args = [ args ];
+   if(typeof(methods)=='function'){
+    $.fn.MultiFile.disableEmpty();
+    value = methods.apply(context || window, args);
+				//SEE-http://code.google.com/p/jquery-multifile-plugin/issues/detail?id=27
+				setTimeout(function(){ $.fn.MultiFile.reEnableEmpty() },1000);
+    return value;
+   };
+   if(methods.constructor.toString().indexOf("Array")<0) methods = [methods];
+   for(var i=0;i<methods.length;i++){
+    method = methods[i]+''; // make sure that we have a STRING
+    if(method) (function(method){ // make sure that method is ISOLATED for the interception
+     $.fn.MultiFile.intercepted[method] = $.fn[method] || function(){};
+     $.fn[method] = function(){
+      $.fn.MultiFile.disableEmpty();
+      value = $.fn.MultiFile.intercepted[method].apply(this, arguments);
+						//SEE-http://code.google.com/p/jquery-multifile-plugin/issues/detail?id=27
+      setTimeout(function(){ $.fn.MultiFile.reEnableEmpty() },1000);
+      return value;
+     }; // interception
+    })(method); // MAKE SURE THAT method IS ISOLATED for the interception
+   };// for each method
+  }
+ });
+	
+	/*--------------------------------------------------------*/
+	
+	/*
+		### Default Settings ###
+		eg.: You can override default control like this:
+		$.fn.MultiFile.options.accept = 'gif|jpg';
+	*/
+	$.fn.MultiFile.options = { //$.extend($.fn.MultiFile, { options: {
+		accept: '', // accepted file extensions
+		max: -1,    // maximum number of selectable files
+		
+		// name to use for newly created elements
+		namePattern: '$name', // same name by default (which creates an array)
+		
+		// STRING: collection lets you show messages in different languages
+		STRING: {
+			remove:'x',
+			denied:'You cannot select a $ext file.\nTry again...',
+			file:'$file',
+			selected:'File selected: $file',
+			duplicate:'This file has already been selected:\n$file'
+		},
+		
+		// name of methods that should be automcatically intercepted so the plugin can disable
+		// extra file elements that are empty before execution and automatically re-enable them afterwards
+  autoIntercept: [ 'submit', 'ajaxSubmit', 'ajaxForm', 'validate' /* array of methods to intercept */ ],
+		
+		// error handling function
+		error: function(s){
+			/*
+			ERROR! blockUI is not currently working in IE
+			if($.blockUI){
+				$.blockUI({
+					message: s.replace(/\n/gi,'<br/>'),
+					css: { 
+						border:'none', padding:'15px', size:'12.0pt',
+						backgroundColor:'#900', color:'#fff',
+						opacity:'.8','-webkit-border-radius': '10px','-moz-border-radius': '10px'
+					}
+				});
+				window.setTimeout($.unblockUI, 2000);
+			}
+			else//{// save a byte!
+			*/
+			 alert(s);
+			//}// save a byte!
+		}
+ }; //} });
+	
+	/*--------------------------------------------------------*/
+	
+	/*
+		### Additional Methods ###
+		Required functionality outside the plugin's scope
+	*/
+	
+	// Native input reset method - because this alone doesn't always work: $(element).val('').attr('value', '')[0].value = '';
+	$.fn.reset = function(){ return this.each(function(){ try{ this.reset(); }catch(e){} }); };
+	
+	/*--------------------------------------------------------*/
+	
+	/*
+		### Default implementation ###
+		The plugin will attach itself to file inputs
+		with the class 'multi' when the page loads
+	*/
+	$(function(){
+  //$("input:file.multi").MultiFile();
+  $("input[type=file].multi").MultiFile();
+ });
+	
+	
+	
+/*# AVOID COLLISIONS #*/
 })(jQuery);
+/*# AVOID COLLISIONS #*/

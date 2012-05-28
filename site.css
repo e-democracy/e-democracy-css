@@ -267,6 +267,18 @@ p img {
   background: none;
 }
 
+/*********************/
+/* Individual Topics */
+/*********************/
+
+#divisionHomeContent .hfeed{ 
+  background: white;
+  padding: 15px;
+  border: 1px solid #999999;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 3px 3px 9px rgba(136, 136, 136, 0.43);
+}
+
 /*
  * jQuery UI CSS Framework 1.8.6
  *
