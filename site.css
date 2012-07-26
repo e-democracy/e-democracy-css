@@ -149,6 +149,10 @@ input[type='text'], input[type='password']{width: 30em;}
   width: 25em;
 }
 
+#widget-form\.tz select {
+  width: 30em;
+}
+
 /*****************/
 /* Related Links */
 /*****************/
