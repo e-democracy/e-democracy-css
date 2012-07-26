@@ -132,6 +132,8 @@ div#titlebar .division {
 /*********/
 /* Forms */
 /*********/
+textarea, input.textType, input.fileType, select { width: 30em; }
+
 label, div.formelementcheck label, div.formelementtext label, div.checkgroup label, div.formelementsinglecheck label, div.formelementtextarea label {
     color: #003366;
 }
@@ -147,10 +149,6 @@ input[type='text'], input[type='password']{width: 30em;}
 
 #edit-profile #textType {
   width: 25em;
-}
-
-#widget-form\.tz select {
-  width: 30em;
 }
 
 /*****************/
