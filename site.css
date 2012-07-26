@@ -271,6 +271,20 @@ p img {
   background: none;
 }
 
+#gs-group-messages-topics-tasks .inline-list li:first-child {
+    font-size: 1.1em;
+    position: absolute;
+    top: 40px;
+}
+
+/***************/
+/* Member Info */
+/***************/
+
+#memberdirectory_length select {
+  width: 100%;
+}
+
 /*********************/
 /* Individual Topics */
 /*********************/
