@@ -270,10 +270,10 @@ p img {
 }
 
 /* Makes the admin tab smaller so it fits on one line */
-#task-tabs ul li:last-child {
+#task-tabs .ui-tabs-nav li:last-child {
   width: 50px;
 }
-#task-tabs ul li:last-child a {
+#task-tabs .ui-tabs-nav li:last-child a {
   padding: 0.5em 0.5em;
 }
 
