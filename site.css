@@ -269,13 +269,6 @@ p img {
   background: none;
 }
 
-#gs-group-messages-topics-tasks .inline-list li:first-child {
-    font-size: 1.1em;
-    position: absolute;
-    top: 40px;
-    right: 55px;
-}
-
 /* Makes the admin tab smaller so it fits on one line */
 #task-tabs ul li:last-child {
   width: 50px;
