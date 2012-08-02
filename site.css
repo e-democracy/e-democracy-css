@@ -277,6 +277,8 @@ p img {
   padding: 0.5em 0.5em;
 }
 
+.gs-search-entry input { width: 27.692em; }
+
 /***************/
 /* Member Info */
 /***************/
