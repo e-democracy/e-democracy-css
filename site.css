@@ -269,6 +269,10 @@ p img {
   background: none;
 }
 
+#gs-group-messages-topics-search-input {
+  width: 28em;
+}
+
 /***************/
 /* Member Info */
 /***************/
