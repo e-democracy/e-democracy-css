@@ -70,7 +70,7 @@ html {
 
 #titlebar .logo {
   display: block;
-  background: transparent url(http://forums.e-democracy.org/++resource++logo-20091013.png) no-repeat scroll left top;
+  background: transparent url(http://forums.e-democracy.org/++resource++logo-20120906.png) no-repeat scroll left top;
   height:3.50em;
   margin:0;
   padding:0;
@@ -145,7 +145,7 @@ input, textarea, .email-body, .email-remainder pre,#add-to-topic textarea {
   color: red;
 }
 
-input[type='text'], input[type='password']{width: 30em;}
+input[type='text'], input[type='password'], select {width: 30em;}
 
 #edit-profile #textType {
   width: 25em;
@@ -173,12 +173,6 @@ p img {
 
 .navlinks a, .navlinks span, code.url, .alternateATOM, .email, .fileIcon, .share-widgets a, .share-widgets span {
   background-image: url(http://forums.e-democracy.org/++resource++icons-colour.png);
-}
-
-.share-widgets a {
-  width: 32px;
-  height: 32px;
-  background-size: 32px; /* double the width of the giant image; semi-coincidentally equal to the new width of the anchor */
 }
 
 /**********/
@@ -260,7 +254,7 @@ p img {
 
 #extended-topic-search #searcharea #searchTextInput {
   margin: 0;
-  width: 215px;
+  width: 100px;
 }
 
 #extended-topic-tasks .alternateATOM {
@@ -275,16 +269,6 @@ p img {
   background: none;
 }
 
-/* Makes the admin tab smaller so it fits on one line */
-#task-tabs .ui-tabs-nav li:last-child {
-  width: 50px;
-}
-#task-tabs .ui-tabs-nav li:last-child a {
-  padding: 0.5em 0.5em;
-}
-
-.gs-search-entry input { width: 27.692em; }
-
 /***************/
 /* Member Info */
 /***************/
@@ -297,7 +281,7 @@ p img {
 /* Individual Topics */
 /*********************/
 
-#divisionHomeContent .hfeed{ 
+#divisionHomeContent .hfeed { 
   background: white;
   padding: 15px;
   border: 1px solid #999999;
@@ -450,3 +434,7 @@ img.scaledImage { border: 1px solid #aaaaaa; border-radius: 2%; }
 
 #content .toc ul { padding: 0 15px 10px 25px; }
 
+/* User Profile */
+#content .leftColumn, #content .rightColumn {
+  width: 25em;
+}
