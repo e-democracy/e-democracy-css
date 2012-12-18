@@ -175,6 +175,12 @@ p img {
   background-image: url(http://forums.e-democracy.org/++resource++icons-colour.png);
 }
 
+.share-widgets a {
+  width: 32px;
+  height: 32px;
+  background-size: 32px; /* double the width of the giant image; semi-coincidentally equal to the new width of the anchor */
+}
+
 /**********/
 /* Footer */
 /**********/
