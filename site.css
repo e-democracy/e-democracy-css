@@ -64,6 +64,12 @@ html {
   background: white;
 }
 
+/**********/
+/* Inputs */
+/**********/
+
+.cols input[type='text'] { width: 25em; }
+
 /********/
 /* Logo */
 /********/
