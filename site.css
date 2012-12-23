@@ -293,6 +293,14 @@ p img {
   box-shadow: 3px 3px 9px rgba(136, 136, 136, 0.43);
 }
 
+/****************/
+/* Search Boxes */
+/****************/
+
+.gs-search {
+  min-height: 38em;
+}
+
 /*
  * jQuery UI CSS Framework 1.8.6
  *
