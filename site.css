@@ -427,6 +427,7 @@ img.scaledImage { border: 1px solid #aaaaaa; border-radius: 2%; }
 
 /*Quickly fixing unneeded padding/overflow hiding in the Us-Bar on topic pages*/
 #topic-page-content #us-photos { padding-left: 0px; }
+#topic-page-content #us-photos>li:first-child, #topic-page-content #us-photos>li:last-child  {display:none;}
 #topic-page-content #us-tasks { padding-right: 0px; }
 #topic-page-content #us-tasks ul { overflow: visible; }
 
