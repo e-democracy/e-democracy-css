@@ -425,6 +425,11 @@ img.scaledImage { border: 1px solid #aaaaaa; border-radius: 2%; }
 /*#content div { overflow: hidden; }*/
 #content ul { overflow: hidden; padding-left: 40px; margin-left: 0; }
 
+/*Quickly fixing unneeded padding/overflow hiding in the Us-Bar on topic pages*/
+#topic-page-content #us-photos { padding-left: 0px; }
+#topic-page-content #us-tasks { padding-right: 0px; }
+#topic-page-content #us-tasks ul { overflow: visible; }
+
 /* WIKI */
 .mediawiki #searchform {
   padding: 0 1.39em;
