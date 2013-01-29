@@ -318,6 +318,10 @@ p img {
   border: 1px solid grey;
 }
 
+.forum-directory th {
+  text-align: left;
+}
+
 .forum-directory-even {
   background: lightGrey;
 }
