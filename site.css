@@ -318,29 +318,24 @@ p img {
   border: 1px solid grey;
 }
 
-.forum-directory tr:nth-child(4n) {
-  border-bottom: 1px solid Grey;
-  background: lightGrey;
-}
-.forum-directory tr:nth-child(4n-1) {
-  border-top: 1px solid grey;
+.forum-directory-even {
   background: lightGrey;
 }
 
-.forum-directory tr:nth-child(even) td {
-  padding: 0 1em 1em 2.75em;
-  color: grey;
+.forum-directory td {
+  padding-bottom: .25em;
+}
+
+.forum-directory .forum-directory-neighborhoods {
+  color: #666;
   font-style: italic;
+  padding: 0 1em 1em 2.75em;
+  border-bottom: 1px solid grey;
 }
 
-.forum-directory tr:nth-child(odd) td{
-  padding-bottom: .5em;
-}
-
-.forum-directory tr:nth-child(odd) td:first-child {
+.forum-directory-forum-home {
   font-size: 1.25em;
 }
-
 
 /****************/
 /* Search Boxes */
