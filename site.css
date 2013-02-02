@@ -338,7 +338,19 @@ p img {
 }
 
 .forum-directory-forum-home {
-  font-size: 1.25em;
+  font-size: 1.5em;
+  padding-top: 5px;
+}
+
+.forum-directory-join a{
+  background: lightblue;
+  padding: 5px 10px;
+  border-radius: 8px;
+  text-align: center;
+  color: darkblue;
+  text-decoration: none;
+  border: 1px solid grey;
+  font-weight: bold;
 }
 
 /****************/
