@@ -322,6 +322,18 @@ p img {
   text-align: left;
 }
 
+th.forum-directory-forum-home {
+  width: 13em;
+}
+
+th.forum-directory-facebook {
+  white-space: nowrap;
+}
+
+th.forum-directory-webfeed {
+  /*width: 100px;*/
+}
+
 .forum-directory-even {
   background: lightGrey;
 }
@@ -351,6 +363,22 @@ p img {
   text-decoration: none;
   border: 1px solid grey;
   font-weight: bold;
+}
+
+td.forum-directory-dc {
+  text-align: center;
+}
+
+/* a bit of fancy footwork to make the webfeed header look nice */
+th.forum-directory-webfeed {
+  padding-top: 0;
+  padding-left: 0;
+}
+
+th.forum-directory-webfeed img {
+  position: relative;
+  top: 25px;
+  left: -23px;
 }
 
 /****************/
