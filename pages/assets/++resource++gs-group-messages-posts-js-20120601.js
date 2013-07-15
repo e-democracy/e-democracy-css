@@ -1,5 +1,6 @@
 jQuery.noConflict();
-jQuery(document).ready( function () {
+
+function init_posts () {
     var postsSearch = null;
     var show_posts = null;
     postsSearch = GSSearch('#gs-group-messages-posts-search', 
@@ -13,4 +14,9 @@ jQuery(document).ready( function () {
         }
     };
     jQuery('#task-tabs').bind('tabsshow', show_posts);
+}
+
+jQuery(window).load( function () {
+    gsJsLoader.with_module('/++resource++gs-search-base-js-min-20121217.js',
+                           init_posts);
 });

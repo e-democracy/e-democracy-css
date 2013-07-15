@@ -1,57 +1,43 @@
 // GroupServer JavaScript module for providing the Search mechanism
 jQuery.noConflict();
-var GSSearch = function (widgetId, ajaxPage, offset, limit, additionalQuery, advancedSearch) {
+function GSSearch(widgetId, ajaxPage, offset, limit, additionalQuery, 
+                  advancedSearch) {
     // Private variables
     // Widgets
-    var widget = null;
-    var searchInput = null;
-    var searchButton = null;
-    var loadingMessage = null;
-    var results = null;
-    var toolbar = null;
-    var prevButton = null;
-    var nextButton = null;
-
-    var searchText = '';
-    var toolbarShown = true;
-    var searchShown = true;
-    var resultsShown = false;
-
-    // Constants
-    var MAX_ITEMS = 48;
-    var FADE_SPEED = 'slow';
-    var FADE_METHOD = 'swing';
-    var RESULTS_LOADED_EVENT = "resultsloaded";
+    var widget = null, searchInput = null, searchButton = null, 
+        loadingMessage = null, results = null, toolbar = null, 
+        prevButton = null, nextButton = null, ajaxPageUrl = '', searchText = '',
+        toolbarShown = true, searchShown = true, resultsShown = false,
+        FADE_SPEED = 'slow', FADE_METHOD = 'swing', 
+        RESULTS_LOADED_EVENT = "resultsloaded";
 
     // Private methods
-    
+    function disable(b) {
+        b.attr('disabled', 'disabled');
+        b.attr('aria-disabled', 'true');
+    }
+    function enable(b) {
+        b.removeAttr('disabled');
+        b.attr('aria-disabled', 'false');
+    }  
+
     // Previous Button
-    var init_prev_button = function() {
-        prevButton.button({
-            text: true,
-            icons: { primary: 'ui-icon-carat-1-w' },
-            disabled: true
-        });
-        prevButton.click(handle_prev);
-    };// init_prev_button
-    var handle_prev = function(eventObject) {
+    function init_prev_button() {
+        prevButton.on('click', handle_prev);
+    }// init_prev_button
+    function handle_prev(eventObject) {
         offset = offset - limit;
         if (offset < 0) {
             offset = 0
         }
-        results.fadeOut(FADE_SPEED, FADE_METHOD, do_results_load);
-    };//handle_prev
+        hide_and_load_results()
+    }//handle_prev
     
     // Next button
-    var init_next_button = function() {
-        nextButton.button({
-            text: true,
-            icons: { secondary: 'ui-icon-carat-1-e' },
-            disabled: true
-        });
-        nextButton.click(handle_next);
-    };// init_next_button
-    var handle_next = function(eventObject) {
+    function init_next_button() {
+        nextButton.on('click', handle_next);
+    }// init_next_button
+    function handle_next(eventObject) {
         var nSticky = null;
         if (searchInput.val()) {
             offset = offset + limit;
@@ -59,44 +45,54 @@ var GSSearch = function (widgetId, ajaxPage, offset, limit, additionalQuery, adv
             nSticky = results.find('.gs-search-sticky').length;
             offset = offset + limit - nSticky;
         }
-        results.fadeOut(FADE_SPEED, FADE_METHOD, do_results_load);
-    };//handle_next
+        hide_and_load_results()
+    }//handle_next
     
     // Search Input
-    var init_search_input = function () {
+    function init_search_input() {
         searchInput.keypress(handle_search_input);
-    };// init_search_input
-    var handle_search_input = function(eventObject) {
+    }// init_search_input
+    function handle_search_input(eventObject) {
         if (eventObject.which == 13) {
             searchButton.click();
         }
     };// handle_search_input
+
     // Search Button
-    var init_search_button = function() {
-        searchButton.button({
-            text: false,
-            icons: { primary: 'ui-icon-search' },
-            disabled: false
-        });
-        searchButton.click(handle_search);
+    function init_search_button() {
+        searchButton.on('click', handle_search);
     };//init_search_button
-    var handle_search = function (eventObject) {
+    function handle_search(eventObject) {
+        disable(searchInput);
+        disable(searchButton);
+        disable(prevButton);        
+        disable(nextButton);
+
         searchText = searchInput.val();
         offset = 0;
         results.fadeOut(FADE_SPEED, FADE_METHOD, do_results_load);
+        results.attr('aria-hidden', 'true');
     };//handle_search
 
+
+    function hide_and_load_results() {
+        var oldHeight = 0;
+        oldHeight = results.height();
+        
+        loadingMessage.height(oldHeight + 'px');
+        results.fadeOut(FADE_SPEED, FADE_METHOD, do_results_load);
+        results.attr('aria-hidden', 'true');
+    }
+
     // Code to load the results in a pleasing way.
-    var do_results_load = function () {
+    function do_results_load() {
         // Function used by the buttons.
         loadingMessage.fadeIn(FADE_SPEED, FADE_METHOD, load_results);
+        loadingMessage.attr('aria-hidden', 'false');
     };//do_results_load
-    var load_results = function() {
+    function load_results() {
         // Actually load the results, making am AJAX request
-        var data = null;
-        var href = null;
-        var query = null;
-        var newHref = null;
+        var data = null, href = null, query = null, newHref = null;
         
         if (advancedSearch) {
             href = advancedSearch.attr('href');
@@ -112,22 +108,35 @@ var GSSearch = function (widgetId, ajaxPage, offset, limit, additionalQuery, adv
         data['i'] = offset;
         data['l'] = limit;
         data['s'] = searchText;
-        jQuery.post(ajaxPage, data, load_complete);
+        jQuery.post(ajaxPageUrl, data, load_complete);
     };// load_results
-    var load_complete = function(responseText, textStatus, request) {
+    function load_complete(responseText, textStatus, request) {
         // Set the contents of the results-list to the respose.
         results.html(responseText);
         // Hide the Loading message and show the results.
         loadingMessage.fadeOut(FADE_SPEED, FADE_METHOD, show_results);
+        loadingMessage.attr('aria-hidden', 'true');
     };// load_complete
-    var show_results = function () {
+    function show_results() {
         // Show the results list, and enable the buttons as required.
         var nResults = null;
         results.fadeIn(FADE_SPEED, FADE_METHOD);
-        prevButton.button('option', 'disabled', offset <= 0);
+        results.attr('aria-hidden', 'false');
+        loadingMessage.height('auto');
         
+        enable(searchInput);
+        enable(searchButton);
+        if (offset <= 0) {
+            disable(prevButton);
+        } else {
+            enable(prevButton);
+        }
         nResults = results.find('.gs-search-result').length;
-        nextButton.button('option', 'disabled', nResults < limit);
+        if (nResults < limit) {
+            disable(nextButton);
+        } else {
+            enable(nextButton);
+        }
 
         init_keywords();
         
@@ -153,22 +162,21 @@ var GSSearch = function (widgetId, ajaxPage, offset, limit, additionalQuery, adv
         resultsShown = true;
     };//show_results
 
-    var propogate_results_loaded_event = function() {
+    function propogate_results_loaded_event() {
         var event = jQuery.Event(RESULTS_LOADED_EVENT);
         widget.trigger(event);
     };
 
     // Keywords
-    var init_keywords = function () {
-        var result = null;
-        var keywords = null;
+    function init_keywords() {
+        keywords = null;
         keywords = results.find('.gs-search-keyword');
         if (keywords.length > 0) {
             keywords.removeAttr('href').css("cursor","pointer");
             keywords.click(handle_keyword_click);
         }
     };//init_keywords
-    var handle_keyword_click = function(eventObject) {
+    function handle_keyword_click(eventObject) {
         var searchText = jQuery(this).text();
         searchInput.val(searchText);
         searchButton.click();
@@ -178,10 +186,10 @@ var GSSearch = function (widgetId, ajaxPage, offset, limit, additionalQuery, adv
     // The Initializer
     // This is the closest we'll get to a classical constructor.
     //
-    var init = function() {
+    function init() {
         widget = jQuery(widgetId);
     
-        searchInput = widget.find('.gs-search-entry input[type="text"]');
+        searchInput = widget.find('.gs-search-entry input');
         init_search_input();
         searchButton = widget.find('.gs-search-entry button');
         init_search_button();
@@ -194,7 +202,10 @@ var GSSearch = function (widgetId, ajaxPage, offset, limit, additionalQuery, adv
         init_prev_button();
         nextButton = widget.find('.gs-search-toolbar-next');
         init_next_button();
-    }();//init **Note** the () is deliberate so this function is run.
+
+        ajaxPageUrl = ajaxPage;
+    }
+    init(); //Run this function on startup
 
     // Return the public methods and properties.
     return {
