@@ -279,6 +279,21 @@ p img {
   width: 28em;
 }
 
+#gs-group-member-list .photo {
+  width: 3.75em;
+  height: 4.5em;
+  overflow: hidden;
+}
+
+#gs-group-member-list a.photo {
+  margin-right: 10px;
+}
+
+#gs-group-member-list li.vcard img {
+  height: 100%;
+  width: 96%;
+}
+
 #us-bar .userimage {
   width: 3.4em;
   height: 4.68em;
